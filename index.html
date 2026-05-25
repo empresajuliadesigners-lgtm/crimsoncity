@@ -1457,7 +1457,28 @@ function confirmReset(type){var msgs={wlApps:'Limpar TODAS as candidaturas?',use
 // ═══ ADMIN AUTH ═══
 function showAdminLogin(){document.getElementById('admin-login').classList.add('show');}
 function hideAdminLogin(){document.getElementById('admin-login').classList.remove('show');}
-function doLogin(){var u=document.getElementById('login-user').value.trim();var p=document.getElementById('login-pass').value;if(u===S.adminUser&&p===S.adminPass){document.getElementById('login-err').classList.remove('show');document.getElementById('admin-login').classList.remove('show');document.getElementById('main-nav').style.display='none';document.getElementById('mobile-menu').style.display='none';document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});document.getElementById('admin-panel').classList.add('show');document.getElementById('admin-welcome-name').textContent=u;S.loggedIn=true;refreshAdmin();}else{document.getElementById('login-err').classList.add('show');}}
+function doLogin(){
+  var u=document.getElementById('login-user').value.trim();
+  var p=document.getElementById('login-pass').value;
+  // Verifica admin master OU usuário cadastrado com cargo admin/moderador e status ativo
+  var masterMatch=(u===S.adminUser&&p===S.adminPass);
+  var userMatch=S.users.find(function(x){
+    return x.username===u&&x.password===p&&x.status==='active'&&(x.role==='admin'||x.role==='moderator');
+  });
+  if(masterMatch||userMatch){
+    document.getElementById('login-err').classList.remove('show');
+    document.getElementById('admin-login').classList.remove('show');
+    document.getElementById('main-nav').style.display='none';
+    document.getElementById('mobile-menu').style.display='none';
+    document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
+    document.getElementById('admin-panel').classList.add('show');
+    document.getElementById('admin-welcome-name').textContent=u;
+    S.loggedIn=true;
+    refreshAdmin();
+  }else{
+    document.getElementById('login-err').classList.add('show');
+  }
+}
 function adminLogout(){document.getElementById('admin-panel').classList.remove('show');document.getElementById('main-nav').style.display='';showPage('home');S.loggedIn=false;}
 
 // ═══ ADMIN TABS ═══
