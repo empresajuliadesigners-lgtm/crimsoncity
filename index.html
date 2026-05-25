@@ -920,7 +920,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
         <div class="form-card"><h3>➕ Adicionar / Editar Usuário</h3>
           <input type="hidden" id="edit-user-id">
           <div class="form-row"><div class="field"><label>Usuário</label><input type="text" id="u-username" placeholder="usuario123"></div><div class="field"><label>Senha</label><input type="password" id="u-password" placeholder="Mínimo 6 chars"></div></div>
-          <div class="form-row"><div class="field"><label>Email</label><input type="text" id="u-email" placeholder="email@..."></div><div class="field"><label>Cargo</label><select id="u-role"><option value="player">Jogador</option><option value="vip">VIP</option><option value="moderator">Moderador</option><option value="admin">Admin</option></select></div></div>
+          <div class="form-row"><div class="field"><label>Email</label><input type="text" id="u-email" placeholder="email@..."></div><div class="field"><label>Cargo</label><select id="u-role"><option value="admin">Admin</option><option value="moderator">Moderador</option><option value="vip">VIP</option><option value="player">Jogador</option></select></div></div>
           <div class="field"><label>Status</label><select id="u-status"><option value="active">Ativo</option><option value="pending">Pendente</option><option value="banned">Banido</option></select></div>
           <div style="display:flex;gap:.7rem;margin-top:.5rem"><button class="btn btn-primary btn-sm" onclick="saveUser()">💾 Salvar</button><button class="btn btn-outline btn-sm" onclick="clearUserForm()">✕ Limpar</button></div>
         </div>
@@ -1445,7 +1445,7 @@ function renderTeamTable(){var tb=document.getElementById('team-table');if(!S.te
 function saveUser(){var id=document.getElementById('edit-user-id').value;var username=document.getElementById('u-username').value.trim();var password=document.getElementById('u-password').value.trim();var email=document.getElementById('u-email').value.trim();var role=document.getElementById('u-role').value;var status=document.getElementById('u-status').value;if(!username){toast('Usuário obrigatório.','err');return;}if(!id&&!password){toast('Senha obrigatória.','err');return;}if(id){var u=S.users.find(function(x){return x.id==id;});if(u){u.username=username;if(password)u.password=password;u.email=email;u.role=role;u.status=status;}toast('Usuário atualizado!','ok');}else{if(S.users.find(function(x){return x.username===username;})){toast('Usuário já existe.','err');return;}S.users.push({id:S.nextId.users++,username:username,password:password,email:email,role:role,status:status,date:new Date().toLocaleDateString('pt-BR')});toast('Usuário criado!','ok');}save();clearUserForm();renderUsersTable();updateStats();}
 function editUser(id){var u=S.users.find(function(x){return x.id===id;});if(!u)return;document.getElementById('edit-user-id').value=id;document.getElementById('u-username').value=u.username;document.getElementById('u-password').value='';document.getElementById('u-email').value=u.email||'';document.getElementById('u-role').value=u.role;document.getElementById('u-status').value=u.status;adminTab('users');window.scrollTo(0,0);}
 function deleteUser(id){confirmAction('Excluir usuário?',function(){S.users=S.users.filter(function(x){return x.id!==id;});save();renderUsersTable();updateStats();toast('Excluído.','ok');});}
-function clearUserForm(){document.getElementById('edit-user-id').value='';['u-username','u-password','u-email'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('u-role').value='player';document.getElementById('u-status').value='active';}
+function clearUserForm(){document.getElementById('edit-user-id').value='';['u-username','u-password','u-email'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('u-role').value='admin';document.getElementById('u-status').value='active';}
 function renderUsersTable(){var tb=document.getElementById('users-table');document.getElementById('users-count').textContent=S.users.length+' usuário(s)';if(!S.users.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum usuário.</td></tr>';return;}tb.innerHTML=S.users.map(function(u){return '<tr><td><strong>'+esc(u.username)+'</strong></td><td style="color:rgba(255,255,255,.35)">'+esc(u.email||'-')+'</td><td><span class="badge badge-gold">'+esc(u.role)+'</span></td><td><span class="badge '+(u.status==='active'?'badge-green':u.status==='banned'?'badge-red':'badge-gray')+'">'+esc(u.status)+'</span></td><td><button class="action-btn" onclick="editUser('+u.id+')">✏</button><button class="action-btn danger" onclick="deleteUser('+u.id+')">🗑</button></td></tr>';}).join('');}
 
 // ═══ SETTINGS ═══
@@ -1459,11 +1459,11 @@ function showAdminLogin(){document.getElementById('admin-login').classList.add('
 function hideAdminLogin(){document.getElementById('admin-login').classList.remove('show');}
 function doLogin(){
   var u=document.getElementById('login-user').value.trim();
-  var p=document.getElementById('login-pass').value;
-  // Verifica admin master OU usuário cadastrado com cargo admin/moderador e status ativo
+  var p=document.getElementById('login-pass').value.trim();
+  // Verifica admin master OU qualquer usuário cadastrado com credenciais corretas
   var masterMatch=(u===S.adminUser&&p===S.adminPass);
   var userMatch=S.users.find(function(x){
-    return x.username===u&&x.password===p&&x.status==='active'&&(x.role==='admin'||x.role==='moderator');
+    return x.username===u && x.password===p && x.status!=='banned';
   });
   if(masterMatch||userMatch){
     document.getElementById('login-err').classList.remove('show');
