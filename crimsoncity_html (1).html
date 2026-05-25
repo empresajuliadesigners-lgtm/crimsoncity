@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/poZOdfIXDv3ouVswYNaG5dVpwN1CZv9u/1db1663c-0c4e-4021-86ea-ddf2d7272da7/files/">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crimson City RP</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --crimson:#C41E3A;--crimson-dark:#8B0000;--crimson-light:#E8324F;
+  --gold:#C9A84C;--gold-light:#E8C96A;
+  --dark:#070709;--dark2:#0D0D11;--dark3:#13131A;--dark4:#1A1A24;--dark5:#20202C;
+  --gray:#666;--white:#FFF;
+  --font-body:'Space Grotesk',sans-serif;
+  --font-display:'Syne',sans-serif;
+  --font-heading:'Oswald',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--dark);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--dark)}
+::-webkit-scrollbar-thumb{background:var(--crimson-dark);border-radius:2px}
+
+/* ── CURSOR GLOW ── */
+.cursor-glow{position:fixed;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(196,30,58,0.055) 0%,transparent 65%);pointer-events:none;z-index:0;transform:translate(-50%,-50%);transition:left .12s,top .12s}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(7,7,9,.88);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,30,58,.12);transition:all .3s}
+nav.scrolled{background:rgba(7,7,9,.98);border-bottom-color:rgba(196,30,58,.22)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:68px;max-width:1400px;margin:0 auto}
+.nav-logo{font-family:var(--font-display);font-size:1.55rem;font-weight:800;letter-spacing:2px;cursor:pointer;transition:letter-spacing .3s}
+.nav-logo:hover{letter-spacing:4px}
+.nav-logo span{color:var(--crimson)}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.78rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;transition:all .3s;cursor:pointer;position:relative;padding-bottom:3px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--crimson);transition:width .3s}
+.nav-links a:hover,.nav-links a.active{color:var(--white)}
+.nav-links a:hover::after,.nav-links a.active::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:.85rem}
+.players-badge{display:flex;align-items:center;gap:.45rem;font-size:.72rem;color:rgba(255,255,255,.35);letter-spacing:1px;text-transform:uppercase}
+.dot-pulse{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:pulse-green 2s infinite}
+@keyframes pulse-green{0%{box-shadow:0 0 0 0 rgba(34,197,94,.4)}70%{box-shadow:0 0 0 8px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+
+/* hamburger */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;z-index:1100}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{position:fixed;top:68px;left:0;right:0;background:rgba(7,7,9,.98);backdrop-filter:blur(20px);border-bottom:1px solid rgba(196,30,58,.2);padding:1.5rem 2rem;display:none;flex-direction:column;gap:1.25rem;z-index:999;transform:translateY(-10px);opacity:0;transition:all .3s}
+.mobile-menu.show{display:flex;transform:translateY(0);opacity:1}
+.mobile-menu a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.9rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a:hover{color:var(--white)}
+.mobile-btns{display:flex;gap:.75rem;margin-top:.5rem;flex-wrap:wrap}
+
+/* ── BTNS ── */
+.btn{padding:.55rem 1.3rem;border-radius:3px;font-size:.75rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;text-decoration:none;border:none;display:inline-flex;align-items:center;gap:.5rem;font-family:var(--font-body)}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.7)}
+.btn-outline:hover{border-color:var(--crimson);color:var(--crimson);background:rgba(196,30,58,.06)}
+.btn-primary{background:var(--crimson);color:var(--white);box-shadow:0 0 20px rgba(196,30,58,.25)}
+.btn-primary:hover{background:var(--crimson-light);box-shadow:0 0 30px rgba(196,30,58,.45);transform:translateY(-1px)}
+.btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--dark);font-weight:700}
+.btn-gold:hover{filter:brightness(1.1);transform:translateY(-1px)}
+.btn-dark{background:var(--dark4);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.7)}
+.btn-dark:hover{border-color:var(--crimson);color:var(--crimson)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
+.btn-ghost:hover{background:rgba(255,255,255,.05);color:var(--white)}
+.btn-sm{padding:.35rem .85rem;font-size:.68rem}
+.btn-danger{background:var(--crimson-dark);color:var(--white);border:none;padding:.45rem 1.1rem;border-radius:3px;cursor:pointer;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.72rem;transition:background .2s;font-family:var(--font-body)}
+.btn-danger:hover{background:var(--crimson)}
+
+/* ── PAGES ── */
+.page{display:none;min-height:100vh;padding-top:68px}
+.page.active{display:block}
+
+/* ── HERO BG SYSTEM ── */
+.hero{position:relative;height:calc(100vh - 68px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg-layer{position:absolute;inset:0;transition:all 1s ease;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:rgba(7,7,9,.45);z-index:1}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(196,30,58,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,30,58,.04) 1px,transparent 1px);background-size:80px 80px;animation:grid-drift 20s linear infinite;z-index:2}
+@keyframes grid-drift{0%{background-position:0 0}100%{background-position:80px 80px}}
+.hero-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.particle{position:absolute;border-radius:50%;background:rgba(196,30,58,.6);animation:float-particle linear infinite}
+@keyframes float-particle{0%{transform:translateY(100vh) scale(0);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-10vh) scale(1);opacity:0}}
+.hero-content{position:relative;z-index:5;max-width:1000px;padding:0 2rem}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:rgba(196,30,58,.1);border:1px solid rgba(196,30,58,.3);color:#e8a0ac;font-size:.62rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;padding:.4rem 1.1rem;border-radius:2px;margin-bottom:2rem;animation:fade-down .8s ease .2s both}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:16px;height:1px;background:var(--crimson)}
+@keyframes fade-down{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── GLITCH ── */
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,12vw,9rem);font-weight:400;line-height:.9;letter-spacing:6px;margin-bottom:1.5rem;position:relative}
+.hero-title .word{display:block;overflow:hidden}
+.hero-title .letter{display:inline-block;animation:letter-rise .6s cubic-bezier(.22,1,.36,1) both}
+.hero-title .line2{color:var(--crimson);text-shadow:0 0 60px rgba(196,30,58,.5)}
+@keyframes letter-rise{from{transform:translateY(110%);opacity:0}to{transform:translateY(0);opacity:1}}
+
+/* Glitch active */
+.glitch-on .hero-title{animation:glitch-shake 2.5s infinite}
+.glitch-on .hero-title .line1{position:relative}
+.glitch-on .hero-title .line1::before,.glitch-on .hero-title .line1::after{
+  content:attr(data-text);position:absolute;top:0;left:0;right:0;
+  font-family:'Bebas Neue',sans-serif;font-size:inherit;font-weight:400;
+  overflow:hidden;pointer-events:none
+}
+.glitch-on .hero-title .line1::before{color:rgba(0,255,255,.7);animation:glitch-r 2.5s steps(1) infinite;clip-path:polygon(0 20%,100% 20%,100% 40%,0 40%)}
+.glitch-on .hero-title .line1::after{color:rgba(255,0,80,.7);animation:glitch-l 2.5s steps(1) infinite .08s;clip-path:polygon(0 55%,100% 55%,100% 75%,0 75%)}
+.glitch-on .hero-title .line2{animation:glitch-line2 3s steps(1) infinite .4s}
+@keyframes glitch-shake{0%,90%,100%{transform:none}92%{transform:translate(-2px,1px) skewX(-1deg)}94%{transform:translate(2px,-1px) skewX(1deg)}96%{transform:translate(-1px,0) skewX(.5deg)}98%{transform:none}}
+@keyframes glitch-r{0%,10%,30%,50%,70%,90%,100%{transform:none;opacity:0}5%{transform:translateX(4px);opacity:1}15%{transform:translateX(-3px);opacity:1}20%{opacity:0}40%{transform:translateX(5px);opacity:1}45%{opacity:0}60%{transform:translateX(-4px);opacity:1}65%{opacity:0}80%{transform:translateX(3px);opacity:1}85%{opacity:0}}
+@keyframes glitch-l{0%,12%,35%,55%,75%,95%,100%{transform:none;opacity:0}8%{transform:translateX(-5px);opacity:1}18%{opacity:0}42%{transform:translateX(4px);opacity:1}48%{opacity:0}62%{transform:translateX(-3px);opacity:1}68%{opacity:0}82%{transform:translateX(5px);opacity:1}88%{opacity:0}}
+@keyframes glitch-line2{0%,85%,100%{filter:none;transform:none}87%{filter:hue-rotate(90deg) brightness(1.5);transform:translateX(3px)}89%{filter:hue-rotate(-90deg);transform:translateX(-3px)}91%{filter:none;transform:none}}
+
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.5);max-width:560px;margin:0 auto 2.5rem;line-height:1.8;animation:fade-up .8s ease 1.2s both}
+@keyframes fade-up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.hero-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;animation:fade-up .8s ease 1.4s both}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;color:rgba(255,255,255,.2);font-size:.62rem;letter-spacing:3px;text-transform:uppercase;animation:scroll-hint 2.5s ease infinite;z-index:5}
+.scroll-line{width:1px;height:36px;background:linear-gradient(to bottom,transparent,rgba(196,30,58,.8),transparent)}
+@keyframes scroll-hint{0%,100%{opacity:.3;transform:translateX(-50%) translateY(0)}50%{opacity:.7;transform:translateX(-50%) translateY(8px)}}
+
+/* ── SECTION HEAD ── */
+.section-head{text-align:center;margin-bottom:3.5rem}
+.section-label{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--crimson);margin-bottom:.7rem}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,3rem);font-weight:800;line-height:1;letter-spacing:-1px}
+.section-title span{color:var(--crimson)}
+.section-line{width:36px;height:2px;background:var(--crimson);margin:.85rem auto 0;border-radius:1px}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-28px);transition:opacity .65s ease,transform .65s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(28px);transition:opacity .65s ease,transform .65s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ── UPDATES ── */
+.updates-section{padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.updates-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.update-card{background:var(--dark3);border:1px solid rgba(255,255,255,.05);border-radius:8px;padding:1.75rem;position:relative;overflow:hidden;transition:all .4s;cursor:default}
+.update-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--crimson),transparent)}
+.update-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(196,30,58,.06) 0%,transparent 70%);opacity:0;transition:opacity .4s}
+.update-card:hover{border-color:rgba(196,30,58,.3);transform:translateY(-5px);box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.update-card:hover::after{opacity:1}
+.update-tag{font-size:.58rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--crimson);margin-bottom:.85rem}
+.update-title{font-family:var(--font-heading);font-size:1.2rem;font-weight:600;margin-bottom:.6rem;letter-spacing:.5px;text-transform:uppercase}
+.update-text{font-size:.83rem;color:rgba(255,255,255,.42);line-height:1.7}
+.update-date{font-size:.68rem;color:rgba(255,255,255,.18);margin-top:1.2rem;letter-spacing:1px}
+
+/* ── FEATURES ── */
+.features-section{padding:6rem 2rem;background:var(--dark2);position:relative;overflow:hidden}
+.features-section::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,30,58,.3),transparent)}
+.features-section::after{content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,30,58,.3),transparent)}
+.features-inner{max-width:1200px;margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem}
+.feature-card{padding:2.25rem 2rem;background:var(--dark3);border:1px solid rgba(255,255,255,.05);border-radius:8px;text-align:center;transition:all .4s;position:relative;overflow:hidden}
+.feature-card::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:1px;background:var(--crimson);transition:width .4s}
+.feature-card:hover{border-color:rgba(196,30,58,.25);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+.feature-card:hover::before{width:60%}
+.feature-icon{font-size:2.25rem;margin-bottom:1.2rem;display:inline-block;filter:drop-shadow(0 0 10px rgba(196,30,58,.3));transition:transform .3s}
+.feature-card:hover .feature-icon{transform:scale(1.15) rotate(-5deg)}
+.feature-title{font-family:var(--font-heading);font-size:.95rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:.6rem}
+.feature-text{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.7}
+
+/* ── HOW TO PLAY ── */
+.htp-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.htp-title{font-family:var(--font-display);font-size:3rem;font-weight:800;line-height:1;letter-spacing:-1px;margin-bottom:.75rem}
+.htp-title span{color:var(--crimson)}
+.htp-desc{color:rgba(255,255,255,.42);font-size:.88rem;line-height:1.8;margin-bottom:2.5rem}
+.htp-steps{display:flex;flex-direction:column;gap:1.2rem}
+.step-item{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:1.75rem;position:relative;overflow:hidden;transition:all .3s}
+.step-item:hover{border-color:rgba(196,30,58,.25);transform:translateX(4px)}
+.step-num{font-family:var(--font-display);font-size:4rem;color:rgba(196,30,58,.08);position:absolute;top:.25rem;right:1rem;line-height:1;font-weight:800;transition:color .3s}
+.step-item:hover .step-num{color:rgba(196,30,58,.16)}
+.step-title{font-family:var(--font-heading);font-weight:600;font-size:1rem;margin-bottom:.5rem;letter-spacing:.5px;text-transform:uppercase}
+.step-text{font-size:.82rem;color:rgba(255,255,255,.42);line-height:1.7;margin-bottom:1.1rem}
+.step-btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.htp-img-box{background:var(--dark3);border:1px solid rgba(196,30,58,.15);border-radius:10px;overflow:hidden;aspect-ratio:3/4;display:flex;align-items:center;justify-content:center;position:relative}
+.htp-img-box::before{content:'CRIMSON CITY';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-15deg);font-family:var(--font-display);font-size:4rem;font-weight:800;color:rgba(196,30,58,.04);letter-spacing:2px;white-space:nowrap;pointer-events:none}
+.htp-placeholder{text-align:center;padding:2rem}
+.htp-placeholder .big-icon{font-size:5rem;opacity:.12;margin-bottom:1rem;display:block}
+.htp-placeholder p{color:rgba(255,255,255,.18);font-size:.78rem}
+.server-info{margin-top:1.5rem;background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:1.4rem}
+.server-info-head{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:1rem}
+.server-info-row{display:flex;justify-content:space-between;align-items:center;font-size:.82rem;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.server-info-row:last-child{border-bottom:none}
+.server-info-row span:first-child{color:rgba(255,255,255,.28)}
+
+/* ── WHITELIST CHAT ── */
+.wl-page-wrap{max-width:780px;margin:0 auto;padding:3rem 1.5rem}
+.wl-header{text-align:center;margin-bottom:2.5rem}
+.wl-header h2{font-family:var(--font-display);font-size:2.5rem;font-weight:800;letter-spacing:-1px}
+.wl-header h2 span{color:var(--crimson)}
+.wl-header p{color:rgba(255,255,255,.4);margin-top:.6rem;font-size:.88rem;line-height:1.7}
+.chat-window{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;min-height:520px}
+.chat-header{display:flex;align-items:center;gap:.85rem;padding:1.1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);background:var(--dark4)}
+.chat-bot-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.chat-bot-name{font-weight:700;font-size:.9rem}
+.chat-bot-status{font-size:.7rem;color:#4ade80}
+.chat-messages{flex:1;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem;max-height:420px}
+.chat-messages::-webkit-scrollbar{width:3px}
+.chat-messages::-webkit-scrollbar-thumb{background:rgba(196,30,58,.3)}
+.chat-msg{display:flex;gap:.85rem;animation:msg-appear .4s ease}
+@keyframes msg-appear{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.chat-msg.bot{align-items:flex-start}
+.chat-msg.user{justify-content:flex-end}
+.chat-msg-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--crimson-dark),var(--crimson));display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;margin-top:2px}
+.chat-msg-bubble{max-width:78%;padding:.85rem 1.1rem;border-radius:12px;font-size:.85rem;line-height:1.6;position:relative}
+.chat-msg.bot .chat-msg-bubble{background:var(--dark5);border:1px solid rgba(255,255,255,.07);border-top-left-radius:3px;color:rgba(255,255,255,.82)}
+.chat-msg.user .chat-msg-bubble{background:var(--crimson);border-top-right-radius:3px;color:var(--white)}
+.chat-msg-time{font-size:.62rem;color:rgba(255,255,255,.22);margin-top:.3rem;text-align:right}
+.chat-msg.bot .chat-msg-time{text-align:left}
+.typing-indicator{display:flex;gap:4px;padding:.85rem 1.1rem;background:var(--dark5);border:1px solid rgba(255,255,255,.07);border-radius:12px;border-top-left-radius:3px;width:fit-content}
+.typing-indicator span{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.4);animation:typing .8s ease infinite}
+.typing-indicator span:nth-child(2){animation-delay:.15s}
+.typing-indicator span:nth-child(3){animation-delay:.3s}
+@keyframes typing{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-5px);opacity:1}}
+.chat-choices{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+.chat-choice-btn{background:transparent;border:1px solid rgba(196,30,58,.35);color:rgba(255,255,255,.75);padding:.45rem .9rem;border-radius:20px;font-size:.78rem;cursor:pointer;transition:all .25s;font-family:var(--font-body)}
+.chat-choice-btn:hover{background:rgba(196,30,58,.15);border-color:var(--crimson);color:var(--white)}
+.chat-input-area{border-top:1px solid rgba(255,255,255,.06);padding:1.1rem 1.5rem;display:flex;gap:.75rem;align-items:flex-end;background:var(--dark4)}
+.chat-input{flex:1;background:var(--dark3);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.7rem 1rem;color:var(--white);font-size:.85rem;font-family:var(--font-body);outline:none;resize:none;max-height:120px;transition:border-color .2s;line-height:1.5}
+.chat-input:focus{border-color:rgba(196,30,58,.4)}
+.chat-input::placeholder{color:rgba(255,255,255,.2)}
+.chat-send-btn{background:var(--crimson);border:none;color:var(--white);width:40px;height:40px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:all .25s;flex-shrink:0}
+.chat-send-btn:hover{background:var(--crimson-light);transform:scale(1.05)}
+.chat-send-btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.chat-progress{padding:.75rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.05);background:var(--dark4);display:flex;align-items:center;gap:1rem}
+.progress-bar{flex:1;height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--crimson-dark),var(--crimson));border-radius:2px;transition:width .4s ease}
+.progress-text{font-size:.68rem;color:rgba(255,255,255,.3);white-space:nowrap;letter-spacing:.5px}
+.wl-success{text-align:center;padding:3rem 2rem;display:none;flex-direction:column;align-items:center;gap:1rem}
+.wl-success.show{display:flex}
+.wl-success-icon{font-size:3.5rem;animation:success-pop .5s cubic-bezier(.34,1.56,.64,1)}
+@keyframes success-pop{from{transform:scale(0)}to{transform:scale(1)}}
+.wl-success h3{font-family:var(--font-display);font-size:1.8rem;font-weight:800}
+.wl-success p{color:rgba(255,255,255,.5);font-size:.88rem;max-width:380px;line-height:1.7}
+
+/* ── RULES ── */
+.rules-page-title{font-family:var(--font-display);font-size:3.5rem;font-weight:800;letter-spacing:-1px;line-height:1}
+.rules-page-title span{color:var(--crimson)}
+.rules-layout{display:grid;grid-template-columns:250px 1fr;gap:2rem}
+.rules-sidebar{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:1.2rem;height:fit-content;position:sticky;top:84px}
+.sidebar-cat-title{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--crimson);padding:0 .5rem;margin:1rem 0 .4rem}
+.sidebar-cat:first-child .sidebar-cat-title{margin-top:0}
+.sidebar-item{display:block;padding:.48rem .75rem;border-radius:4px;font-size:.78rem;color:rgba(255,255,255,.42);cursor:pointer;transition:all .2s;border:none;background:transparent;width:100%;text-align:left;font-family:var(--font-body)}
+.sidebar-item:hover{color:var(--white);background:rgba(255,255,255,.04)}
+.sidebar-item.active{color:var(--white);background:rgba(196,30,58,.12);border-left:2px solid var(--crimson);padding-left:calc(.75rem - 2px)}
+.rules-content{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:2.25rem}
+.rules-content-title{font-family:var(--font-display);font-size:1.5rem;font-weight:700;margin-bottom:.25rem}
+.rules-content-sub{font-size:.7rem;color:rgba(255,255,255,.22);margin-bottom:2rem;letter-spacing:1px;text-transform:uppercase}
+.rule-list{list-style:none;display:flex;flex-direction:column;gap:.85rem}
+.rule-list li{font-size:.83rem;color:rgba(255,255,255,.58);line-height:1.7;padding-left:1.25rem;position:relative}
+.rule-list li::before{content:'▸';position:absolute;left:0;color:var(--crimson);font-size:.68rem;top:4px}
+.rules-search{background:var(--dark4);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.62rem 1rem;color:var(--white);font-size:.8rem;font-family:var(--font-body);width:240px;outline:none;transition:border-color .3s}
+.rules-search:focus{border-color:var(--crimson)}
+.rules-search::placeholder{color:rgba(255,255,255,.2)}
+
+/* ── TEAM ── */
+.team-title{font-family:var(--font-display);font-size:3.5rem;font-weight:800;letter-spacing:-1px;line-height:1;margin-bottom:.75rem}
+.team-title span{color:var(--crimson)}
+.team-desc{max-width:600px;color:rgba(255,255,255,.42);line-height:1.8;font-size:.88rem}
+.team-about{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:2.5rem;margin:3rem 0;position:relative;overflow:hidden}
+.team-about::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,30,58,.5),transparent)}
+.team-about p{color:rgba(255,255,255,.55);line-height:1.9;margin-bottom:1rem;font-size:.88rem}
+.team-about p strong{color:var(--white)}
+.team-about p:last-child{margin-bottom:0}
+.team-section-label{font-size:.58rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--crimson);text-align:center;margin-bottom:2.5rem;display:flex;align-items:center;gap:1rem}
+.team-section-label::before,.team-section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(196,30,58,.3),transparent)}
+.team-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:2rem}
+.member-card{text-align:center;transition:transform .3s}
+.member-card:hover{transform:translateY(-5px)}
+.member-avatar{width:88px;height:88px;border-radius:50%;margin:0 auto 1rem;background:var(--dark4);border:2px solid rgba(196,30,58,.28);overflow:hidden;display:flex;align-items:center;justify-content:center;font-size:1.8rem;transition:all .3s}
+.member-card:hover .member-avatar{border-color:var(--crimson);box-shadow:0 0 20px rgba(196,30,58,.3)}
+.member-avatar img{width:100%;height:100%;object-fit:cover}
+.member-name{font-weight:700;font-size:.88rem;margin-bottom:.2rem}
+.member-role{font-size:.68rem;color:var(--crimson);font-weight:600;letter-spacing:.5px;text-transform:uppercase}
+.member-desc{font-size:.72rem;color:rgba(255,255,255,.32);margin-top:.5rem;line-height:1.5}
+
+/* ── FOOTER ── */
+footer{background:var(--dark2);border-top:1px solid rgba(255,255,255,.04);padding:3.5rem 2rem 2rem;position:relative}
+footer::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(196,30,58,.3),transparent)}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2.5rem;flex-wrap:wrap;gap:2rem}
+.footer-logo{font-family:var(--font-display);font-size:1.5rem;font-weight:800;letter-spacing:1px}
+.footer-logo span{color:var(--crimson)}
+.footer-tagline{font-size:.72rem;color:rgba(255,255,255,.22);margin-top:.5rem;max-width:280px;line-height:1.6}
+.footer-links{display:flex;flex-direction:column;gap:.55rem}
+.footer-links-title{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:.25rem}
+.footer-links a{font-size:.78rem;color:rgba(255,255,255,.32);text-decoration:none;cursor:pointer;transition:color .2s;font-family:var(--font-body)}
+.footer-links a:hover{color:var(--white)}
+.footer-socials{display:flex;gap:.6rem;flex-wrap:wrap}
+.social-btn{width:38px;height:38px;border-radius:6px;background:var(--dark4);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:1rem;text-decoration:none}
+.social-btn:hover{border-color:var(--crimson);background:rgba(196,30,58,.12);transform:translateY(-2px)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:1.75rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.7rem;color:rgba(255,255,255,.18)}
+
+/* ── ADMIN ── */
+#admin-login{position:fixed;inset:0;background:rgba(7,7,9,.98);display:none;align-items:center;justify-content:center;z-index:9999}
+#admin-login.show{display:flex}
+.login-box{background:var(--dark3);border:1px solid rgba(196,30,58,.22);border-radius:12px;padding:2.5rem;width:380px;max-width:95vw}
+.login-logo{font-family:var(--font-display);font-size:1.8rem;font-weight:800;text-align:center;margin-bottom:.25rem;letter-spacing:1px}
+.login-logo span{color:var(--crimson)}
+.login-sub{text-align:center;font-size:.72rem;color:rgba(255,255,255,.22);margin-bottom:2rem;letter-spacing:2px;text-transform:uppercase}
+.field{margin-bottom:1.2rem}
+.field label{display:block;font-size:.68rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:.45rem}
+.field input,.field textarea,.field select{width:100%;background:var(--dark4);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.68rem .9rem;color:var(--white);font-size:.86rem;font-family:var(--font-body);outline:none;transition:border-color .2s;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--crimson)}
+.login-err{background:rgba(196,30,58,.1);border:1px solid rgba(196,30,58,.22);color:#f87185;font-size:.78rem;padding:.6rem .9rem;border-radius:4px;margin-bottom:1rem;display:none}
+.login-err.show{display:block}
+#admin-panel{display:none;min-height:100vh;background:var(--dark)}
+#admin-panel.show{display:flex}
+.admin-sidebar{width:230px;min-height:100vh;background:var(--dark2);border-right:1px solid rgba(255,255,255,.05);padding:1.5rem 0;flex-shrink:0;display:flex;flex-direction:column}
+.admin-logo{font-family:var(--font-display);font-size:1.3rem;font-weight:800;padding:0 1.5rem;margin-bottom:1.75rem;color:var(--white);letter-spacing:1px}
+.admin-logo span{color:var(--crimson)}
+.admin-nav-item{display:flex;align-items:center;gap:.7rem;padding:.6rem 1.5rem;color:rgba(255,255,255,.42);cursor:pointer;transition:all .2s;font-size:.8rem;font-weight:600;letter-spacing:.5px;border:none;background:transparent;width:100%;text-align:left;font-family:var(--font-body)}
+.admin-nav-item:hover{color:var(--white);background:rgba(255,255,255,.03)}
+.admin-nav-item.active{color:var(--white);background:rgba(196,30,58,.08);border-left:2px solid var(--crimson)}
+.admin-nav-item .icon{font-size:1rem}
+.admin-logout{margin-top:auto;padding:0 1.5rem}
+.admin-main{flex:1;overflow:auto;max-width:100%}
+.admin-header{padding:1.4rem 2rem;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;justify-content:space-between}
+.admin-header h1{font-family:var(--font-heading);font-size:1.35rem;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.admin-body{padding:2rem}
+.admin-section{display:none}
+.admin-section.active{display:block}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1.2rem;margin-bottom:2rem}
+.stat-card{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:6px;padding:1.2rem}
+.stat-label{font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.4rem}
+.stat-val{font-family:var(--font-display);font-size:2.4rem;font-weight:800;letter-spacing:1px}
+.stat-val.red{color:var(--crimson)}
+.table-wrap{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:6px;overflow:hidden;overflow-x:auto}
+.table-head{padding:1rem 1.5rem;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.table-head h3{font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45)}
+table{width:100%;border-collapse:collapse;min-width:500px}
+th{padding:.7rem 1.5rem;text-align:left;font-size:.62rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.22);border-bottom:1px solid rgba(255,255,255,.05)}
+td{padding:.8rem 1.5rem;font-size:.8rem;color:rgba(255,255,255,.68);border-bottom:1px solid rgba(255,255,255,.03)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.015)}
+.badge{display:inline-block;padding:2px 8px;border-radius:2px;font-size:.62rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
+.badge-red{background:rgba(196,30,58,.15);color:#f87185}
+.badge-green{background:rgba(34,197,94,.12);color:#4ade80}
+.badge-gray{background:rgba(255,255,255,.07);color:rgba(255,255,255,.38)}
+.badge-gold{background:rgba(201,168,76,.15);color:var(--gold-light)}
+.badge-blue{background:rgba(59,130,246,.12);color:#60a5fa}
+.action-btn{background:transparent;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.42);padding:3px 9px;border-radius:3px;font-size:.65rem;cursor:pointer;transition:all .2s;margin:0 2px;font-family:var(--font-body)}
+.action-btn:hover{border-color:var(--crimson);color:var(--crimson)}
+.action-btn.danger:hover{border-color:#ef4444;color:#ef4444}
+.action-btn.success:hover{border-color:#4ade80;color:#4ade80}
+.form-card{background:var(--dark3);border:1px solid rgba(255,255,255,.06);border-radius:8px;padding:1.75rem;margin-bottom:1.5rem}
+.form-card h3{font-family:var(--font-heading);font-size:1.05rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.2rem;color:rgba(255,255,255,.7)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.tag-input-wrap{display:flex;flex-wrap:wrap;gap:.5rem;background:var(--dark4);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.5rem;min-height:42px;align-items:center;cursor:text}
+.tag-input-wrap input{border:none;background:transparent;color:var(--white);font-size:.83rem;outline:none;flex:1;min-width:120px;font-family:var(--font-body)}
+.tag{background:rgba(196,30,58,.15);border:1px solid rgba(196,30,58,.3);color:#f87185;font-size:.7rem;padding:2px 8px;border-radius:2px;display:flex;align-items:center;gap:4px}
+.tag .rm{cursor:pointer;opacity:.6}
+.toast{position:fixed;bottom:2rem;right:2rem;background:var(--dark4);border:1px solid rgba(196,30,58,.28);color:var(--white);padding:.85rem 1.2rem;border-radius:6px;font-size:.8rem;z-index:9999;transform:translateY(100px);opacity:0;transition:all .35s;display:flex;align-items:center;gap:.5rem;max-width:320px}
+.toast.show{transform:translateY(0);opacity:1}
+.toast.success{border-color:rgba(34,197,94,.3)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:5000;display:none;align-items:center;justify-content:center}
+.modal-overlay.show{display:flex}
+.modal{background:var(--dark3);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:2rem;width:520px;max-width:95vw;max-height:90vh;overflow-y:auto}
+.modal h3{font-family:var(--font-heading);font-size:1.15rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;justify-content:space-between;align-items:center}
+.modal-close{background:none;border:none;color:rgba(255,255,255,.3);cursor:pointer;font-size:1.2rem;transition:color .2s}
+.modal-close:hover{color:var(--white)}
+.confirm-modal{text-align:center}
+.confirm-modal p{color:rgba(255,255,255,.5);margin-bottom:1.5rem;font-size:.88rem}
+.confirm-actions{display:flex;gap:1rem;justify-content:center}
+.avatar-preview{width:80px;height:80px;border-radius:50%;background:var(--dark4);border:2px solid rgba(196,30,58,.22);display:flex;align-items:center;justify-content:center;font-size:2rem;margin:0 auto 1rem;overflow:hidden}
+.avatar-preview img{width:100%;height:100%;object-fit:cover}
+.empty-state{text-align:center;padding:3.5rem 2rem;color:rgba(255,255,255,.2)}
+.empty-state .icon{font-size:2.8rem;margin-bottom:.85rem;opacity:.5}
+.empty-state p{font-size:.83rem}
+
+/* ── TOGGLE SWITCH ── */
+.toggle-wrap{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.25rem;background:var(--dark4);border:1px solid rgba(255,255,255,.08);border-radius:6px;margin-bottom:1rem}
+.toggle-info{display:flex;flex-direction:column;gap:.25rem}
+.toggle-label{font-size:.85rem;font-weight:600;color:rgba(255,255,255,.8)}
+.toggle-desc{font-size:.72rem;color:rgba(255,255,255,.28)}
+.toggle{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:rgba(255,255,255,.12);border-radius:24px;cursor:pointer;transition:background .3s}
+.toggle-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:var(--white);border-radius:50%;transition:transform .3s;box-shadow:0 1px 4px rgba(0,0,0,.4)}
+.toggle input:checked + .toggle-slider{background:var(--crimson)}
+.toggle input:checked + .toggle-slider::before{transform:translateX(20px)}
+
+/* ── BACKGROUNDS ADMIN ── */
+.bg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.85rem;margin-bottom:1.5rem}
+.bg-swatch{border-radius:8px;overflow:hidden;cursor:pointer;border:2px solid rgba(255,255,255,.06);transition:all .3s;position:relative}
+.bg-swatch:hover{border-color:rgba(196,30,58,.4);transform:scale(1.03)}
+.bg-swatch.active{border-color:var(--crimson);box-shadow:0 0 0 2px rgba(196,30,58,.3)}
+.bg-swatch-preview{height:80px;width:100%}
+.bg-swatch-info{padding:.6rem .75rem;background:var(--dark4)}
+.bg-swatch-name{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.65)}
+.bg-swatch-del{position:absolute;top:.35rem;right:.35rem;background:rgba(0,0,0,.6);border:none;color:rgba(255,255,255,.5);width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:.7rem;display:none;align-items:center;justify-content:center;transition:all .2s}
+.bg-swatch:hover .bg-swatch-del{display:flex}
+.bg-swatch-del:hover{background:var(--crimson);color:var(--white)}
+.bg-active-check{position:absolute;top:.35rem;left:.35rem;background:var(--crimson);border:none;color:var(--white);width:18px;height:18px;border-radius:50%;font-size:.65rem;display:none;align-items:center;justify-content:center}
+.bg-swatch.active .bg-active-check{display:flex}
+
+/* ── WL ADMIN ── */
+.wl-question-item{display:flex;align-items:flex-start;justify-content:space-between;padding:1rem 1.25rem;background:var(--dark4);border:1px solid rgba(255,255,255,.07);border-radius:6px;margin-bottom:.7rem;gap:1rem;transition:border-color .2s}
+.wl-question-item:hover{border-color:rgba(196,30,58,.2)}
+.wl-q-main{flex:1}
+.wl-q-text{font-size:.85rem;color:rgba(255,255,255,.75);margin-bottom:.35rem;font-weight:500}
+.wl-q-meta{font-size:.68rem;color:rgba(255,255,255,.28);display:flex;gap.75rem;gap:.75rem}
+.wl-q-type{background:rgba(196,30,58,.12);color:#f87185;border-radius:3px;padding:1px 6px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.wl-q-required{background:rgba(234,179,8,.1);color:#fbbf24;border-radius:3px;padding:1px 6px;font-size:.62rem;font-weight:700}
+.wl-q-actions{display:flex;gap:.35rem;flex-shrink:0}
+.wl-app-row td:last-child{white-space:nowrap}
+.app-answers-list{display:flex;flex-direction:column;gap:.85rem;max-height:60vh;overflow-y:auto;padding-right:.5rem}
+.app-answer-item{background:var(--dark4);border:1px solid rgba(255,255,255,.07);border-radius:6px;padding:1rem 1.1rem}
+.app-answer-q{font-size:.68rem;color:rgba(255,255,255,.32);letter-spacing:.5px;margin-bottom:.4rem;text-transform:uppercase;font-weight:700}
+.app-answer-a{font-size:.85rem;color:rgba(255,255,255,.78);line-height:1.6}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .htp-inner{gap:3rem}
+  .rules-layout{grid-template-columns:220px 1fr}
+}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .htp-inner{grid-template-columns:1fr}
+  .htp-img{display:none}
+  .rules-layout{grid-template-columns:1fr}
+  .rules-sidebar{position:static;top:auto}
+  .footer-top{flex-direction:column}
+  .form-row{grid-template-columns:1fr}
+  .admin-sidebar{width:200px}
+}
+@media(max-width:600px){
+  .nav-inner{padding:0 1.25rem}
+  .nav-right .btn:not(.btn-primary){display:none}
+  .hero-title{letter-spacing:3px}
+  .hero-actions{flex-direction:column;align-items:center}
+  .hero-actions .btn{width:100%;max-width:280px;justify-content:center}
+  .wl-page-wrap{padding:2rem 1rem}
+  .updates-grid{grid-template-columns:1fr}
+  .features-grid{grid-template-columns:1fr}
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .admin-sidebar{display:none}
+  #admin-panel.show{display:block}
+  .admin-main{width:100%}
+  .admin-body{padding:1.25rem}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .bg-grid{grid-template-columns:repeat(3,1fr)}
+  .rules-search{width:100%}
+  .rules-header{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-glow" id="cursor-glow"></div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')">CRIMSON<span>CITY</span></div>
+    <div class="nav-links" id="main-nav-links">
+      <a onclick="showPage('home')" id="nav-home" class="active">Início</a>
+      <a onclick="showPage('howtoplay')" id="nav-howtoplay">Como Jogar</a>
+      <a onclick="showPage('whitelist')" id="nav-whitelist">Allowlist</a>
+      <a onclick="showPage('rules')" id="nav-rules">Regras</a>
+      <a onclick="showPage('team')" id="nav-team">Equipe</a>
+    </div>
+    <div class="nav-right">
+      <div class="players-badge"><span class="dot-pulse"></span><span id="nav-players">0 Jogadores</span></div>
+      <button class="btn btn-outline btn-sm" onclick="showAdminLogin()" style="display:none" id="desktop-admin-btn">Admin</button>
+      <button class="btn btn-primary btn-sm" onclick="showPage('whitelist')">Fazer WL</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMobile()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<!-- mostra o btn admin no desktop -->
+<script>if(window.innerWidth>600)document.getElementById('desktop-admin-btn').style.display=''</script>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');closeMobile()">🏠 Início</a>
+  <a onclick="showPage('howtoplay');closeMobile()">🎮 Como Jogar</a>
+  <a onclick="showPage('whitelist');closeMobile()">📝 Allowlist</a>
+  <a onclick="showPage('rules');closeMobile()">📋 Regras</a>
+  <a onclick="showPage('team');closeMobile()">👥 Equipe</a>
+  <div class="mobile-btns">
+    <button class="btn btn-primary" onclick="showPage('whitelist');closeMobile()">Fazer WL</button>
+    <button class="btn btn-outline" onclick="showAdminLogin();closeMobile()">Admin</button>
+  </div>
+</div>
+
+<!-- ===== HOME ===== -->
+<div id="page-home" class="page active">
+  <section class="hero" id="main-hero">
+    <div class="hero-bg-layer" id="hero-bg-layer"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-particles" id="hero-particles"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">🇧🇷 Experiência de Roleplay Americana</div>
+      <h1 class="hero-title" id="hero-title-el">
+        <span class="word line1" id="hero-line1" data-text="CRIMSON">CRIMSON</span>
+        <span class="word line2" id="hero-line2">CITY</span>
+      </h1>
+      <p class="hero-sub" id="hero-sub-text">Construa sua história do zero em uma cidade onde cada decisão molda a sua identidade. Seja quem você quiser, trace o seu próprio caminho e deixe sua marca na cidade mais perigosa do país.</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" style="font-size:.8rem;padding:.85rem 2rem" onclick="showPage('whitelist')">✦ Fazer Allowlist</button>
+        <button class="btn btn-gold" style="font-size:.8rem;padding:.85rem 2rem" onclick="openDiscord()">💬 Entrar no Discord</button>
+      </div>
+    </div>
+    <div class="hero-scroll"><div class="scroll-line"></div>SCROLL</div>
+  </section>
+
+  <section class="updates-section">
+    <div class="section-head reveal">
+      <div class="section-label">Últimas Atualizações</div>
+      <h2 class="section-title">O que há de <span>novo</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="updates-grid" id="updates-grid"></div>
+  </section>
+
+  <section class="features-section">
+    <div class="features-inner">
+      <div class="section-head reveal">
+        <div class="section-label">Por que Crimson City</div>
+        <h2 class="section-title">Tudo que você <span>precisa</span></h2>
+        <div class="section-line"></div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card reveal"><div class="feature-icon">🌆</div><div class="feature-title">Mundo Vivo</div><div class="feature-text">Uma cidade dinâmica que respira e evolui. Cada esquina guarda uma história única.</div></div>
+        <div class="feature-card reveal" style="transition-delay:.08s"><div class="feature-icon">⚖️</div><div class="feature-title">RP Profundo</div><div class="feature-text">Ambiente de roleplay sério com admins dedicados e regras rigorosas para manter a imersão.</div></div>
+        <div class="feature-card reveal" style="transition-delay:.16s"><div class="feature-icon">🏢</div><div class="feature-title">Economia Real</div><div class="feature-text">Abra negócios, controle territórios ou suba na vida corporativa. O mercado é seu.</div></div>
+        <div class="feature-card reveal" style="transition-delay:.24s"><div class="feature-icon">🚔</div><div class="feature-title">Lei & Crime</div><div class="feature-text">Seja policial, criminoso, advogado ou qualquer coisa entre os dois. Você decide.</div></div>
+        <div class="feature-card reveal" style="transition-delay:.32s"><div class="feature-icon">🎭</div><div class="feature-title">Facções Únicas</div><div class="feature-text">Crie ou entre em facções com roteiros exclusivos e conteúdo único para cada grupo.</div></div>
+        <div class="feature-card reveal" style="transition-delay:.40s"><div class="feature-icon">🛡️</div><div class="feature-title">Anti-Cheat</div><div class="feature-text">Sistemas avançados de proteção para garantir uma experiência justa para todos.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-logo">CRIMSON<span>CITY</span></div>
+          <p class="footer-tagline">Servidor independente de RP no Multi Theft Auto (MTA). GTA e suas marcas pertencem à Take-Two Interactive.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-links-title">Navegação</div>
+          <a onclick="showPage('home')">Início</a>
+          <a onclick="showPage('howtoplay')">Como Jogar</a>
+          <a onclick="showPage('whitelist')">Allowlist</a>
+          <a onclick="showPage('rules')">Regras</a>
+          <a onclick="showPage('team')">Equipe</a>
+        </div>
+        <div>
+          <div class="footer-links-title" style="margin-bottom:.75rem">Redes Sociais</div>
+          <div class="footer-socials">
+            <a class="social-btn" onclick="openDiscord()" title="Discord">💬</a>
+            <a class="social-btn" title="YouTube">▶</a>
+            <a class="social-btn" title="Instagram">📷</a>
+            <a class="social-btn" title="TikTok">♪</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 Crimson City RP. Todos os direitos reservados.</div>
+        <div class="footer-copy">Feito com ❤ pela Equipe Crimson City</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ===== COMO JOGAR ===== -->
+<div id="page-howtoplay" class="page">
+  <div style="max-width:1100px;margin:0 auto;padding:3rem 2rem">
+    <div class="htp-inner">
+      <div class="htp-left">
+        <div style="display:inline-flex;align-items:center;gap:.6rem;background:rgba(196,30,58,.1);border:1px solid rgba(196,30,58,.25);color:#f87185;font-size:.62rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:.4rem 1rem;border-radius:2px;margin-bottom:1.25rem">🎮 Primeiros Passos</div>
+        <h2 class="htp-title">Comece sua <span>jornada</span></h2>
+        <p class="htp-desc">Siga os passos abaixo para se conectar ao servidor e criar sua própria história. O único limite é a sua criatividade!</p>
+        <div class="htp-steps">
+          <div class="step-item"><div class="step-num">01</div><div class="step-title">Instale o GTA & MTA</div><div class="step-text">Você precisa do <strong>GTA: San Andreas</strong> e do <strong>MTA: San Andreas</strong> instalados no seu computador.</div><div class="step-btns"><button class="btn btn-dark btn-sm" onclick="window.open('https://store.steampowered.com/app/12120','_blank')">⬇ Instalar GTA</button><button class="btn btn-dark btn-sm" onclick="window.open('https://multitheftauto.com','_blank')">⬇ Instalar MTA</button></div></div>
+          <div class="step-item"><div class="step-num">02</div><div class="step-title">Faça o Allowlist</div><div class="step-text">Responda ao questionário de allowlist da <strong style="color:var(--crimson)">Crimson City</strong> para garantir seu acesso.</div><div class="step-btns"><button class="btn btn-primary btn-sm" onclick="showPage('whitelist')">✦ Fazer Allowlist</button></div></div>
+          <div class="step-item"><div class="step-num">03</div><div class="step-title">Entre no Servidor</div><div class="step-text">Clique para <strong style="color:var(--crimson)">abrir o MTA</strong> diretamente no servidor. Faça login com a conta criada.</div><div class="step-btns"><button class="btn btn-gold btn-sm">↗ Abrir MTA</button></div></div>
+        </div>
+      </div>
+      <div class="htp-img">
+        <div class="htp-img-box"><div class="htp-placeholder"><span class="big-icon">🏙️</span><p>Crimson City</p><p style="margin-top:.5rem;color:rgba(255,255,255,.12);font-size:.72rem">Arte da cidade em breve</p></div></div>
+        <div class="server-info">
+          <div class="server-info-head">Informações do Servidor</div>
+          <div class="server-info-row"><span>Status</span><span style="color:#4ade80;font-weight:700">🟢 Online</span></div>
+          <div class="server-info-row"><span>Jogadores</span><span id="htp-players">0 / 100</span></div>
+          <div class="server-info-row"><span>Modo</span><span>Roleplay</span></div>
+          <div class="server-info-row"><span>Idioma</span><span>🇧🇷 Português</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div class="footer-bottom"><div class="footer-copy">© 2026 Crimson City RP.</div></div></div></footer>
+</div>
+
+<!-- ===== WHITELIST CHAT ===== -->
+<div id="page-whitelist" class="page">
+  <div class="wl-page-wrap">
+    <div class="wl-header reveal">
+      <div class="section-label">Candidatura</div>
+      <h2>Allowlist <span>Crimson City</span></h2>
+      <p>Responda às perguntas do nosso assistente. Após aprovação, você receberá acesso ao servidor.</p>
+    </div>
+    <div class="chat-window" id="chat-window">
+      <div class="chat-progress" id="chat-progress" style="display:none">
+        <span class="progress-text" id="progress-text">Pergunta 1 de 1</span>
+        <div class="progress-bar"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+      </div>
+      <div class="chat-header">
+        <div class="chat-bot-avatar">🤖</div>
+        <div><div class="chat-bot-name">Crimson Bot</div><div class="chat-bot-status">● Online</div></div>
+      </div>
+      <div class="chat-messages" id="chat-messages"></div>
+      <div class="wl-success" id="wl-success">
+        <div class="wl-success-icon">✅</div>
+        <h3>Candidatura Enviada!</h3>
+        <p>Sua candidatura foi registrada com sucesso. Nossa equipe irá analisá-la em breve. Fique de olho no nosso Discord!</p>
+        <button class="btn btn-gold" onclick="openDiscord()">💬 Entrar no Discord</button>
+        <button class="btn btn-ghost btn-sm" onclick="showPage('home')" style="margin-top:.35rem">Voltar ao início</button>
+      </div>
+      <div class="chat-input-area" id="chat-input-area">
+        <textarea class="chat-input" id="chat-input" placeholder="Digite sua resposta..." rows="1" onkeydown="handleChatKey(event)" oninput="autoResizeTA(this)"></textarea>
+        <button class="chat-send-btn" id="chat-send-btn" onclick="sendChatAnswer()">➤</button>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div class="footer-bottom"><div class="footer-copy">© 2026 Crimson City RP.</div></div></div></footer>
+</div>
+
+<!-- ===== REGRAS ===== -->
+<div id="page-rules" class="page">
+  <div style="max-width:1200px;margin:0 auto;padding:3rem 2rem">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.5rem">
+      <div>
+        <h1 class="rules-page-title">Nossas <span>Regras</span></h1>
+        <p style="color:rgba(255,255,255,.32);max-width:440px;margin-top:.7rem;font-size:.83rem;line-height:1.7">Leia todas as regras com atenção. O descumprimento pode resultar em punições.</p>
+      </div>
+      <input class="rules-search" type="text" placeholder="Buscar regras..." oninput="filterRules(this.value)">
+    </div>
+    <div class="rules-layout">
+      <div class="rules-sidebar" id="rules-sidebar"></div>
+      <div class="rules-content" id="rules-content-area"><div class="empty-state"><div class="icon">📋</div><p>Selecione uma categoria para ver as regras.</p></div></div>
+    </div>
+  </div>
+  <footer><div class="footer-inner"><div class="footer-bottom"><div class="footer-copy">As regras podem ser atualizadas a qualquer momento.</div></div></div></footer>
+</div>
+
+<!-- ===== EQUIPE ===== -->
+<div id="page-team" class="page">
+  <div style="max-width:1200px;margin:0 auto;padding:3rem 2rem">
+    <div style="margin-bottom:3rem">
+      <h1 class="team-title">Nossa <span>Equipe</span></h1>
+      <p class="team-desc">Conheça as pessoas dedicadas que constroem, protegem e evoluem a Crimson City.</p>
+    </div>
+    <div class="team-about" id="team-about-box">
+      <p>A equipe da <strong>Crimson City</strong> é formada por <strong>administradores, moderadores, desenvolvedores e assistentes</strong> comprometidos em manter um ambiente <strong>sério, organizado e imersivo</strong>.</p>
+      <p>Todos os membros passam por um <strong>rigoroso processo de seleção</strong>, garantindo um ambiente <strong>justo, organizado e respeitoso</strong> para toda a comunidade.</p>
+    </div>
+    <div class="team-section-label">👥 EQUIPE ADMINISTRATIVA</div>
+    <div class="team-grid" id="team-grid"><div class="empty-state" style="grid-column:1/-1"><div class="icon">👥</div><p>Os membros aparecerão aqui.</p></div></div>
+    <div style="text-align:center;margin-top:2rem;font-size:.7rem;color:rgba(255,255,255,.18)">A equipe pode ser atualizada a qualquer momento.</div>
+  </div>
+  <footer><div class="footer-inner"><div class="footer-bottom"><div class="footer-copy">© 2026 Crimson City RP.</div></div></div></footer>
+</div>
+
+<!-- ===== ADMIN LOGIN ===== -->
+<div id="admin-login">
+  <div class="login-box">
+    <div class="login-logo">CRIMSON<span>CITY</span></div>
+    <div class="login-sub">Painel Administrativo</div>
+    <div class="login-err" id="login-err">Credenciais incorretas. Tente novamente.</div>
+    <div class="field"><label>Usuário</label><input type="text" id="login-user" placeholder="admin"></div>
+    <div class="field"><label>Senha</label><input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+    <button class="btn btn-primary" style="width:100%;justify-content:center;padding:.8rem" onclick="doLogin()">Entrar no Painel</button>
+    <button class="btn btn-outline" style="width:100%;justify-content:center;padding:.6rem;margin-top:.7rem;font-size:.72rem" onclick="hideAdminLogin()">← Voltar ao site</button>
+  </div>
+</div>
+
+<!-- ===== ADMIN PANEL ===== -->
+<div id="admin-panel">
+  <div class="admin-sidebar">
+    <div class="admin-logo">CRIMSON<span>CITY</span></div>
+    <button class="admin-nav-item active" onclick="adminTab('dashboard')" id="atab-dashboard"><span class="icon">📊</span>Dashboard</button>
+    <button class="admin-nav-item" onclick="adminTab('wl')" id="atab-wl"><span class="icon">📝</span>Allowlist</button>
+    <button class="admin-nav-item" onclick="adminTab('users')" id="atab-users"><span class="icon">👤</span>Usuários</button>
+    <button class="admin-nav-item" onclick="adminTab('team')" id="atab-team"><span class="icon">👥</span>Equipe</button>
+    <button class="admin-nav-item" onclick="adminTab('rules')" id="atab-rules"><span class="icon">📋</span>Regras</button>
+    <button class="admin-nav-item" onclick="adminTab('updates')" id="atab-updates"><span class="icon">📰</span>Atualizações</button>
+    <button class="admin-nav-item" onclick="adminTab('appearance')" id="atab-appearance"><span class="icon">🎨</span>Aparência</button>
+    <button class="admin-nav-item" onclick="adminTab('settings')" id="atab-settings"><span class="icon">⚙️</span>Configurações</button>
+    <div class="admin-logout"><button class="btn btn-outline" style="width:100%;justify-content:center;font-size:.72rem" onclick="adminLogout()">⬅ Sair</button></div>
+  </div>
+  <div class="admin-main">
+    <div class="admin-header">
+      <h1 id="admin-section-title">Dashboard</h1>
+      <div style="font-size:.75rem;color:rgba(255,255,255,.28)">Bem-vindo, <strong style="color:var(--white)" id="admin-welcome-name">Admin</strong></div>
+    </div>
+    <div class="admin-body">
+
+      <!-- DASHBOARD -->
+      <div class="admin-section active" id="asec-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card"><div class="stat-label">Usuários</div><div class="stat-val red" id="stat-users">0</div></div>
+          <div class="stat-card"><div class="stat-label">Candidaturas WL</div><div class="stat-val red" id="stat-wl">0</div></div>
+          <div class="stat-card"><div class="stat-label">Pendentes WL</div><div class="stat-val red" id="stat-wl-pending">0</div></div>
+          <div class="stat-card"><div class="stat-label">Membros Equipe</div><div class="stat-val red" id="stat-team">0</div></div>
+          <div class="stat-card"><div class="stat-label">Regras</div><div class="stat-val red" id="stat-rules">0</div></div>
+          <div class="stat-card"><div class="stat-label">Perguntas WL</div><div class="stat-val red" id="stat-wlq">0</div></div>
+        </div>
+        <div class="table-wrap">
+          <div class="table-head"><h3>Candidaturas Recentes</h3><button class="action-btn" onclick="adminTab('wl')">Ver todas →</button></div>
+          <table><thead><tr><th>Nick</th><th>Data</th><th>Status</th><th>Ação</th></tr></thead>
+          <tbody id="dash-wl-table"><tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:2rem">Nenhuma candidatura ainda.</td></tr></tbody></table>
+        </div>
+      </div>
+
+      <!-- ALLOWLIST -->
+      <div class="admin-section" id="asec-wl">
+        <!-- Perguntas -->
+        <div class="form-card">
+          <h3>❓ Gerenciar Perguntas</h3>
+          <input type="hidden" id="edit-q-id">
+          <div class="form-row">
+            <div class="field" style="grid-column:1/-1"><label>Texto da Pergunta</label><input type="text" id="q-text" placeholder="Ex: Qual é o seu nome no MTA?"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Tipo de Resposta</label>
+              <select id="q-type" onchange="toggleQOptions()">
+                <option value="text">Texto livre</option>
+                <option value="textarea">Texto longo</option>
+                <option value="choice">Múltipla escolha</option>
+              </select>
+            </div>
+            <div class="field"><label>Obrigatória</label>
+              <select id="q-required"><option value="1">Sim</option><option value="0">Não</option></select>
+            </div>
+          </div>
+          <div class="field" id="q-options-field" style="display:none">
+            <label>Opções (Enter para adicionar)</label>
+            <div class="tag-input-wrap" id="q-options-wrap">
+              <input type="text" id="q-options-input" placeholder="Digite uma opção e pressione Enter" onkeydown="addQOption(event)">
+            </div>
+          </div>
+          <div style="display:flex;gap:.75rem;margin-top:.5rem">
+            <button class="btn btn-primary btn-sm" onclick="saveQuestion()">💾 Salvar Pergunta</button>
+            <button class="btn btn-outline btn-sm" onclick="clearQForm()">✕ Limpar</button>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3 style="display:flex;align-items:center;justify-content:space-between">
+            Perguntas Ativas
+            <span id="q-count" style="font-size:.72rem;color:rgba(255,255,255,.3);font-weight:400;letter-spacing:0;text-transform:none"></span>
+          </h3>
+          <div id="questions-list"></div>
+        </div>
+        <!-- Candidaturas -->
+        <div class="table-wrap" style="margin-top:1.5rem">
+          <div class="table-head"><h3>Candidaturas Recebidas</h3><span id="wl-apps-count" style="font-size:.72rem;color:rgba(255,255,255,.28)"></span></div>
+          <table><thead><tr><th>#</th><th>Data/Hora</th><th>1ª Resposta</th><th>Status</th><th>Ações</th></tr></thead>
+          <tbody id="wl-apps-table"></tbody></table>
+        </div>
+      </div>
+
+      <!-- USUÁRIOS -->
+      <div class="admin-section" id="asec-users">
+        <div class="form-card"><h3>➕ Adicionar / Editar Usuário</h3>
+          <input type="hidden" id="edit-user-id">
+          <div class="form-row"><div class="field"><label>Usuário</label><input type="text" id="u-username" placeholder="usuario123"></div><div class="field"><label>Senha</label><input type="password" id="u-password" placeholder="Mínimo 6 chars"></div></div>
+          <div class="form-row"><div class="field"><label>Email</label><input type="text" id="u-email" placeholder="email@exemplo.com"></div><div class="field"><label>Cargo</label><select id="u-role"><option value="player">Jogador</option><option value="vip">VIP</option><option value="moderator">Moderador</option><option value="admin">Admin</option></select></div></div>
+          <div class="field"><label>Status</label><select id="u-status"><option value="active">Ativo</option><option value="pending">Pendente</option><option value="banned">Banido</option></select></div>
+          <div style="display:flex;gap:.75rem;margin-top:.5rem"><button class="btn btn-primary btn-sm" onclick="saveUser()">💾 Salvar</button><button class="btn btn-outline btn-sm" onclick="clearUserForm()">✕ Limpar</button></div>
+        </div>
+        <div class="table-wrap"><div class="table-head"><h3>Usuários</h3><span id="users-count" style="font-size:.72rem;color:rgba(255,255,255,.28)"></span></div>
+          <table><thead><tr><th>Usuário</th><th>Email</th><th>Cargo</th><th>Status</th><th>Ações</th></tr></thead><tbody id="users-table"></tbody></table>
+        </div>
+      </div>
+
+      <!-- EQUIPE -->
+      <div class="admin-section" id="asec-team">
+        <div class="form-card"><h3>➕ Adicionar / Editar Membro</h3>
+          <input type="hidden" id="edit-member-id">
+          <div style="text-align:center;margin-bottom:1rem"><div class="avatar-preview" id="member-avatar-preview">👤</div><div style="font-size:.68rem;color:rgba(255,255,255,.2)">Cole a URL do avatar</div></div>
+          <div class="form-row"><div class="field"><label>Nome / Nick</label><input type="text" id="m-name" placeholder="Luccas"></div><div class="field"><label>URL do Avatar</label><input type="text" id="m-avatar" placeholder="https://..." oninput="previewAvatar(this.value)"></div></div>
+          <div class="form-row"><div class="field"><label>Cargo</label><input type="text" id="m-role" placeholder="Fundador & Dev Principal"></div><div class="field"><label>Categoria</label><select id="m-cat"><option>Equipe Administrativa</option><option>Equipe de Moderação</option><option>Equipe de Desenvolvimento</option><option>Equipe de Suporte</option></select></div></div>
+          <div class="field"><label>Descrição</label><textarea id="m-desc" rows="2" placeholder="Descrição breve..."></textarea></div>
+          <div style="display:flex;gap:.75rem;margin-top:.5rem"><button class="btn btn-primary btn-sm" onclick="saveMember()">💾 Salvar</button><button class="btn btn-outline btn-sm" onclick="clearMemberForm()">✕ Limpar</button></div>
+        </div>
+        <div class="table-wrap"><div class="table-head"><h3>Membros</h3></div>
+          <table><thead><tr><th>Avatar</th><th>Nome</th><th>Cargo</th><th>Categoria</th><th>Ações</th></tr></thead><tbody id="team-table"></tbody></table>
+        </div>
+      </div>
+
+      <!-- REGRAS -->
+      <div class="admin-section" id="asec-rules">
+        <div class="form-card"><h3>➕ Adicionar / Editar Regra</h3>
+          <input type="hidden" id="edit-rule-id">
+          <div class="form-row"><div class="field"><label>Categoria</label><input type="text" id="r-cat" placeholder="Regras Gerais" list="r-cats-list"><datalist id="r-cats-list"></datalist></div><div class="field"><label>Subcategoria</label><input type="text" id="r-subcat" placeholder="Áreas Seguras"></div></div>
+          <div class="field"><label>Texto da Regra</label><textarea id="r-text" rows="3" placeholder="Descreva a regra claramente..."></textarea></div>
+          <div style="display:flex;gap:.75rem;margin-top:.5rem"><button class="btn btn-primary btn-sm" onclick="saveRule()">💾 Salvar</button><button class="btn btn-outline btn-sm" onclick="clearRuleForm()">✕ Limpar</button></div>
+        </div>
+        <div class="table-wrap"><div class="table-head"><h3>Regras</h3><span id="rules-count" style="font-size:.72rem;color:rgba(255,255,255,.28)"></span></div>
+          <table><thead><tr><th>Categoria</th><th>Subcategoria</th><th>Regra</th><th>Ações</th></tr></thead><tbody id="rules-table"></tbody></table>
+        </div>
+      </div>
+
+      <!-- ATUALIZAÇÕES -->
+      <div class="admin-section" id="asec-updates">
+        <div class="form-card"><h3>➕ Adicionar / Editar Atualização</h3>
+          <input type="hidden" id="edit-upd-id">
+          <div class="form-row"><div class="field"><label>Tag</label><input type="text" id="upd-tag" placeholder="🔴 NOVIDADE"></div><div class="field"><label>Data</label><input type="text" id="upd-date" placeholder="Maio 2026"></div></div>
+          <div class="field"><label>Título</label><input type="text" id="upd-title" placeholder="Título da atualização..."></div>
+          <div class="field"><label>Descrição</label><textarea id="upd-text" rows="2" placeholder="O que mudou?"></textarea></div>
+          <div style="display:flex;gap:.75rem;margin-top:.5rem"><button class="btn btn-primary btn-sm" onclick="saveUpdate()">💾 Salvar</button><button class="btn btn-outline btn-sm" onclick="clearUpdForm()">✕ Limpar</button></div>
+        </div>
+        <div class="table-wrap"><div class="table-head"><h3>Atualizações</h3></div>
+          <table><thead><tr><th>Tag</th><th>Título</th><th>Data</th><th>Ações</th></tr></thead><tbody id="updates-table"></tbody></table>
+        </div>
+      </div>
+
+      <!-- APARÊNCIA -->
+      <div class="admin-section" id="asec-appearance">
+        <div class="form-card">
+          <h3>✨ Efeito Glitch</h3>
+          <div class="toggle-wrap">
+            <div class="toggle-info">
+              <span class="toggle-label">Efeito Glitch no Título</span>
+              <span class="toggle-desc">Ativa animação de glitch no título "CRIMSON CITY" da página inicial</span>
+            </div>
+            <label class="toggle"><input type="checkbox" id="toggle-glitch" onchange="toggleGlitch(this.checked)"><span class="toggle-slider"></span></label>
+          </div>
+        </div>
+        <div class="form-card">
+          <h3 style="display:flex;align-items:center;justify-content:space-between">
+            🖼️ Fundo do Hero
+            <span id="active-bg-label" style="font-size:.72rem;color:var(--crimson);font-weight:400;text-transform:none;letter-spacing:0"></span>
+          </h3>
+          <p style="font-size:.78rem;color:rgba(255,255,255,.3);margin-bottom:1.25rem">Escolha um fundo para a seção principal. Clique para selecionar.</p>
+          <div class="bg-grid" id="bg-grid"></div>
+          <div style="border-top:1px solid rgba(255,255,255,.06);padding-top:1.25rem;margin-top:.5rem">
+            <div style="font-size:.72rem;color:rgba(255,255,255,.32);margin-bottom:.85rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase">+ Adicionar Fundo Personalizado</div>
+            <div class="form-row">
+              <div class="field"><label>Nome</label><input type="text" id="new-bg-name" placeholder="Meu Fundo"></div>
+              <div class="field"><label>Tipo</label><select id="new-bg-type" onchange="toggleBgInputs()"><option value="gradient">Gradiente CSS</option><option value="image">URL de Imagem</option><option value="color">Cor Sólida</option></select></div>
+            </div>
+            <div class="field" id="new-bg-css-field"><label id="new-bg-css-label">CSS do Gradiente</label><input type="text" id="new-bg-css" placeholder="linear-gradient(135deg,#0a0005,#1a0010)"></div>
+            <div class="field" id="new-bg-img-field" style="display:none"><label>URL da Imagem</label><input type="text" id="new-bg-img" placeholder="https://..."></div>
+            <div style="height:60px;border-radius:6px;border:1px solid rgba(255,255,255,.08);margin-bottom:1rem;overflow:hidden;transition:all .3s" id="bg-preview-bar"></div>
+            <button class="btn btn-primary btn-sm" onclick="addCustomBg()">➕ Adicionar Fundo</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONFIGURAÇÕES -->
+      <div class="admin-section" id="asec-settings">
+        <div class="form-card"><h3>⚙️ Configurações Gerais</h3>
+          <div class="form-row"><div class="field"><label>Nome do Servidor</label><input type="text" id="cfg-name" value="Crimson City RP"></div><div class="field"><label>Link do Discord</label><input type="text" id="cfg-discord" placeholder="https://discord.gg/..."></div></div>
+          <div class="field"><label>Contagem de Jogadores</label><input type="number" id="cfg-players" value="0" min="0"></div>
+          <div class="field"><label>Mensagem de Boas-vindas do Bot WL</label><textarea id="cfg-wl-welcome" rows="3" placeholder="Olá! Bem-vindo(a) ao processo de allowlist..."></textarea></div>
+          <div class="field"><label>Mensagem Final do Bot WL</label><textarea id="cfg-wl-end" rows="2" placeholder="Perfeito! Suas respostas foram registradas..."></textarea></div>
+          <button class="btn btn-primary btn-sm" onclick="saveSettings()" style="margin-top:.5rem">💾 Salvar</button>
+        </div>
+        <div class="form-card"><h3>🔐 Alterar Senha Admin</h3>
+          <div class="form-row"><div class="field"><label>Nova Senha</label><input type="password" id="new-pass" placeholder="Nova senha"></div><div class="field"><label>Confirmar Senha</label><input type="password" id="conf-pass" placeholder="Confirmar"></div></div>
+          <button class="btn btn-primary btn-sm" onclick="changePass()" style="margin-top:.5rem">🔒 Alterar</button>
+        </div>
+        <div class="form-card"><h3>🗑️ Zona de Perigo</h3>
+          <p style="font-size:.8rem;color:rgba(255,255,255,.32);margin-bottom:1rem">Estas ações não podem ser desfeitas.</p>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap">
+            <button class="btn btn-danger" onclick="confirmReset('wlApps')">Limpar Candidaturas WL</button>
+            <button class="btn btn-danger" onclick="confirmReset('users')">Excluir Usuários</button>
+            <button class="btn btn-danger" onclick="confirmReset('team')">Excluir Equipe</button>
+            <button class="btn btn-danger" onclick="confirmReset('rules')">Excluir Regras</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL VER CANDIDATURA -->
+<div class="modal-overlay" id="modal-app">
+  <div class="modal">
+    <h3>📋 Candidatura <button class="modal-close" onclick="closeModal('modal-app')">✕</button></h3>
+    <div id="modal-app-content"></div>
+    <div style="display:flex;gap:.75rem;margin-top:1.5rem;flex-wrap:wrap" id="modal-app-actions"></div>
+  </div>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirm-modal">
+  <div class="modal confirm-modal">
+    <h3>⚠️ Confirmar Ação <button class="modal-close" onclick="closeModal('confirm-modal')">✕</button></h3>
+    <p id="confirm-msg">Tem certeza?</p>
+    <div class="confirm-actions">
+      <button class="btn btn-danger" id="confirm-yes">Sim, confirmar</button>
+      <button class="btn btn-outline" onclick="closeModal('confirm-modal')">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ═══════════════ STATE ═══════════════
+var state={
+  users:[],
+  team:[],
+  rules:[],
+  updates:[
+    {id:1,tag:'🔴 NOVIDADE',title:'Crimson City está no AR!',text:'Nossos servidores estão oficialmente abertos. Junte-se a milhares de jogadores já escrevendo suas histórias.',date:'Maio 2026'},
+    {id:2,tag:'🚔 POLICIAL',title:'Facção LSPD Aberta',text:'Candidaturas para o LSPD abertas. Proteja e sirva a Crimson City.',date:'Maio 2026'},
+    {id:3,tag:'🏙️ MUNDO',title:'Novos Distritos Liberados',text:'Centro, Porto e Zona Leste acessíveis com novos negócios e oportunidades.',date:'Maio 2026'}
+  ],
+  wlQuestions:[
+    {id:1,text:'Qual é o seu nickname no MTA?',type:'text',required:true,options:[]},
+    {id:2,text:'Qual é a sua idade?',type:'text',required:true,options:[]},
+    {id:3,text:'Você já jogou em algum servidor de RP antes? Qual?',type:'textarea',required:false,options:[]},
+    {id:4,text:'O que você entende por Roleplay?',type:'textarea',required:true,options:[]},
+    {id:5,text:'Por que você quer jogar na Crimson City?',type:'textarea',required:true,options:[]},
+    {id:6,text:'Você concorda com as regras do servidor?',type:'choice',required:true,options:['Sim, li e concordo','Não li ainda','Preciso reler']}
+  ],
+  wlApplications:[],
+  settings:{
+    name:'Crimson City RP',discord:'',players:0,
+    wlWelcome:'Olá! 👋 Bem-vindo(a) ao processo de **Allowlist** da Crimson City!\n\nSou o **Crimson Bot** e vou te guiar pelo questionário. Responda com sinceridade — levará apenas alguns minutos.',
+    wlEnd:'Perfeito! ✅ Todas as suas respostas foram registradas.\n\nNossa equipe irá analisar sua candidatura em breve. Entre no nosso **Discord** para acompanhar!'
+  },
+  appearance:{glitch:false,activeBg:'default'},
+  backgrounds:[
+    {id:'default',name:'Padrão',type:'gradient',css:'radial-gradient(ellipse 80% 60% at 50% 40%,rgba(196,30,58,0.15) 0%,transparent 65%)',deletable:false},
+    {id:'midnight',name:'Meia-noite',type:'gradient',css:'linear-gradient(135deg,#000000,#0a0014)',deletable:false},
+    {id:'blood',name:'Sangue',type:'gradient',css:'linear-gradient(135deg,#0a0005,#200008,#1a0003)',deletable:false},
+    {id:'ocean',name:'Oceano Noturno',type:'gradient',css:'linear-gradient(135deg,#000814,#001529,#000d1a)',deletable:false},
+    {id:'ember',name:'Brasa',type:'gradient',css:'linear-gradient(135deg,#0a0500,#1a0800,#0f1400)',deletable:false},
+    {id:'purple',name:'Roxo Escuro',type:'gradient',css:'linear-gradient(135deg,#08000f,#140020,#0a000a)',deletable:false},
+    {id:'pureblack',name:'Preto Puro',type:'color',css:'#000000',deletable:false},
+    {id:'matrix',name:'Matrix',type:'gradient',css:'linear-gradient(135deg,#000800,#001200,#000500)',deletable:false}
+  ],
+  adminUser:'admin',adminPass:'admin123',loggedIn:false,
+  nextId:{users:1,team:1,rules:1,updates:4,wlQuestions:7,wlApps:1,bg:100}
+};
+
+function save(){try{localStorage.setItem('cc_state2',JSON.stringify(state))}catch(e){}}
+function load(){
+  try{
+    var d=localStorage.getItem('cc_state2');
+    if(d){var p=JSON.parse(d);
+      ['users','team','rules','updates','wlQuestions','wlApplications','settings','appearance','backgrounds','adminUser','adminPass','nextId'].forEach(function(k){
+        if(p[k]!==undefined)state[k]=p[k];
+      });
+    }
+  }catch(e){}
+}
+load();
+
+// ═══════════════ MOBILE NAV ═══════════════
+function toggleMobile(){
+  var hb=document.getElementById('hamburger');
+  var mm=document.getElementById('mobile-menu');
+  hb.classList.toggle('open');
+  mm.classList.toggle('show');
+}
+function closeMobile(){
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobile-menu').classList.remove('show');
+}
+
+// ═══════════════ CURSOR ═══════════════
+document.addEventListener('mousemove',function(e){
+  var g=document.getElementById('cursor-glow');
+  if(g){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'}
+});
+
+// ═══════════════ NAV SCROLL ═══════════════
+window.addEventListener('scroll',function(){
+  var nav=document.getElementById('main-nav');
+  if(nav)nav.classList.toggle('scrolled',scrollY>40);
+});
+
+// ═══════════════ LETTER ANIMATION ═══════════════
+function animateLetters(){
+  ['hero-line1','hero-line2'].forEach(function(id,li){
+    var el=document.getElementById(id);
+    if(!el)return;
+    var t=el.textContent;el.innerHTML='';
+    t.split('').forEach(function(ch,i){
+      var s=document.createElement('span');
+      s.className='letter';s.textContent=ch;
+      s.style.animationDelay=(li*.4+i*.055+.5)+'s';
+      el.appendChild(s);
+    });
+  });
+}
+animateLetters();
+
+// ═══════════════ PARTICLES ═══════════════
+(function(){
+  var c=document.getElementById('hero-particles');
+  if(!c)return;
+  for(var i=0;i<28;i++){
+    var p=document.createElement('div');p.className='particle';
+    var sz=Math.random()*3+1;
+    p.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+Math.random()*100+'%;animation-duration:'+(8+Math.random()*12)+'s;animation-delay:'+Math.random()*10+'s;opacity:'+(Math.random()*.5+.2);
+    c.appendChild(p);
+  }
+})();
+
+// ═══════════════ SCROLL REVEAL ═══════════════
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:.1});
+function initReveal(){
+  document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(function(el){observer.observe(el)});
+}
+initReveal();
+
+// ═══════════════ BACKGROUND SYSTEM ═══════════════
+function applyBackground(id){
+  state.appearance.activeBg=id;
+  var bg=state.backgrounds.find(function(b){return b.id===id});
+  if(!bg)return;
+  var layer=document.getElementById('hero-bg-layer');
+  if(!layer)return;
+  if(bg.type==='image'){
+    layer.style.background='url('+bg.css+') center/cover no-repeat';
+  } else if(bg.type==='color'){
+    layer.style.background=bg.css;
+  } else {
+    layer.style.background=bg.css;
+  }
+  save();
+}
+
+function renderBgGrid(){
+  var g=document.getElementById('bg-grid');if(!g)return;
+  var active=state.appearance.activeBg||'default';
+  g.innerHTML=state.backgrounds.map(function(bg){
+    var preview=bg.type==='image'?'background:url('+bg.css+') center/cover':'background:'+bg.css;
+    return '<div class="bg-swatch'+(bg.id===active?' active':'')+'" onclick="selectBg(\''+bg.id+'\')" title="'+esc(bg.name)+'">'
+      +'<div class="bg-active-check">✓</div>'
+      +'<div class="bg-swatch-preview" style="'+preview+'"></div>'
+      +'<div class="bg-swatch-info"><div class="bg-swatch-name">'+esc(bg.name)+'</div></div>'
+      +(bg.deletable?'<button class="bg-swatch-del" onclick="event.stopPropagation();deleteBg(\''+bg.id+'\')" title="Remover">×</button>':'')
+      +'</div>';
+  }).join('');
+  var label=document.getElementById('active-bg-label');
+  var ab=state.backgrounds.find(function(b){return b.id===active});
+  if(label&&ab)label.textContent='Ativo: '+ab.name;
+}
+
+window.selectBg=function(id){
+  applyBackground(id);
+  renderBgGrid();
+  toast('Fundo "'+state.backgrounds.find(function(b){return b.id===id}).name+'" aplicado!','ok');
+};
+
+window.deleteBg=function(id){
+  confirmAction('Remover este fundo personalizado?',function(){
+    state.backgrounds=state.backgrounds.filter(function(b){return b.id!==id});
+    if(state.appearance.activeBg===id){applyBackground('default');}
+    save();renderBgGrid();toast('Fundo removido.','ok');
+  });
+};
+
+function toggleBgInputs(){
+  var t=document.getElementById('new-bg-type').value;
+  document.getElementById('new-bg-css-field').style.display=t!=='image'?'':'none';
+  document.getElementById('new-bg-img-field').style.display=t==='image'?'':'none';
+  if(t==='gradient')document.getElementById('new-bg-css-label').textContent='CSS do Gradiente';
+  if(t==='color')document.getElementById('new-bg-css-label').textContent='Cor Hexadecimal';
+  updateBgPreview();
+}
+
+function updateBgPreview(){
+  var t=document.getElementById('new-bg-type').value;
+  var css=t==='image'?document.getElementById('new-bg-img').value:document.getElementById('new-bg-css').value;
+  var bar=document.getElementById('bg-preview-bar');
+  if(!bar||!css)return;
+  if(t==='image')bar.style.background='url('+css+') center/cover';
+  else bar.style.background=css;
+}
+
+['new-bg-css','new-bg-img'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el)el.addEventListener('input',updateBgPreview);
+});
+
+function addCustomBg(){
+  var name=document.getElementById('new-bg-name').value.trim();
+  var type=document.getElementById('new-bg-type').value;
+  var css=type==='image'?document.getElementById('new-bg-img').value.trim():document.getElementById('new-bg-css').value.trim();
+  if(!name){toast('Informe um nome para o fundo.','err');return;}
+  if(!css){toast('Informe o CSS ou URL do fundo.','err');return;}
+  var id='custom_'+(state.nextId.bg++);
+  state.backgrounds.push({id:id,name:name,type:type,css:css,deletable:true});
+  save();renderBgGrid();
+  document.getElementById('new-bg-name').value='';
+  document.getElementById('new-bg-css').value='';
+  document.getElementById('new-bg-img').value='';
+  document.getElementById('bg-preview-bar').style.background='';
+  toast('Fundo "'+name+'" adicionado!','ok');
+}
+
+// ═══════════════ GLITCH ═══════════════
+function toggleGlitch(on){
+  state.appearance.glitch=on;
+  var body=document.body;
+  if(on)body.classList.add('glitch-on');
+  else body.classList.remove('glitch-on');
+  save();
+  toast(on?'Efeito glitch ativado! 👾':'Efeito glitch desativado.','ok');
+}
+
+// ═══════════════ DISCORD ═══════════════
+function openDiscord(){window.open(state.settings.discord||'https://discord.gg','_blank')}
+
+// ═══════════════ NAVIGATION ═══════════════
+function showPage(p){
+  document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active')});
+  var pg=document.getElementById('page-'+p);
+  if(pg)pg.classList.add('active');
+  document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active')});
+  var na=document.getElementById('nav-'+p);
+  if(na)na.classList.add('active');
+  window.scrollTo(0,0);
+  setTimeout(initReveal,80);
+  if(p==='rules')renderPublicRules();
+  if(p==='team')renderPublicTeam();
+  if(p==='home')renderPublicUpdates();
+  if(p==='whitelist')initChatWL();
+}
+
+// ═══════════════ PUBLIC UPDATES ═══════════════
+function renderPublicUpdates(){
+  var g=document.getElementById('updates-grid');if(!g)return;
+  if(!state.updates.length){g.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="icon">📰</div><p>Nenhuma atualização.</p></div>';return;}
+  g.innerHTML=state.updates.map(function(u,i){
+    return '<div class="update-card reveal" style="transition-delay:'+(i*.1)+'s"><div class="update-tag">'+esc(u.tag)+'</div><div class="update-title">'+esc(u.title)+'</div><div class="update-text">'+esc(u.text)+'</div><div class="update-date">'+esc(u.date)+'</div></div>';
+  }).join('');
+  setTimeout(initReveal,50);
+}
+renderPublicUpdates();
+
+// ═══════════════ PUBLIC TEAM ═══════════════
+function renderPublicTeam(){
+  var g=document.getElementById('team-grid');if(!g)return;
+  if(!state.team.length){g.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="icon">👥</div><p>Membros aparecerão aqui.</p></div>';return;}
+  g.innerHTML=state.team.map(function(m){
+    var av=m.avatar?'<img src="'+esc(m.avatar)+'" onerror="this.parentNode.innerHTML=\'👤\'">':'👤';
+    return '<div class="member-card"><div class="member-avatar">'+av+'</div><div class="member-name">'+esc(m.name)+'</div><div class="member-role">'+esc(m.role)+'</div>'+(m.desc?'<div class="member-desc">'+esc(m.desc)+'</div>':'')+'</div>';
+  }).join('');
+}
+
+// ═══════════════ PUBLIC RULES ═══════════════
+function renderPublicRules(){
+  var sidebar=document.getElementById('rules-sidebar');
+  var content=document.getElementById('rules-content-area');
+  if(!sidebar||!content)return;
+  if(!state.rules.length){
+    sidebar.innerHTML='<div style="font-size:.75rem;color:rgba(255,255,255,.2);padding:.5rem">Nenhuma regra ainda.</div>';
+    content.innerHTML='<div class="empty-state"><div class="icon">📋</div><p>Nenhuma regra adicionada ainda.</p></div>';return;
+  }
+  var cats={};
+  state.rules.forEach(function(r){
+    if(!cats[r.cat])cats[r.cat]={};
+    if(!cats[r.cat][r.subcat])cats[r.cat][r.subcat]=[];
+    cats[r.cat][r.subcat].push(r);
+  });
+  var catKeys=Object.keys(cats);
+  sidebar.innerHTML=catKeys.map(function(cat){
+    var subs=Object.keys(cats[cat]);
+    return '<div class="sidebar-cat"><div class="sidebar-cat-title">'+esc(cat)+'</div>'+subs.map(function(sub){
+      return '<button class="sidebar-item" onclick="showRulesSection(\''+encodeURIComponent(cat)+'\',\''+encodeURIComponent(sub)+'\',this)">'+esc(sub)+'</button>';
+    }).join('')+'</div>';
+  }).join('');
+  if(catKeys.length)showRulesSection(encodeURIComponent(catKeys[0]),encodeURIComponent(Object.keys(cats[catKeys[0]])[0]));
+}
+window.showRulesSection=function(catE,subE,btn){
+  var cat=decodeURIComponent(catE),sub=decodeURIComponent(subE);
+  document.querySelectorAll('.sidebar-item').forEach(function(b){b.classList.remove('active')});
+  if(btn)btn.classList.add('active');
+  else document.querySelectorAll('.sidebar-item').forEach(function(b){if(b.textContent.trim()===sub)b.classList.add('active')});
+  var cats={};state.rules.forEach(function(r){if(!cats[r.cat])cats[r.cat]={};if(!cats[r.cat][r.subcat])cats[r.cat][r.subcat]=[];cats[r.cat][r.subcat].push(r);});
+  var rules=(cats[cat]&&cats[cat][sub])||[];
+  document.getElementById('rules-content-area').innerHTML='<div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.25rem"><div style="color:var(--crimson)">🛡</div><div class="rules-content-title">'+esc(cat)+'</div></div><div class="rules-content-sub">'+esc(sub)+'</div><div class="rule-section"><ul class="rule-list">'+rules.map(function(r){return '<li>'+esc(r.text)+'</li>'}).join('')+'</ul></div>';
+};
+window.filterRules=function(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('.sidebar-item').forEach(function(btn){btn.style.display=(!q||btn.textContent.toLowerCase().includes(q))?'':'none'});
+};
+
+// ═══════════════ WHITELIST CHAT ═══════════════
+var chatState={step:-1,answers:[],finished:false};
+var chatQOptions=[];// for current q-options in admin form
+
+function initChatWL(){
+  chatState={step:-1,answers:[],finished:false};
+  var msgs=document.getElementById('chat-messages');
+  var succ=document.getElementById('wl-success');
+  var inp=document.getElementById('chat-input-area');
+  var prog=document.getElementById('chat-progress');
+  if(msgs)msgs.innerHTML='';
+  if(succ)succ.classList.remove('show');
+  if(inp)inp.style.display='flex';
+  if(prog)prog.style.display='none';
+  var input=document.getElementById('chat-input');
+  if(input){input.value='';input.disabled=false;input.placeholder='Digite sua resposta...';}
+  var sendBtn=document.getElementById('chat-send-btn');
+  if(sendBtn)sendBtn.disabled=false;
+  if(!state.wlQuestions.length){
+    addBotMsg('Desculpe, o questionário ainda não foi configurado. Tente novamente mais tarde.');return;
+  }
+  // welcome
+  var welcome=state.settings.wlWelcome||'Olá! Bem-vindo(a) ao processo de allowlist!';
+  setTimeout(function(){
+    addBotMsg(welcome,true);
+    setTimeout(function(){nextQuestion()},1200);
+  },600);
+}
+
+function nextQuestion(){
+  chatState.step++;
+  var qs=state.wlQuestions;
+  if(chatState.step>=qs.length){
+    // end
+    finishWL();return;
+  }
+  var q=qs[chatState.step];
+  updateProgress();
+  showTyping(function(){
+    addBotMsg(q.text+(q.required?'':' <em style="color:rgba(255,255,255,.3);font-size:.78rem">(opcional)</em>'),false);
+    if(q.type==='choice'&&q.options&&q.options.length){
+      setTimeout(function(){addChoiceButtons(q.options)},200);
+      disableChatInput(true);
+    } else {
+      disableChatInput(false);
+      focusChatInput();
+    }
+  });
+}
+
+function addBotMsg(text,isFirst){
+  var msgs=document.getElementById('chat-messages');if(!msgs)return;
+  var d=document.createElement('div');d.className='chat-msg bot';
+  d.innerHTML='<div class="chat-msg-avatar">🤖</div><div><div class="chat-msg-bubble">'+text.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>').replace(/\n/g,'<br>')+'</div><div class="chat-msg-time">'+getTime()+'</div></div>';
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+
+function addUserMsg(text){
+  var msgs=document.getElementById('chat-messages');if(!msgs)return;
+  var d=document.createElement('div');d.className='chat-msg user';
+  d.innerHTML='<div><div class="chat-msg-bubble">'+esc(text)+'</div><div class="chat-msg-time">'+getTime()+'</div></div>';
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+
+function addChoiceButtons(options){
+  var msgs=document.getElementById('chat-messages');if(!msgs)return;
+  var d=document.createElement('div');d.className='chat-msg bot';
+  var btns=options.map(function(opt){
+    return '<button class="chat-choice-btn" onclick="selectChoice(\''+opt.replace(/'/g,"\\'")+'\'">'+esc(opt)+'</button>';
+  }).join('');
+  d.innerHTML='<div class="chat-msg-avatar" style="opacity:0">🤖</div><div><div class="chat-choices">'+btns+'</div></div>';
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+}
+
+function selectChoice(val){
+  document.querySelectorAll('.chat-choice-btn').forEach(function(b){b.disabled=true;b.style.opacity='.4'});
+  chatState.answers.push({q:state.wlQuestions[chatState.step].text,a:val});
+  addUserMsg(val);
+  disableChatInput(false);
+  setTimeout(nextQuestion,600);
+}
+
+function sendChatAnswer(){
+  var input=document.getElementById('chat-input');
+  if(!input)return;
+  var val=input.value.trim();
+  var q=state.wlQuestions[chatState.step];
+  if(q&&q.required&&!val){
+    input.style.borderColor='rgba(196,30,58,.6)';
+    setTimeout(function(){input.style.borderColor=''},1500);
+    return;
+  }
+  if(!val&&q&&!q.required)val='(pulou)';
+  if(!val)return;
+  chatState.answers.push({q:state.wlQuestions[chatState.step]?state.wlQuestions[chatState.step].text:'',a:val});
+  addUserMsg(val);
+  input.value='';input.style.height='auto';
+  setTimeout(nextQuestion,600);
+}
+
+function showTyping(cb){
+  var msgs=document.getElementById('chat-messages');if(!msgs){cb&&cb();return;}
+  var d=document.createElement('div');d.className='chat-msg bot';d.id='typing-bubble';
+  d.innerHTML='<div class="chat-msg-avatar">🤖</div><div><div class="typing-indicator"><span></span><span></span><span></span></div></div>';
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;
+  setTimeout(function(){var tb=document.getElementById('typing-bubble');if(tb)tb.remove();cb&&cb();},900);
+}
+
+function finishWL(){
+  var endMsg=state.settings.wlEnd||'Perfeito! ✅ Suas respostas foram registradas.';
+  showTyping(function(){
+    addBotMsg(endMsg,false);
+    setTimeout(function(){
+      // save application
+      var appId=state.nextId.wlApps++;
+      state.wlApplications.unshift({
+        id:appId,
+        date:new Date().toLocaleString('pt-BR'),
+        answers:chatState.answers,
+        status:'pending'
+      });
+      save();
+      // show success
+      var msgs=document.getElementById('chat-messages');
+      var succ=document.getElementById('wl-success');
+      var inp=document.getElementById('chat-input-area');
+      var prog=document.getElementById('chat-progress');
+      if(msgs)msgs.style.display='none';
+      if(inp)inp.style.display='none';
+      if(prog)prog.style.display='none';
+      if(succ)succ.classList.add('show');
+      chatState.finished=true;
+    },1800);
+  });
+}
+
+function updateProgress(){
+  var prog=document.getElementById('chat-progress');
+  var fill=document.getElementById('progress-fill');
+  var text=document.getElementById('progress-text');
+  var total=state.wlQuestions.length;
+  if(!prog||!total)return;
+  prog.style.display='flex';
+  var pct=Math.round((chatState.step/total)*100);
+  if(fill)fill.style.width=pct+'%';
+  if(text)text.textContent='Pergunta '+(chatState.step+1)+' de '+total;
+}
+
+function disableChatInput(disable){
+  var inp=document.getElementById('chat-input');
+  var btn=document.getElementById('chat-send-btn');
+  if(inp){inp.disabled=disable;inp.placeholder=disable?'Selecione uma opção acima...':'Digite sua resposta...';}
+  if(btn)btn.disabled=disable;
+}
+function focusChatInput(){var inp=document.getElementById('chat-input');if(inp)setTimeout(function(){inp.focus()},100)}
+
+function handleChatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatAnswer();}}
+function autoResizeTA(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';}
+function getTime(){var d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');}
+
+// ═══════════════ ADMIN QUESTIONS ═══════════════
+var qOptionTags=[];
+function toggleQOptions(){
+  var t=document.getElementById('q-type').value;
+  document.getElementById('q-options-field').style.display=t==='choice'?'block':'none';
+}
+function addQOption(e){
+  if(e.key!=='Enter')return;
+  e.preventDefault();
+  var inp=document.getElementById('q-options-input');
+  var val=inp.value.trim();if(!val)return;
+  qOptionTags.push(val);inp.value='';renderQOptions();
+}
+function removeQOption(i){qOptionTags.splice(i,1);renderQOptions();}
+function renderQOptions(){
+  var wrap=document.getElementById('q-options-wrap');if(!wrap)return;
+  var inp=document.getElementById('q-options-input');
+  wrap.innerHTML='';
+  qOptionTags.forEach(function(o,i){
+    var tag=document.createElement('div');tag.className='tag';
+    tag.innerHTML=esc(o)+'<span class="rm" onclick="removeQOption('+i+')">×</span>';
+    wrap.appendChild(tag);
+  });
+  wrap.appendChild(inp);
+}
+function saveQuestion(){
+  var id=document.getElementById('edit-q-id').value;
+  var text=document.getElementById('q-text').value.trim();
+  var type=document.getElementById('q-type').value;
+  var required=document.getElementById('q-required').value==='1';
+  if(!text){toast('Informe o texto da pergunta.','err');return;}
+  if(type==='choice'&&!qOptionTags.length){toast('Adicione ao menos uma opção.','err');return;}
+  if(id){
+    var q=state.wlQuestions.find(function(x){return x.id==id});
+    if(q){q.text=text;q.type=type;q.required=required;q.options=qOptionTags.slice();}
+    toast('Pergunta atualizada!','ok');
+  } else {
+    state.wlQuestions.push({id:state.nextId.wlQuestions++,text:text,type:type,required:required,options:qOptionTags.slice()});
+    toast('Pergunta adicionada!','ok');
+  }
+  save();clearQForm();renderQuestionsList();updateDashStats();
+}
+function editQuestion(id){
+  var q=state.wlQuestions.find(function(x){return x.id===id});if(!q)return;
+  document.getElementById('edit-q-id').value=id;
+  document.getElementById('q-text').value=q.text;
+  document.getElementById('q-type').value=q.type;
+  document.getElementById('q-required').value=q.required?'1':'0';
+  qOptionTags=q.options?q.options.slice():[];
+  renderQOptions();toggleQOptions();
+  adminTab('wl');window.scrollTo(0,0);
+}
+function deleteQuestion(id){
+  confirmAction('Excluir esta pergunta?',function(){
+    state.wlQuestions=state.wlQuestions.filter(function(x){return x.id!==id});
+    save();renderQuestionsList();updateDashStats();toast('Pergunta excluída.','ok');
+  });
+}
+function clearQForm(){
+  document.getElementById('edit-q-id').value='';
+  document.getElementById('q-text').value='';
+  document.getElementById('q-type').value='text';
+  document.getElementById('q-required').value='1';
+  qOptionTags=[];renderQOptions();toggleQOptions();
+}
+function renderQuestionsList(){
+  var list=document.getElementById('questions-list');if(!list)return;
+  var cnt=document.getElementById('q-count');
+  if(cnt)cnt.textContent=state.wlQuestions.length+' pergunta(s)';
+  if(!state.wlQuestions.length){list.innerHTML='<div class="empty-state" style="padding:2rem"><div class="icon">❓</div><p>Nenhuma pergunta adicionada ainda.</p></div>';return;}
+  list.innerHTML=state.wlQuestions.map(function(q,i){
+    var typeBadge={text:'Texto',textarea:'Texto longo',choice:'Múltipla escolha'}[q.type]||q.type;
+    return '<div class="wl-question-item">'
+      +'<div style="font-size:1rem;color:rgba(255,255,255,.2);font-weight:700;padding-top:.1rem;min-width:24px">'+(i+1)+'</div>'
+      +'<div class="wl-q-main"><div class="wl-q-text">'+esc(q.text)+'</div>'
+      +'<div class="wl-q-meta"><span class="wl-q-type">'+typeBadge+'</span>'+(q.required?'<span class="wl-q-required">obrigatória</span>':'')
+      +(q.options&&q.options.length?' <span style="color:rgba(255,255,255,.25)">'+q.options.length+' opções</span>':'')+'</div></div>'
+      +'<div class="wl-q-actions"><button class="action-btn" onclick="editQuestion('+q.id+')">✏</button><button class="action-btn danger" onclick="deleteQuestion('+q.id+')">🗑</button></div>'
+      +'</div>';
+  }).join('');
+}
+
+// ═══════════════ WL APPLICATIONS ═══════════════
+function renderWLAppsTable(){
+  var tb=document.getElementById('wl-apps-table');if(!tb)return;
+  var cnt=document.getElementById('wl-apps-count');
+  if(cnt)cnt.textContent=state.wlApplications.length+' candidatura(s)';
+  if(!state.wlApplications.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:2rem">Nenhuma candidatura ainda.</td></tr>';return;}
+  tb.innerHTML=state.wlApplications.map(function(app){
+    var firstAns=app.answers&&app.answers[0]?app.answers[0].a:'-';
+    if(firstAns.length>30)firstAns=firstAns.slice(0,30)+'…';
+    var statusClass={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
+    var statusLabel={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
+    return '<tr class="wl-app-row">'
+      +'<td style="color:rgba(255,255,255,.3)">#'+app.id+'</td>'
+      +'<td style="color:rgba(255,255,255,.4);white-space:nowrap;font-size:.75rem">'+esc(app.date)+'</td>'
+      +'<td>'+esc(firstAns)+'</td>'
+      +'<td><span class="badge '+statusClass+'">'+statusLabel+'</span></td>'
+      +'<td>'
+      +'<button class="action-btn" onclick="viewApp('+app.id+')">👁 Ver</button>'
+      +'<button class="action-btn success" onclick="setAppStatus('+app.id+',\'approved\')">✓</button>'
+      +'<button class="action-btn danger" onclick="setAppStatus('+app.id+',\'rejected\')">✗</button>'
+      +'</td></tr>';
+  }).join('');
+}
+
+window.viewApp=function(id){
+  var app=state.wlApplications.find(function(x){return x.id===id});if(!app)return;
+  var c=document.getElementById('modal-app-content');
+  var acts=document.getElementById('modal-app-actions');
+  var statusLabel={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
+  var statusClass={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
+  c.innerHTML='<div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem">'
+    +'<div style="font-size:.7rem;color:rgba(255,255,255,.3)">#'+app.id+' · '+esc(app.date)+'</div>'
+    +'<span class="badge '+statusClass+'">'+statusLabel+'</span>'
+    +'</div>'
+    +'<div class="app-answers-list">'
+    +(app.answers||[]).map(function(ans){
+      return '<div class="app-answer-item"><div class="app-answer-q">'+esc(ans.q)+'</div><div class="app-answer-a">'+esc(ans.a)+'</div></div>';
+    }).join('')
+    +'</div>';
+  acts.innerHTML='<button class="btn btn-primary btn-sm" style="background:#22c55e;box-shadow:none" onclick="setAppStatus('+id+',\'approved\');closeModal(\'modal-app\')">✓ Aprovar</button>'
+    +'<button class="btn btn-danger btn-sm" onclick="setAppStatus('+id+',\'rejected\');closeModal(\'modal-app\')">✗ Rejeitar</button>'
+    +'<button class="btn btn-ghost btn-sm" onclick="setAppStatus('+id+',\'pending\');closeModal(\'modal-app\')">↺ Pendente</button>';
+  document.getElementById('modal-app').classList.add('show');
+};
+
+window.setAppStatus=function(id,status){
+  var app=state.wlApplications.find(function(x){return x.id===id});
+  if(app){app.status=status;save();renderWLAppsTable();renderDashWL();updateDashStats();}
+  var label={approved:'Candidatura aprovada! ✅',rejected:'Candidatura rejeitada.',pending:'Candidatura marcada como pendente.'}[status]||'Status atualizado.';
+  toast(label,status==='approved'?'ok':'');
+};
+
+function renderDashWL(){
+  var tb=document.getElementById('dash-wl-table');if(!tb)return;
+  var recent=state.wlApplications.slice(0,5);
+  if(!recent.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:2rem">Nenhuma candidatura.</td></tr>';return;}
+  tb.innerHTML=recent.map(function(app){
+    var firstAns=app.answers&&app.answers[0]?app.answers[0].a:'-';
+    if(firstAns.length>25)firstAns=firstAns.slice(0,25)+'…';
+    var sc={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
+    var sl={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
+    return '<tr><td><strong>'+esc(firstAns)+'</strong></td><td style="color:rgba(255,255,255,.35);font-size:.75rem">'+esc(app.date)+'</td><td><span class="badge '+sc+'">'+sl+'</span></td><td><button class="action-btn" onclick="viewApp('+app.id+')">Ver →</button></td></tr>';
+  }).join('');
+}
+
+// ═══════════════ ADMIN AUTH ═══════════════
+function showAdminLogin(){document.getElementById('admin-login').classList.add('show')}
+function hideAdminLogin(){document.getElementById('admin-login').classList.remove('show')}
+function doLogin(){
+  var u=document.getElementById('login-user').value.trim();
+  var p=document.getElementById('login-pass').value;
+  if(u===state.adminUser&&p===state.adminPass){
+    document.getElementById('login-err').classList.remove('show');
+    document.getElementById('admin-login').classList.remove('show');
+    document.getElementById('main-nav').style.display='none';
+    document.querySelector('.mobile-menu').style.display='none';
+    document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active')});
+    document.getElementById('admin-panel').classList.add('show');
+    document.getElementById('admin-welcome-name').textContent=u;
+    state.loggedIn=true;
+    refreshAdmin();
+  } else {
+    document.getElementById('login-err').classList.add('show');
+  }
+}
+function adminLogout(){
+  document.getElementById('admin-panel').classList.remove('show');
+  document.getElementById('main-nav').style.display='';
+  showPage('home');state.loggedIn=false;
+}
+
+// ═══════════════ ADMIN TABS ═══════════════
+function adminTab(t){
+  document.querySelectorAll('.admin-nav-item').forEach(function(b){b.classList.remove('active')});
+  var el=document.getElementById('atab-'+t);if(el)el.classList.add('active');
+  document.querySelectorAll('.admin-section').forEach(function(s){s.classList.remove('active')});
+  var sec=document.getElementById('asec-'+t);if(sec)sec.classList.add('active');
+  var titles={dashboard:'Dashboard',wl:'Allowlist',users:'Usuários',team:'Equipe',rules:'Regras',updates:'Atualizações',appearance:'Aparência',settings:'Configurações'};
+  document.getElementById('admin-section-title').textContent=titles[t]||t;
+  if(t==='dashboard'){renderDashWL();updateDashStats();}
+  if(t==='wl'){renderQuestionsList();renderWLAppsTable();}
+  if(t==='users')renderUsersTable();
+  if(t==='team')renderTeamTable();
+  if(t==='rules'){renderRulesTable();renderRulesCatList();}
+  if(t==='updates')renderUpdatesTable();
+  if(t==='appearance'){renderBgGrid();syncAppearanceUI();}
+  if(t==='settings')loadSettings();
+}
+function syncAppearanceUI(){
+  var tg=document.getElementById('toggle-glitch');
+  if(tg)tg.checked=state.appearance.glitch||false;
+}
+function refreshAdmin(){updateDashStats();renderDashWL();}
+function updateDashStats(){
+  var s={
+    users:state.users.length,
+    wl:state.wlApplications.length,
+    wlPending:state.wlApplications.filter(function(a){return a.status==='pending'}).length,
+    team:state.team.length,
+    rules:state.rules.length,
+    wlq:state.wlQuestions.length
+  };
+  [['stat-users','users'],['stat-wl','wl'],['stat-wl-pending','wlPending'],['stat-team','team'],['stat-rules','rules'],['stat-wlq','wlq']].forEach(function(pair){
+    var el=document.getElementById(pair[0]);if(el)el.textContent=s[pair[1]];
+  });
+}
+
+// ═══════════════ USERS ═══════════════
+function saveUser(){
+  var id=document.getElementById('edit-user-id').value;
+  var username=document.getElementById('u-username').value.trim();
+  var password=document.getElementById('u-password').value.trim();
+  var email=document.getElementById('u-email').value.trim();
+  var role=document.getElementById('u-role').value;
+  var status=document.getElementById('u-status').value;
+  if(!username){toast('Informe um nome de usuário.','err');return;}
+  if(!id&&!password){toast('Senha obrigatória para novos usuários.','err');return;}
+  if(id){
+    var u=state.users.find(function(x){return x.id==id});
+    if(u){u.username=username;if(password)u.password=password;u.email=email;u.role=role;u.status=status;}
+    toast('Usuário atualizado!','ok');
+  } else {
+    if(state.users.find(function(x){return x.username===username})){toast('Usuário já existe.','err');return;}
+    state.users.push({id:state.nextId.users++,username:username,password:password,email:email,role:role,status:status,date:new Date().toLocaleDateString('pt-BR')});
+    toast('Usuário criado!','ok');
+  }
+  save();clearUserForm();renderUsersTable();updateDashStats();
+}
+function editUser(id){
+  var u=state.users.find(function(x){return x.id===id});if(!u)return;
+  document.getElementById('edit-user-id').value=id;
+  document.getElementById('u-username').value=u.username;
+  document.getElementById('u-password').value='';
+  document.getElementById('u-email').value=u.email||'';
+  document.getElementById('u-role').value=u.role;
+  document.getElementById('u-status').value=u.status;
+  adminTab('users');window.scrollTo(0,0);
+}
+function deleteUser(id){
+  confirmAction('Excluir este usuário?',function(){
+    state.users=state.users.filter(function(x){return x.id!==id});
+    save();renderUsersTable();updateDashStats();toast('Usuário excluído.','ok');
+  });
+}
+function clearUserForm(){document.getElementById('edit-user-id').value='';['u-username','u-password','u-email'].forEach(function(i){document.getElementById(i).value=''});document.getElementById('u-role').value='player';document.getElementById('u-status').value='active';}
+function renderUsersTable(){
+  var tb=document.getElementById('users-table');
+  document.getElementById('users-count').textContent=state.users.length+' usuário(s)';
+  if(!state.users.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:2rem">Nenhum usuário.</td></tr>';return;}
+  tb.innerHTML=state.users.map(function(u){
+    return '<tr><td><strong>'+esc(u.username)+'</strong></td><td style="color:rgba(255,255,255,.35)">'+esc(u.email||'-')+'</td><td><span class="badge badge-gold">'+esc(u.role)+'</span></td><td><span class="badge '+(u.status==='active'?'badge-green':u.status==='banned'?'badge-red':'badge-gray')+'">'+esc(u.status)+'</span></td><td><button class="action-btn" onclick="editUser('+u.id+')">✏</button><button class="action-btn danger" onclick="deleteUser('+u.id+')">🗑</button></td></tr>';
+  }).join('');
+}
+
+// ═══════════════ TEAM ═══════════════
+window.previewAvatar=function(url){var p=document.getElementById('member-avatar-preview');if(url)p.innerHTML='<img src="'+esc(url)+'" onerror="this.parentNode.innerHTML=\'👤\'">';else p.innerHTML='👤';};
+function saveMember(){
+  var id=document.getElementById('edit-member-id').value;
+  var name=document.getElementById('m-name').value.trim();
+  var avatar=document.getElementById('m-avatar').value.trim();
+  var role=document.getElementById('m-role').value.trim();
+  var cat=document.getElementById('m-cat').value;
+  var desc=document.getElementById('m-desc').value.trim();
+  if(!name||!role){toast('Nome e cargo obrigatórios.','err');return;}
+  if(id){
+    var m=state.team.find(function(x){return x.id==id});
+    if(m){m.name=name;m.avatar=avatar;m.role=role;m.cat=cat;m.desc=desc;}
+    toast('Membro atualizado!','ok');
+  } else {
+    state.team.push({id:state.nextId.team++,name:name,avatar:avatar,role:role,cat:cat,desc:desc});
+    toast('Membro adicionado!','ok');
+  }
+  save();clearMemberForm();renderTeamTable();renderPublicTeam();updateDashStats();
+}
+function editMember(id){
+  var m=state.team.find(function(x){return x.id===id});if(!m)return;
+  document.getElementById('edit-member-id').value=id;
+  document.getElementById('m-name').value=m.name;
+  document.getElementById('m-avatar').value=m.avatar||'';
+  document.getElementById('m-role').value=m.role;
+  document.getElementById('m-cat').value=m.cat;
+  document.getElementById('m-desc').value=m.desc||'';
+  previewAvatar(m.avatar||'');
+  adminTab('team');window.scrollTo(0,0);
+}
+function deleteMember(id){
+  confirmAction('Remover membro?',function(){
+    state.team=state.team.filter(function(x){return x.id!==id});
+    save();renderTeamTable();renderPublicTeam();updateDashStats();toast('Membro removido.','ok');
+  });
+}
+function clearMemberForm(){document.getElementById('edit-member-id').value='';['m-name','m-avatar','m-role','m-desc'].forEach(function(i){document.getElementById(i).value=''});document.getElementById('member-avatar-preview').innerHTML='👤';}
+function renderTeamTable(){
+  var tb=document.getElementById('team-table');
+  if(!state.team.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:2rem">Nenhum membro.</td></tr>';return;}
+  tb.innerHTML=state.team.map(function(m){
+    var av=m.avatar?'<img src="'+esc(m.avatar)+'" style="width:32px;height:32px;border-radius:50%;object-fit:cover" onerror="this.outerHTML=\'👤\'">':'👤';
+    return '<tr><td>'+av+'</td><td><strong>'+esc(m.name)+'</strong></td><td style="color:var(--crimson)">'+esc(m.role)+'</td><td><span class="badge badge-gray">'+esc(m.cat)+'</span></td><td><button class="action-btn" onclick="editMember('+m.id+')">✏</button><button class="action-btn danger" onclick="deleteMember('+m.id+')">🗑</button></td></tr>';
+  }).join('');
+}
+
+// ═══════════════ RULES ═══════════════
+function saveRule(){
+  var id=document.getElementById('edit-rule-id').value;
+  var cat=document.getElementById('r-cat').value.trim();
+  var subcat=document.getElementById('r-subcat').value.trim();
+  var text=document.getElementById('r-text').value.trim();
+  if(!cat||!subcat||!text){toast('Todos os campos são obrigatórios.','err');return;}
+  if(id){
+    var r=state.rules.find(function(x){return x.id==id});
+    if(r){r.cat=cat;r.subcat=subcat;r.text=text;}
+    toast('Regra atualizada!','ok');
+  } else {
+    state.rules.push({id:state.nextId.rules++,cat:cat,subcat:subcat,text:text});
+    toast('Regra adicionada!','ok');
+  }
+  save();clearRuleForm();renderRulesTable();renderRulesCatList();renderPublicRules();updateDashStats();
+}
+function editRule(id){
+  var r=state.rules.find(function(x){return x.id===id});if(!r)return;
+  document.getElementById('edit-rule-id').value=id;
+  document.getElementById('r-cat').value=r.cat;
+  document.getElementById('r-subcat').value=r.subcat;
+  document.getElementById('r-text').value=r.text;
+  adminTab('rules');window.scrollTo(0,0);
+}
+function deleteRule(id){
+  confirmAction('Excluir regra?',function(){
+    state.rules=state.rules.filter(function(x){return x.id!==id});
+    save();renderRulesTable();renderRulesCatList();renderPublicRules();updateDashStats();toast('Regra excluída.','ok');
+  });
+}
+function clearRuleForm(){document.getElementById('edit-rule-id').value='';['r-cat','r-subcat','r-text'].forEach(function(i){document.getElementById(i).value=''});}
+function renderRulesTable(){
+  var tb=document.getElementById('rules-table');
+  document.getElementById('rules-count').textContent=state.rules.length+' regra(s)';
+  if(!state.rules.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:2rem">Nenhuma regra.</td></tr>';return;}
+  tb.innerHTML=state.rules.map(function(r){
+    return '<tr><td><span class="badge badge-red">'+esc(r.cat)+'</span></td><td style="color:rgba(255,255,255,.35)">'+esc(r.subcat)+'</td><td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.text)+'</td><td><button class="action-btn" onclick="editRule('+r.id+')">✏</button><button class="action-btn danger" onclick="deleteRule('+r.id+')">🗑</button></td></tr>';
+  }).join('');
+}
+function renderRulesCatList(){
+  var cats=[...new Set(state.rules.map(function(r){return r.cat}))];
+  var dl=document.getElementById('r-cats-list');if(dl)dl.innerHTML=cats.map(function(c){return '<option value="'+esc(c)+'">'}).join('');
+}
+
+// ═══════════════ UPDATES ═══════════════
+function saveUpdate(){
+  var id=document.getElementById('edit-upd-id').value;
+  var tag=document.getElementById('upd-tag').value.trim();
+  var title=document.getElementById('upd-title').value.trim();
+  var text=document.getElementById('upd-text').value.trim();
+  var date=document.getElementById('upd-date').value.trim();
+  if(!title||!text){toast('Título e descrição obrigatórios.','err');return;}
+  if(id){
+    var u=state.updates.find(function(x){return x.id==id});
+    if(u){u.tag=tag;u.title=title;u.text=text;u.date=date;}
+    toast('Atualização salva!','ok');
+  } else {
+    state.updates.unshift({id:state.nextId.updates++,tag:tag||'📢 ATUALIZAÇÃO',title:title,text:text,date:date||new Date().toLocaleDateString('pt-BR',{month:'long',year:'numeric'})});
+    toast('Atualização adicionada!','ok');
+  }
+  save();clearUpdForm();renderUpdatesTable();renderPublicUpdates();
+}
+function editUpdate(id){
+  var u=state.updates.find(function(x){return x.id===id});if(!u)return;
+  document.getElementById('edit-upd-id').value=id;
+  document.getElementById('upd-tag').value=u.tag||'';
+  document.getElementById('upd-title').value=u.title;
+  document.getElementById('upd-text').value=u.text;
+  document.getElementById('upd-date').value=u.date||'';
+  adminTab('updates');window.scrollTo(0,0);
+}
+function deleteUpdate(id){
+  confirmAction('Excluir atualização?',function(){
+    state.updates=state.updates.filter(function(x){return x.id!==id});
+    save();renderUpdatesTable();renderPublicUpdates();toast('Atualização excluída.','ok');
+  });
+}
+function clearUpdForm(){document.getElementById('edit-upd-id').value='';['upd-tag','upd-title','upd-text','upd-date'].forEach(function(i){document.getElementById(i).value=''});}
+function renderUpdatesTable(){
+  var tb=document.getElementById('updates-table');
+  if(!state.updates.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:2rem">Nenhuma atualização.</td></tr>';return;}
+  tb.innerHTML=state.updates.map(function(u){
+    return '<tr><td>'+esc(u.tag||'')+'</td><td><strong>'+esc(u.title)+'</strong></td><td style="color:rgba(255,255,255,.3)">'+esc(u.date||'-')+'</td><td><button class="action-btn" onclick="editUpdate('+u.id+')">✏</button><button class="action-btn danger" onclick="deleteUpdate('+u.id+')">🗑</button></td></tr>';
+  }).join('');
+}
+
+// ═══════════════ SETTINGS ═══════════════
+function loadSettings(){
+  document.getElementById('cfg-name').value=state.settings.name||'Crimson City RP';
+  document.getElementById('cfg-discord').value=state.settings.discord||'';
+  document.getElementById('cfg-players').value=state.settings.players||0;
+  document.getElementById('cfg-wl-welcome').value=state.settings.wlWelcome||'';
+  document.getElementById('cfg-wl-end').value=state.settings.wlEnd||'';
+}
+function saveSettings(){
+  state.settings.name=document.getElementById('cfg-name').value.trim()||'Crimson City RP';
+  state.settings.discord=document.getElementById('cfg-discord').value.trim();
+  state.settings.players=parseInt(document.getElementById('cfg-players').value)||0;
+  state.settings.wlWelcome=document.getElementById('cfg-wl-welcome').value.trim();
+  state.settings.wlEnd=document.getElementById('cfg-wl-end').value.trim();
+  var pc=state.settings.players;
+  var nEl=document.getElementById('nav-players');if(nEl)nEl.textContent=pc+' Jogador'+(pc!==1?'es':'');
+  var hEl=document.getElementById('htp-players');if(hEl)hEl.textContent=pc+' / 100';
+  save();toast('Configurações salvas!','ok');
+}
+function changePass(){
+  var np=document.getElementById('new-pass').value;
+  var cp=document.getElementById('conf-pass').value;
+  if(np.length<6){toast('Mínimo 6 caracteres.','err');return;}
+  if(np!==cp){toast('Senhas não coincidem.','err');return;}
+  state.adminPass=np;save();
+  document.getElementById('new-pass').value='';document.getElementById('conf-pass').value='';
+  toast('Senha alterada!','ok');
+}
+function confirmReset(type){
+  var msgs={wlApps:'Limpar TODAS as candidaturas?',users:'Excluir TODOS os usuários?',team:'Excluir TODA a equipe?',rules:'Excluir TODAS as regras?'};
+  confirmAction(msgs[type]||'Tem certeza?',function(){
+    if(type==='wlApps')state.wlApplications=[];
+    if(type==='users')state.users=[];
+    if(type==='team')state.team=[];
+    if(type==='rules')state.rules=[];
+    save();
+    if(type==='wlApps'){renderWLAppsTable();}
+    if(type==='users')renderUsersTable();
+    if(type==='team')renderTeamTable();
+    if(type==='rules'){renderRulesTable();renderRulesCatList();}
+    updateDashStats();renderDashWL();
+    toast('Dados excluídos.','ok');
+  });
+}
+
+// ═══════════════ MODAL / CONFIRM ═══════════════
+function confirmAction(msg,cb){
+  document.getElementById('confirm-msg').textContent=msg;
+  document.getElementById('confirm-modal').classList.add('show');
+  document.getElementById('confirm-yes').onclick=function(){closeModal('confirm-modal');cb();};
+}
+function closeModal(id){document.getElementById(id).classList.remove('show');}
+
+// ═══════════════ TOAST ═══════════════
+function toast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=(type==='ok'?'✅ ':'❌ ')+msg;
+  t.className='toast '+(type==='ok'?'success':'')+' show';
+  setTimeout(function(){t.classList.remove('show')},3000);
+}
+
+// ═══════════════ UTILS ═══════════════
+function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ═══════════════ INIT ═══════════════
+(function init(){
+  // apply saved appearance
+  if(state.appearance.glitch)document.body.classList.add('glitch-on');
+  applyBackground(state.appearance.activeBg||'default');
+  // init updates
+  renderPublicUpdates();
+  // apply player count
+  var pc=state.settings.players||0;
+  var nEl=document.getElementById('nav-players');if(nEl)nEl.textContent=pc+' Jogador'+(pc!==1?'es':'');
+  var hEl=document.getElementById('htp-players');if(hEl)hEl.textContent=pc+' / 100';
+})();
+</script>
+</body>
+</html>
