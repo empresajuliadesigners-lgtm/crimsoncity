@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head><base href="https://d16ilfvy4mv02r.cloudfront.net/workspaces/poZOdfIXDv3ouVswYNaG5dVpwN1CZv9u/1db1663c-0c4e-4021-86ea-ddf2d7272da7/files/">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crimson City RP</title>
+<title id="site-title">Crimson City RP</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -54,6 +54,31 @@ nav.scrolled{background:rgba(7,7,9,.98);border-bottom-color:rgba(196,30,58,.22)}
 .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5)}
 .btn-ghost:hover{background:rgba(255,255,255,.05);color:var(--w)}
 .btn-sm{padding:.35rem .85rem;font-size:.65rem}
+/* DISCORD PROFILE */
+.discord-profile-btn{display:flex;align-items:center;gap:.5rem;background:rgba(88,101,242,.15);border:1px solid rgba(88,101,242,.35);border-radius:20px;padding:.3rem .75rem .3rem .3rem;cursor:pointer;transition:all .25s;text-decoration:none;color:var(--w);font-size:.72rem;font-weight:600}
+.discord-profile-btn:hover{background:rgba(88,101,242,.28);border-color:rgba(88,101,242,.6)}
+.discord-profile-av{width:26px;height:26px;border-radius:50%;object-fit:cover;background:rgba(88,101,242,.4)}
+.discord-profile-av-placeholder{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#5865F2,#7289DA);display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#fff;flex-shrink:0}
+.btn-discord-login{background:#5865F2;color:#fff;border:none;padding:.45rem 1.1rem;border-radius:3px;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .25s;font-family:var(--fb);display:inline-flex;align-items:center;gap:.4rem}
+.btn-discord-login:hover{background:#4752C4;transform:translateY(-1px)}
+/* WL LOGIN GATE */
+.wl-login-gate{background:var(--d3);border:1px solid rgba(88,101,242,.25);border-radius:12px;padding:2.5rem;text-align:center;display:none}
+.wl-login-gate.show{display:block}
+.wl-login-gate h3{font-family:var(--fd);font-size:1.6rem;font-weight:800;margin-bottom:.65rem}
+.wl-login-gate p{color:rgba(255,255,255,.42);font-size:.85rem;line-height:1.7;margin-bottom:1.5rem;max-width:400px;margin-left:auto;margin-right:auto}
+.wl-already-notice{background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.25);border-radius:8px;padding:1.25rem 1.5rem;text-align:center;display:none;margin-top:1rem}
+.wl-already-notice.show{display:block}
+.wl-already-notice h4{color:var(--gold-l);font-family:var(--fh);font-size:1rem;letter-spacing:.5px;text-transform:uppercase;margin-bottom:.4rem}
+.wl-already-notice p{color:rgba(255,255,255,.45);font-size:.8rem;line-height:1.65}
+/* Discord profile dropdown */
+.discord-user-menu{position:relative;display:inline-block}
+.discord-user-dropdown{position:absolute;top:calc(100% + 8px);right:0;background:var(--d3);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.5rem;min-width:160px;display:none;z-index:1001;box-shadow:0 8px 32px rgba(0,0,0,.5)}
+.discord-user-menu:hover .discord-user-dropdown{display:block}
+.discord-dd-info{padding:.5rem .65rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:.35rem}
+.discord-dd-uname{font-size:.78rem;font-weight:700;color:var(--w)}
+.discord-dd-disc{font-size:.65rem;color:rgba(255,255,255,.28)}
+.discord-dd-btn{width:100%;background:none;border:none;color:rgba(255,255,255,.55);font-size:.72rem;padding:.4rem .65rem;text-align:left;cursor:pointer;border-radius:4px;font-family:var(--fb);transition:background .2s}
+.discord-dd-btn:hover{background:rgba(255,255,255,.06);color:var(--w)}
 .btn-danger{background:var(--cr-d);color:var(--w);border:none;padding:.4rem 1rem;border-radius:3px;cursor:pointer;font-weight:700;letter-spacing:1px;text-transform:uppercase;font-size:.68rem;transition:background .2s;font-family:var(--fb)}
 .btn-danger:hover{background:var(--cr)}
 
@@ -290,8 +315,9 @@ footer::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;b
 .footer-links a{font-size:.75rem;color:rgba(255,255,255,.3);text-decoration:none;cursor:pointer;transition:color .2s;font-family:var(--fb)}
 .footer-links a:hover{color:var(--w)}
 .footer-socials{display:flex;gap:.55rem;flex-wrap:wrap}
-.social-btn{width:36px;height:36px;border-radius:6px;background:var(--d4);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:.95rem;text-decoration:none}
-.social-btn:hover{border-color:var(--cr);background:rgba(196,30,58,.12);transform:translateY(-2px)}
+.social-btn{width:38px;height:38px;border-radius:8px;background:var(--d4);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;text-decoration:none;color:rgba(255,255,255,.45)}
+.social-btn svg{width:18px;height:18px;fill:currentColor;flex-shrink:0}
+.social-btn:hover{border-color:var(--cr);background:rgba(196,30,58,.12);transform:translateY(-2px);color:var(--w)}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-copy{font-size:.68rem;color:rgba(255,255,255,.18)}
 
@@ -412,7 +438,19 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
 .app-answer-q{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:.5px;margin-bottom:.4rem;text-transform:uppercase;font-weight:700}
 .app-answer-a{font-size:.83rem;color:rgba(255,255,255,.75);line-height:1.6}
 
-/* RESPONSIVE */
+/* Feature card editor */
+.feat-card-editor{background:var(--d4);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:1rem 1.1rem;margin-bottom:.7rem;position:relative;transition:border-color .2s}
+.feat-card-editor:hover{border-color:rgba(196,30,58,.2)}
+.feat-card-editor-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.85rem}
+.feat-card-num{font-size:.6rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cr)}
+.feat-icon-preview{font-size:1.4rem;width:36px;height:36px;background:rgba(196,30,58,.08);border-radius:6px;display:flex;align-items:center;justify-content:center;margin-bottom:.5rem}
+/* Social manager */
+.social-manager-row{display:flex;align-items:center;gap:.75rem;padding:.7rem .9rem;background:var(--d4);border:1px solid rgba(255,255,255,.07);border-radius:6px;margin-bottom:.55rem}
+.social-manager-icon{width:34px;height:34px;border-radius:6px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(255,255,255,.5)}
+.social-manager-icon svg{width:16px;height:16px;fill:currentColor}
+.social-manager-label{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.5);width:80px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
+.social-manager-input{flex:1;background:var(--d3);border:1px solid rgba(255,255,255,.09);border-radius:4px;padding:.45rem .75rem;color:var(--w);font-size:.8rem;font-family:var(--fb);outline:none;transition:border-color .2s}
+.social-manager-input:focus{border-color:var(--cr)}
 @media(max-width:1024px){
   .htp-inner{gap:3rem}.rules-layout{grid-template-columns:200px 1fr}
   .nav-links{gap:1.25rem}
@@ -439,6 +477,10 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
   #admin-panel.show{display:block}.admin-main{width:100%}.admin-body{padding:1.1rem}
 }
 </style>
+<!-- Firebase SDK v9 compat -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 <div class="cursor-glow" id="cursor-glow"></div>
@@ -446,34 +488,53 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
 <!-- NAV -->
 <nav id="main-nav">
   <div class="nav-inner">
-    <div class="nav-logo" onclick="showPage('home')">CRIMSON<span>CITY</span></div>
+    <div class="nav-logo" onclick="location.hash='#home'">CRIMSON<span>CITY</span></div>
     <div class="nav-links">
-      <a onclick="showPage('home')" id="nav-home" class="active">Início</a>
-      <a onclick="showPage('news')" id="nav-news">Notícias</a>
-      <a onclick="showPage('store')" id="nav-store">Loja</a>
-      <a onclick="showPage('howtoplay')" id="nav-howtoplay">Como Jogar</a>
-      <a onclick="showPage('whitelist')" id="nav-whitelist">Allowlist</a>
-      <a onclick="showPage('rules')" id="nav-rules">Regras</a>
-      <a onclick="showPage('team')" id="nav-team">Equipe</a>
+      <a href="#home" id="nav-home" class="active">Início</a>
+      <a href="#news" id="nav-news">Notícias</a>
+      <a href="#store" id="nav-store">Loja</a>
+      <a href="#howtoplay" id="nav-howtoplay">Como Jogar</a>
+      <a href="#whitelist" id="nav-whitelist">Allowlist</a>
+      <a href="#rules" id="nav-rules">Regras</a>
+      <a href="#team" id="nav-team">Equipe</a>
     </div>
     <div class="nav-right">
       <div class="players-badge"><span class="dot-pulse"></span><span id="nav-players">0 Jogadores</span></div>
+      <div id="nav-discord-area">
+        <button class="btn-discord-login btn-sm" onclick="doDiscordLogin()" id="btn-discord-nav">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+          Login Discord
+        </button>
+        <div class="discord-user-menu" id="nav-discord-user" style="display:none">
+          <button class="discord-profile-btn" id="nav-discord-profile-btn">
+            <div class="discord-profile-av-placeholder" id="nav-discord-av">👤</div>
+            <span id="nav-discord-name">Usuário</span>
+          </button>
+          <div class="discord-user-dropdown">
+            <div class="discord-dd-info">
+              <div class="discord-dd-uname" id="dd-discord-uname">-</div>
+              <div class="discord-dd-disc" id="dd-discord-disc"></div>
+            </div>
+            <button class="discord-dd-btn" onclick="doDiscordLogout()">🚪 Sair do Discord</button>
+          </div>
+        </div>
+      </div>
       <button class="btn btn-outline btn-sm" onclick="showAdminLogin()">Admin</button>
-      <button class="btn btn-primary btn-sm" onclick="showPage('whitelist')">Fazer WL</button>
+      <a href="#whitelist" class="btn btn-primary btn-sm">Fazer WL</a>
       <button class="hamburger" id="hamburger" onclick="toggleMobile()"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 <div class="mobile-menu" id="mobile-menu">
-  <a onclick="showPage('home');closeMobile()">🏠 Início</a>
-  <a onclick="showPage('news');closeMobile()">📰 Notícias</a>
-  <a onclick="showPage('store');closeMobile()">🛍️ Loja</a>
-  <a onclick="showPage('howtoplay');closeMobile()">🎮 Como Jogar</a>
-  <a onclick="showPage('whitelist');closeMobile()">📝 Allowlist</a>
-  <a onclick="showPage('rules');closeMobile()">📋 Regras</a>
-  <a onclick="showPage('team');closeMobile()">👥 Equipe</a>
+  <a href="#home" onclick="closeMobile()">🏠 Início</a>
+  <a href="#news" onclick="closeMobile()">📰 Notícias</a>
+  <a href="#store" onclick="closeMobile()">🛍️ Loja</a>
+  <a href="#howtoplay" onclick="closeMobile()">🎮 Como Jogar</a>
+  <a href="#whitelist" onclick="closeMobile()">📝 Allowlist</a>
+  <a href="#rules" onclick="closeMobile()">📋 Regras</a>
+  <a href="#team" onclick="closeMobile()">👥 Equipe</a>
   <div class="mobile-btns">
-    <button class="btn btn-primary btn-sm" onclick="showPage('whitelist');closeMobile()">Fazer WL</button>
+    <a href="#whitelist" class="btn btn-primary btn-sm" onclick="closeMobile()">Fazer WL</a>
     <button class="btn btn-outline btn-sm" onclick="showAdminLogin();closeMobile()">Admin</button>
   </div>
 </div>
@@ -486,15 +547,15 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
     <div class="hero-grid"></div>
     <div class="hero-particles" id="hero-particles"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">🇧🇷 Experiência de Roleplay Americana</div>
+      <div class="hero-eyebrow"><span id="hero-eyebrow-text">🇧🇷 Experiência de Roleplay Americana</span></div>
       <h1 class="hero-title">
         <span class="word line1" id="hero-line1" data-text="CRIMSON">CRIMSON</span>
         <span class="word line2" id="hero-line2">CITY</span>
       </h1>
-      <p class="hero-sub">Construa sua história do zero em uma cidade onde cada decisão molda a sua identidade. Seja quem você quiser e deixe sua marca na cidade mais perigosa do país.</p>
+      <p class="hero-sub" id="hero-sub-text">Construa sua história do zero em uma cidade onde cada decisão molda a sua identidade. Seja quem você quiser e deixe sua marca na cidade mais perigosa do país.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary" style="font-size:.8rem;padding:.85rem 2rem" onclick="showPage('whitelist')">✦ Fazer Allowlist</button>
-        <button class="btn btn-gold" style="font-size:.8rem;padding:.85rem 2rem" onclick="openDiscord()">💬 Entrar no Discord</button>
+        <a href="#whitelist" class="btn btn-primary" id="hero-btn-wl" style="font-size:.8rem;padding:.85rem 2rem">✦ Fazer Allowlist</a>
+        <button class="btn btn-gold" id="hero-btn-discord" style="font-size:.8rem;padding:.85rem 2rem" onclick="openDiscord()">💬 Entrar no Discord</button>
       </div>
     </div>
     <div class="hero-scroll"><div class="scroll-line"></div>SCROLL</div>
@@ -516,7 +577,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
         <h2 class="sec-title">Tudo que você <span>precisa</span></h2>
         <div class="sec-line"></div>
       </div>
-      <div class="features-grid">
+      <div class="features-grid" id="features-grid">
         <div class="feature-card reveal"><div class="feature-icon">🌆</div><div class="feature-title">Mundo Vivo</div><div class="feature-text">Cidade dinâmica que respira e evolui. Cada esquina guarda uma história.</div></div>
         <div class="feature-card reveal" style="transition-delay:.08s"><div class="feature-icon">⚖️</div><div class="feature-title">RP Profundo</div><div class="feature-text">Ambiente sério com admins dedicados e regras rigorosas para imersão total.</div></div>
         <div class="feature-card reveal" style="transition-delay:.16s"><div class="feature-icon">🏢</div><div class="feature-title">Economia Real</div><div class="feature-text">Abra negócios, controle territórios ou suba na vida corporativa.</div></div>
@@ -532,28 +593,23 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
       <div class="footer-top">
         <div>
           <div class="footer-logo">CRIMSON<span>CITY</span></div>
-          <p class="footer-tagline">Servidor independente de RP no MTA. GTA e marcas pertencem à Take-Two Interactive.</p>
+          <p class="footer-tagline" id="footer-tagline">Servidor independente de RP no MTA. GTA e marcas pertencem à Take-Two Interactive.</p>
         </div>
         <div class="footer-links">
           <div class="footer-links-title">Navegação</div>
-          <a onclick="showPage('home')">Início</a>
-          <a onclick="showPage('news')">Notícias</a>
-          <a onclick="showPage('store')">Loja</a>
-          <a onclick="showPage('rules')">Regras</a>
-          <a onclick="showPage('team')">Equipe</a>
+          <a href="#home">Início</a>
+          <a href="#news">Notícias</a>
+          <a href="#store">Loja</a>
+          <a href="#rules">Regras</a>
+          <a href="#team">Equipe</a>
         </div>
         <div>
           <div class="footer-links-title" style="margin-bottom:.7rem">Redes Sociais</div>
-          <div class="footer-socials">
-            <a class="social-btn" onclick="openDiscord()" title="Discord">💬</a>
-            <a class="social-btn" title="YouTube">▶</a>
-            <a class="social-btn" title="Instagram">📷</a>
-            <a class="social-btn" title="TikTok">♪</a>
-          </div>
+          <div class="footer-socials" id="footer-socials-wrap"></div>
         </div>
       </div>
       <div class="footer-bottom">
-        <div class="footer-copy">© 2026 Crimson City RP. Todos os direitos reservados.</div>
+        <div class="footer-copy footer-copy-main">© 2026 Crimson City RP. Todos os direitos reservados.</div>
         <div class="footer-copy">Feito com ❤ pela Equipe Crimson City</div>
       </div>
     </div>
@@ -576,7 +632,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
 <!-- Post único -->
 <div id="page-newspost" class="page">
   <div class="page-wrap" style="max-width:860px">
-    <div class="back-link" onclick="showPage('news')">← Voltar às Notícias</div>
+    <a href="#news" class="back-link">← Voltar às Notícias</a>
     <div id="post-content-area"></div>
   </div>
   <footer><div class="footer-inner"><div class="footer-bottom"><div class="footer-copy">© 2026 Crimson City RP.</div></div></div></footer>
@@ -607,7 +663,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
         <p class="htp-desc">Siga os passos abaixo para se conectar ao servidor e criar sua própria história. O único limite é a sua criatividade!</p>
         <div class="htp-steps">
           <div class="step-item"><div class="step-num">01</div><div class="step-title">Instale GTA & MTA</div><div class="step-text">Você precisa do <strong>GTA: San Andreas</strong> e <strong>MTA: San Andreas</strong> instalados no computador.</div><div class="step-btns"><button class="btn btn-dark btn-sm" onclick="window.open('https://store.steampowered.com/app/12120','_blank')">⬇ GTA</button><button class="btn btn-dark btn-sm" onclick="window.open('https://multitheftauto.com','_blank')">⬇ MTA</button></div></div>
-          <div class="step-item"><div class="step-num">02</div><div class="step-title">Faça o Allowlist</div><div class="step-text">Responda ao questionário para garantir seu acesso à <strong style="color:var(--cr)">Crimson City</strong>.</div><div class="step-btns"><button class="btn btn-primary btn-sm" onclick="showPage('whitelist')">✦ Fazer Allowlist</button></div></div>
+          <div class="step-item"><div class="step-num">02</div><div class="step-title">Faça o Allowlist</div><div class="step-text">Responda ao questionário para garantir seu acesso à <strong style="color:var(--cr)">Crimson City</strong>.</div><div class="step-btns"><a href="#whitelist" class="btn btn-primary btn-sm">✦ Fazer Allowlist</a></div></div>
           <div class="step-item"><div class="step-num">03</div><div class="step-title">Entre no Servidor</div><div class="step-text">Clique para abrir o <strong style="color:var(--cr)">MTA</strong> direto no servidor e faça login.</div><div class="step-btns"><button class="btn btn-gold btn-sm">↗ Abrir MTA</button></div></div>
         </div>
       </div>
@@ -634,6 +690,25 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
       <h2>Allowlist <span>Crimson City</span></h2>
       <p>Responda às perguntas do nosso assistente. Após aprovação você receberá acesso ao servidor.</p>
     </div>
+
+    <!-- Login gate: shown when not logged in Discord -->
+    <div class="wl-login-gate" id="wl-login-gate">
+      <div style="font-size:3rem;margin-bottom:1rem">🔐</div>
+      <h3>Login <span style="color:#5865F2">Discord</span> Necessário</h3>
+      <p>Para fazer o Allowlist você precisa estar conectado com sua conta do Discord. Isso garante uma candidatura por conta e facilita o processo de aprovação.</p>
+      <button class="btn-discord-login" onclick="doDiscordLogin()" style="margin:0 auto;font-size:.78rem;padding:.65rem 1.6rem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>
+        Entrar com Discord
+      </button>
+    </div>
+
+    <!-- Already submitted notice -->
+    <div class="wl-already-notice" id="wl-already-notice">
+      <h4 id="wl-notice-title">⏳ Candidatura em Análise</h4>
+      <p id="wl-notice-msg">Você já possui uma candidatura em análise. Aguarde o resultado antes de enviar uma nova. Fique atento ao Discord para receber a notificação!</p>
+      <button class="btn btn-gold btn-sm" onclick="openDiscord()" style="margin-top:1rem">💬 Acompanhar no Discord</button>
+    </div>
+
     <div class="chat-window" id="chat-window">
       <div class="chat-progress" id="chat-progress" style="display:none">
         <span class="prog-text" id="prog-text">0 de 0</span>
@@ -647,9 +722,9 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
       <div class="wl-success" id="wl-success">
         <div class="wl-success-icon">✅</div>
         <h3>Candidatura Enviada!</h3>
-        <p>Sua candidatura foi registrada. Nossa equipe irá analisá-la em breve. Fique de olho no nosso Discord!</p>
+        <p>Sua candidatura foi registrada. Nossa equipe irá analisá-la em breve. Você receberá uma notificação no Discord!</p>
         <button class="btn btn-gold" onclick="openDiscord()">💬 Entrar no Discord</button>
-        <button class="btn btn-ghost btn-sm" onclick="showPage('home')" style="margin-top:.3rem">← Voltar ao início</button>
+        <a href="#home" class="btn btn-ghost btn-sm" style="margin-top:.3rem">← Voltar ao início</a>
       </div>
       <div class="chat-input-area" id="chat-input-area">
         <textarea class="chat-input" id="chat-input" placeholder="Digite sua resposta..." rows="1" onkeydown="handleChatKey(event)" oninput="autoResizeTA(this)"></textarea>
@@ -699,9 +774,26 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
     <div class="login-logo">CRIMSON<span>CITY</span></div>
     <div class="login-sub">Painel Administrativo</div>
     <div class="login-err" id="login-err">Credenciais incorretas. Tente novamente.</div>
-    <div class="field"><label>Usuário</label><input type="text" id="login-user" placeholder="admin"></div>
-    <div class="field"><label>Senha</label><input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <button class="btn btn-primary" style="width:100%;justify-content:center;padding:.75rem" onclick="doLogin()">Entrar</button>
+    <!-- LOGIN NORMAL -->
+    <div id="login-normal-form">
+      <div class="field"><label>Usuário</label><input type="text" id="login-user" placeholder="admin"></div>
+      <div class="field"><label>Senha</label><input type="password" id="login-pass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:.75rem" onclick="doLogin()">Entrar</button>
+      <div style="text-align:center;margin-top:.85rem">
+        <button onclick="toggleCodeLogin(true)" style="background:none;border:none;color:rgba(255,255,255,.35);font-size:.68rem;cursor:pointer;text-decoration:underline;font-family:var(--fb)">🔑 Entrar com Código de Acesso</button>
+      </div>
+    </div>
+    <!-- LOGIN COM CÓDIGO -->
+    <div id="login-code-form" style="display:none">
+      <div class="field">
+        <label>Cole seu Código de Acesso</label>
+        <textarea id="login-code-input" rows="4" style="width:100%;background:var(--d4);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:.65rem .9rem;color:var(--w);font-size:.75rem;font-family:monospace;outline:none;resize:none;transition:border-color .2s" placeholder="Cole aqui o código enviado pelo administrador..." onkeydown="if(event.key==='Enter'&&event.ctrlKey)doLoginCode()"></textarea>
+      </div>
+      <button class="btn btn-primary" style="width:100%;justify-content:center;padding:.75rem" onclick="doLoginCode()">Entrar com Código</button>
+      <div style="text-align:center;margin-top:.85rem">
+        <button onclick="toggleCodeLogin(false)" style="background:none;border:none;color:rgba(255,255,255,.35);font-size:.68rem;cursor:pointer;text-decoration:underline;font-family:var(--fb)">← Voltar ao login normal</button>
+      </div>
+    </div>
     <button class="btn btn-outline" style="width:100%;justify-content:center;padding:.55rem;margin-top:.65rem;font-size:.68rem" onclick="hideAdminLogin()">← Voltar ao site</button>
   </div>
 </div>
@@ -894,7 +986,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
         <div class="sub-panel" id="wl-candidaturas">
           <div class="table-wrap">
             <div class="table-head"><h3>Candidaturas</h3><span id="wl-apps-count" style="font-size:.7rem;color:rgba(255,255,255,.25)"></span></div>
-            <table><thead><tr><th>#</th><th>Data</th><th>1ª Resposta</th><th>Status</th><th>Ações</th></tr></thead>
+            <table><thead><tr><th>#</th><th>Data</th><th>1ª Resposta</th><th>Discord</th><th>Status</th><th>Ações</th></tr></thead>
             <tbody id="wl-apps-table"></tbody></table>
           </div>
         </div>
@@ -925,7 +1017,7 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
           <div style="display:flex;gap:.7rem;margin-top:.5rem"><button class="btn btn-primary btn-sm" onclick="saveUser()">💾 Salvar</button><button class="btn btn-outline btn-sm" onclick="clearUserForm()">✕ Limpar</button></div>
         </div>
         <div class="table-wrap"><div class="table-head"><h3>Usuários</h3><span id="users-count" style="font-size:.7rem;color:rgba(255,255,255,.25)"></span></div>
-          <table><thead><tr><th>Usuário</th><th>Email</th><th>Cargo</th><th>Status</th><th>Ações</th></tr></thead><tbody id="users-table"></tbody></table>
+          <table><thead><tr><th>Usuário</th><th>Email</th><th>Cargo</th><th>Status</th><th>Código</th><th>Ações</th></tr></thead><tbody id="users-table"></tbody></table>
         </div>
       </div>
 
@@ -960,17 +1052,130 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
 
       <!-- CONFIGURAÇÕES -->
       <div class="admin-section" id="asec-settings">
-        <div class="form-card"><h3>⚙️ Configurações Gerais</h3>
-          <div class="form-row"><div class="field"><label>Nome do Servidor</label><input type="text" id="cfg-name" value="Crimson City RP"></div><div class="field"><label>Link do Discord</label><input type="text" id="cfg-discord" placeholder="https://discord.gg/..."></div></div>
+
+        <div class="form-card"><h3>⚙️ Geral</h3>
+          <div class="form-row"><div class="field"><label>Nome do Servidor</label><input type="text" id="cfg-name" placeholder="Crimson City RP"></div><div class="field"><label>Link do Discord (padrão)</label><input type="text" id="cfg-discord" placeholder="https://discord.gg/..."></div></div>
           <div class="field"><label>Contagem de Jogadores</label><input type="number" id="cfg-players" value="0" min="0"></div>
-          <div class="field"><label>Mensagem de Boas-vindas do Bot WL</label><textarea id="cfg-wl-welcome" rows="3" placeholder="Olá! Bem-vindo ao processo de allowlist..."></textarea></div>
+          <div class="field"><label>Mensagem de Boas-vindas do Bot WL</label><textarea id="cfg-wl-welcome" rows="3" placeholder="Olá! Bem-vindo..."></textarea></div>
           <div class="field"><label>Mensagem Final do Bot WL</label><textarea id="cfg-wl-end" rows="2" placeholder="Perfeito! Respostas registradas..."></textarea></div>
-          <button class="btn btn-primary btn-sm" onclick="saveSettings()" style="margin-top:.5rem">💾 Salvar Configurações</button>
+          <button class="btn btn-primary btn-sm" onclick="saveSettings()" style="margin-top:.5rem">💾 Salvar</button>
         </div>
+
+        <div class="form-card"><h3>🤖 Integração Discord</h3>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-bottom:1.1rem">Configure o login via Discord, notificações de WL e cargo automático via N8N/Make.</p>
+
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem">🔑 OAuth2 — Login com Discord</div>
+          <div class="field"><label>Discord Client ID</label><input type="text" id="cfg-discord-client-id" placeholder="Ex: 1234567890123456789"><div style="font-size:.65rem;color:rgba(255,255,255,.2);margin-top:.3rem">discord.com/developers → Seu App → OAuth2 → Client ID</div></div>
+          <div class="field"><label>Discord Redirect URI</label><input type="text" id="cfg-discord-redirect-uri" placeholder="https://seusite.com"><div style="font-size:.65rem;color:rgba(255,255,255,.2);margin-top:.3rem">URL exata do seu site. Cadastre também em OAuth2 → Redirects no portal de devs.</div></div>
+
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin:.75rem 0 .75rem">📢 Webhook — Notificações no Canal</div>
+          <div class="field"><label>Webhook URL do Canal de Notificações</label><input type="text" id="cfg-discord-webhook" placeholder="https://discord.com/api/webhooks/..."><div style="font-size:.65rem;color:rgba(255,255,255,.2);margin-top:.3rem">Canal Discord → Editar Canal → Integrações → Webhooks → Novo Webhook → Copiar URL.</div></div>
+
+          <div style="font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin:.75rem 0 .75rem">🎖️ N8N / Make — Cargo Automático ao Aprovar</div>
+          <div class="field"><label>Webhook N8N/Make — Dar Cargo (Aprovado)</label><input type="text" id="cfg-n8n-role-webhook" placeholder="https://n8n.seusite.com/webhook/..."><div style="font-size:.65rem;color:rgba(255,255,255,.2);margin-top:.3rem">Este webhook é chamado automaticamente quando uma WL é aprovada, enviando o Discord ID do usuário para o N8N dar o cargo.</div></div>
+          <div class="field"><label>ID do Cargo a Conceder (Role ID)</label><input type="text" id="cfg-discord-role-id" placeholder="Ex: 1234567890123456789"><div style="font-size:.65rem;color:rgba(255,255,255,.2);margin-top:.3rem">Discord → Configurações do Servidor → Cargos → clique direito no cargo → Copiar ID (ative Modo Desenvolvedor em Configurações → Avançado).</div></div>
+          <div class="field"><label>ID do Servidor (Guild ID)</label><input type="text" id="cfg-discord-guild-id" placeholder="Ex: 9876543210987654321"><div style="font-size:.65rem;color:rgba(255,255,255,.2);margin-top:.3rem">Clique direito no servidor → Copiar ID (com Modo Desenvolvedor ativado).</div></div>
+
+          <div style="background:rgba(88,101,242,.08);border:1px solid rgba(88,101,242,.2);border-radius:6px;padding:.9rem 1rem;margin-bottom:1rem;font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.8">
+            <strong style="color:rgba(255,255,255,.75)">📋 Como configurar o N8N para dar cargo:</strong><br>
+            1. Crie um workflow no N8N com trigger <strong>Webhook</strong><br>
+            2. Adicione o nó <strong>HTTP Request</strong> → método <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px">PUT</code><br>
+            3. URL: <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px">https://discord.com/api/guilds/&#123;&#123;guildId&#125;&#125;/members/&#123;&#123;discordId&#125;&#125;/roles/&#123;&#123;roleId&#125;&#125;</code><br>
+            4. Header: <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px">Authorization: Bot SEU_BOT_TOKEN</code><br>
+            5. Cole a URL do webhook do N8N no campo acima<br>
+            <br>
+            O site envia automaticamente: <code style="background:rgba(255,255,255,.08);padding:1px 5px;border-radius:3px">&#123; discordId, guildId, roleId, username &#125;</code>
+          </div>
+
+          <div style="background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.2);border-radius:6px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.7">
+            <strong style="color:rgba(201,168,76,.8)">⚡ Make (Integromat):</strong> Crie um cenário → trigger <strong>Custom Webhook</strong> → módulo <strong>HTTP → Make a request</strong> com os mesmos parâmetros acima. O payload recebido terá os campos necessários prontos.
+          </div>
+
+          <button class="btn btn-primary btn-sm" onclick="saveSettings()">💾 Salvar Integração Discord</button>
+        </div>
+
+        <div class="form-card"><h3>🌐 Redes Sociais</h3>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-bottom:1.1rem">Cole a URL completa de cada rede. Deixe em branco para ocultar o ícone no rodapé.</p>
+          <div class="social-manager-row">
+            <div class="social-manager-icon" style="color:#5865F2">
+              <svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.74 19.74 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            </div>
+            <span class="social-manager-label">Discord</span>
+            <input class="social-manager-input" type="text" id="cfg-social-discord" placeholder="https://discord.gg/...">
+          </div>
+          <div class="social-manager-row">
+            <div class="social-manager-icon" style="color:#FF0000">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </div>
+            <span class="social-manager-label">YouTube</span>
+            <input class="social-manager-input" type="text" id="cfg-social-youtube" placeholder="https://youtube.com/@...">
+          </div>
+          <div class="social-manager-row">
+            <div class="social-manager-icon" style="color:#E1306C">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </div>
+            <span class="social-manager-label">Instagram</span>
+            <input class="social-manager-input" type="text" id="cfg-social-instagram" placeholder="https://instagram.com/...">
+          </div>
+          <div class="social-manager-row">
+            <div class="social-manager-icon" style="color:#fff">
+              <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.78a4.86 4.86 0 0 1-1.01-.09z"/></svg>
+            </div>
+            <span class="social-manager-label">TikTok</span>
+            <input class="social-manager-input" type="text" id="cfg-social-tiktok" placeholder="https://tiktok.com/@...">
+          </div>
+          <div class="social-manager-row">
+            <div class="social-manager-icon" style="color:#1DA1F2">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </div>
+            <span class="social-manager-label">X / Twitter</span>
+            <input class="social-manager-input" type="text" id="cfg-social-twitter" placeholder="https://x.com/...">
+          </div>
+          <div class="social-manager-row">
+            <div class="social-manager-icon" style="color:#0077B5">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <span class="social-manager-label">LinkedIn</span>
+            <input class="social-manager-input" type="text" id="cfg-social-linkedin" placeholder="https://linkedin.com/...">
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="saveSettings()" style="margin-top:.85rem">💾 Salvar Redes Sociais</button>
+        </div>
+
+        <div class="form-card"><h3>🖊️ Textos da Hero</h3>
+          <div class="field"><label>Eyebrow (texto acima do título)</label><input type="text" id="cfg-hero-eyebrow" placeholder="🇧🇷 Experiência de Roleplay Americana"></div>
+          <div class="form-row">
+            <div class="field"><label>Título — Linha 1</label><input type="text" id="cfg-hero-line1" placeholder="CRIMSON" maxlength="20"></div>
+            <div class="field"><label>Título — Linha 2 (cor destaque)</label><input type="text" id="cfg-hero-line2" placeholder="CITY" maxlength="20"></div>
+          </div>
+          <div class="field"><label>Subtítulo</label><textarea id="cfg-hero-sub" rows="3" placeholder="Construa sua história do zero..."></textarea></div>
+          <div class="form-row">
+            <div class="field"><label>Texto botão principal (Allowlist)</label><input type="text" id="cfg-hero-btn-wl" placeholder="✦ Fazer Allowlist"></div>
+            <div class="field"><label>Texto botão Discord</label><input type="text" id="cfg-hero-btn-discord" placeholder="💬 Entrar no Discord"></div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="saveSettings()" style="margin-top:.5rem">💾 Salvar Hero</button>
+        </div>
+
+        <div class="form-card">
+          <h3 style="display:flex;align-items:center;justify-content:space-between">
+            ✨ Cards de Destaque
+            <button class="btn btn-primary btn-sm" onclick="addFeatureCard()">+ Adicionar Card</button>
+          </h3>
+          <p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-bottom:1.1rem">Aparece na seção de features da home. Sem limite de cards — adicione, edite ou remova à vontade.</p>
+          <div id="feat-rows-container"></div>
+          <button class="btn btn-primary btn-sm" onclick="saveSettings()">💾 Salvar Cards</button>
+        </div>
+
+        <div class="form-card"><h3>📄 Rodapé</h3>
+          <div class="field"><label>Tagline (frase abaixo do logo)</label><input type="text" id="cfg-footer-tagline" placeholder="Servidor independente de RP no MTA..."></div>
+          <div class="field"><label>Texto de Copyright</label><input type="text" id="cfg-footer-copy" placeholder="© 2026 Crimson City RP..."></div>
+          <button class="btn btn-primary btn-sm" onclick="saveSettings()" style="margin-top:.5rem">💾 Salvar Rodapé</button>
+        </div>
+
         <div class="form-card"><h3>🔐 Alterar Senha</h3>
           <div class="form-row"><div class="field"><label>Nova Senha</label><input type="password" id="new-pass" placeholder="Nova senha"></div><div class="field"><label>Confirmar</label><input type="password" id="conf-pass" placeholder="Confirmar"></div></div>
           <button class="btn btn-primary btn-sm" onclick="changePass()" style="margin-top:.5rem">🔒 Alterar</button>
         </div>
+
         <div class="form-card"><h3>🗑️ Zona de Perigo</h3>
           <p style="font-size:.78rem;color:rgba(255,255,255,.28);margin-bottom:1rem">Ações irreversíveis.</p>
           <div style="display:flex;gap:.7rem;flex-wrap:wrap">
@@ -1010,37 +1215,54 @@ tr:last-child td{border-bottom:none}tr:hover td{background:rgba(255,255,255,.015
 <div class="toast" id="toast"></div>
 
 <script>
-// ═══ STATE ═══
-var S={
-  users:[],team:[],rules:[],
-  updates:[
-    {id:1,tag:'🔴 NOVIDADE',title:'Crimson City está no AR!',text:'Servidores abertos. Escreva sua história nas ruas.',date:'Maio 2026'},
-    {id:2,tag:'🚔 POLICIAL',title:'Facção LSPD Aberta',text:'Candidaturas para o LSPD abertas. Proteja a cidade.',date:'Maio 2026'},
-    {id:3,tag:'🏙️ MUNDO',title:'Novos Distritos Liberados',text:'Centro, Porto e Zona Leste com novos negócios.',date:'Maio 2026'}
-  ],
-  posts:[
-    {id:1,title:'Bem-vindo à Crimson City!',excerpt:'O servidor mais imersivo de roleplay acabou de abrir as portas.',content:'<p>É com grande prazer que anunciamos a abertura oficial dos servidores da <strong>Crimson City</strong>!</p><p>Após meses de desenvolvimento e testes, estamos prontos para receber jogadores apaixonados por roleplay. Nossa cidade foi construída com atenção a cada detalhe para proporcionar a melhor experiência.</p><p>Venha escrever a sua história!</p>',cat:'Anúncio',image:'',date:'25 Mai 2026',published:true},
-    {id:2,title:'Sistema de Facções Atualizado',excerpt:'Novidades no sistema de facções com hierarquia e cargos personalizados.',content:'<p>O sistema de facções da Crimson City recebeu uma atualização completa.</p><p>Agora é possível criar <strong>hierarquias personalizadas</strong>, definir cargos e permissões, e gerenciar território de forma mais estratégica.</p>',cat:'Atualização',image:'',date:'20 Mai 2026',published:true}
-  ],
-  products:[
-    {id:1,name:'VIP Gold',desc:'Acesso a empregos exclusivos, veículos VIP e área privada no Discord.',price:'R$ 29,90',cat:'VIP',image:'',badge:'POPULAR',available:true,buyLink:''},
-    {id:2,name:'VIP Diamond',desc:'Todos os benefícios Gold + skin exclusiva, casa premium e tag especial.',price:'R$ 59,90',cat:'VIP',image:'',badge:'',available:true,buyLink:''},
-    {id:3,name:'Kit Policial',desc:'Uniforme exclusivo, viatura personalizada e arma especial.',price:'R$ 19,90',cat:'Items',image:'',badge:'NOVO',available:true,buyLink:''}
-  ],
-  wlQuestions:[
-    {id:1,text:'Qual é o seu nickname no MTA?',type:'text',required:true,options:[]},
-    {id:2,text:'Qual a sua idade?',type:'text',required:true,options:[]},
-    {id:3,text:'Você já jogou em algum servidor de RP? Qual?',type:'textarea',required:false,options:[]},
-    {id:4,text:'O que você entende por Roleplay?',type:'textarea',required:true,options:[]},
-    {id:5,text:'Por que quer jogar na Crimson City?',type:'textarea',required:true,options:[]},
-    {id:6,text:'Você concorda com as regras do servidor?',type:'choice',required:true,options:['Sim, li e concordo','Preciso ler as regras primeiro']}
-  ],
-  wlApps:[],
-  settings:{name:'Crimson City RP',discord:'',players:0,
+// ╔══════════════════════════════════════════════════════╗
+// ║         CRIMSON CITY — Firebase Integration          ║
+// ║  Substitua o bloco firebaseConfig com suas chaves    ║
+// ╚══════════════════════════════════════════════════════╝
+
+// 🔧 CONFIGURAÇÃO FIREBASE — cole suas credenciais aqui
+const firebaseConfig = {
+  apiKey:            "AIzaSyDwnJKzYH_OAdRIcqPiUqUIx0GGUz21XBI",
+  authDomain:        "crimsoncity.firebaseapp.com",
+  projectId:         "crimsoncity",
+  storageBucket:     "crimsoncity.firebasestorage.app",
+  messagingSenderId: "465727599190",
+  appId:             "1:465727599190:web:55a21407d53ec69e23c1f7",
+  measurementId:     "G-8KJGJEMYCQ"
+};
+firebase.initializeApp(firebaseConfig);
+const db   = firebase.firestore();
+const auth = firebase.auth();
+
+// ═══ ESTADO LOCAL ═══
+var S = {
+  users:[], team:[], rules:[],
+  updates:[], posts:[], products:[],
+  wlQuestions:[], wlApps:[],
+  settings:{
+    name:'Crimson City RP', discord:'', players:0,
     wlWelcome:'Olá! 👋 Bem-vindo(a) ao processo de **Allowlist** da Crimson City!\n\nSou o **Crimson Bot** e vou te guiar pelo questionário. Responda com sinceridade!',
-    wlEnd:'Perfeito! ✅ Todas as respostas foram registradas.\n\nNossa equipe irá analisar sua candidatura em breve. Acesse nosso **Discord** para acompanhar!'
+    wlEnd:'Perfeito! ✅ Todas as respostas foram registradas.\n\nNossa equipe irá analisar sua candidatura em breve. Acesse nosso **Discord** para acompanhar!',
+    discordClientId:'', discordRedirectUri:'', discordWebhook:'',
+    n8nRoleWebhook:'', discordRoleId:'', discordGuildId:'',
+    heroEyebrow:'🇧🇷 Experiência de Roleplay Americana',
+    heroLine1:'CRIMSON', heroLine2:'CITY',
+    heroSub:'Construa sua história do zero em uma cidade onde cada decisão molda a sua identidade. Seja quem você quiser e deixe sua marca na cidade mais perigosa do país.',
+    heroBtnWL:'✦ Fazer Allowlist', heroBtnDiscord:'💬 Entrar no Discord',
+    footerTagline:'Servidor independente de RP no MTA. GTA e marcas pertencem à Take-Two Interactive.',
+    footerCopy:'© 2026 Crimson City RP. Todos os direitos reservados.',
+    socialDiscord:'', socialYoutube:'', socialInstagram:'', socialTiktok:'',
+    socialTwitter:'', socialLinkedin:'',
+    features:[
+      {icon:'🌆',title:'Mundo Vivo',text:'Cidade dinâmica que respira e evolui. Cada esquina guarda uma história.'},
+      {icon:'⚖️',title:'RP Profundo',text:'Ambiente sério com admins dedicados e regras rigorosas para imersão total.'},
+      {icon:'🏢',title:'Economia Real',text:'Abra negócios, controle territórios ou suba na vida corporativa.'},
+      {icon:'🚔',title:'Lei & Crime',text:'Seja policial, criminoso ou advogado. Você decide sua história.'},
+      {icon:'🎭',title:'Facções Únicas',text:'Crie ou entre em facções com roteiros e conteúdo exclusivos.'},
+      {icon:'🛡️',title:'Anti-Cheat',text:'Sistemas avançados para garantir uma experiência justa para todos.'}
+    ]
   },
-  appearance:{wave:false,activeBg:'default'},
+  appearance:{wave:false, activeBg:'default'},
   backgrounds:[
     {id:'default',name:'Padrão',type:'gradient',css:'radial-gradient(ellipse 80% 60% at 50% 40%,rgba(196,30,58,0.15) 0%,transparent 65%)',del:false},
     {id:'midnight',name:'Meia-noite',type:'gradient',css:'linear-gradient(135deg,#000000,#0a0014)',del:false},
@@ -1051,30 +1273,179 @@ var S={
     {id:'black',name:'Preto',type:'color',css:'#000000',del:false},
     {id:'matrix',name:'Matrix',type:'gradient',css:'linear-gradient(135deg,#000800,#001200,#000500)',del:false}
   ],
-  adminUser:'admin',adminPass:'admin123',loggedIn:false,
-  nextId:{users:1,team:1,rules:1,updates:4,posts:3,products:4,wlQ:7,wlA:1,bg:100}
+  loggedIn:false, currentUser:null,
+  discordUser:null,  // { id, username, discriminator, avatar }
+  _customBgs:[]
 };
-
-function save(){try{localStorage.setItem('cc3',JSON.stringify(S))}catch(e){}}
-function load(){
-  try{
-    var d=localStorage.getItem('cc3');
-    if(d){
-      var p=JSON.parse(d);
-      var keys=['users','team','rules','updates','posts','products','wlQuestions','wlApps','settings','appearance','backgrounds','adminUser','adminPass','nextId'];
-      keys.forEach(function(k){if(p[k]!==undefined)S[k]=p[k];});
-    }
-  }catch(e){}
-}
-load();
 
 // ═══ HELPERS ═══
 function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function now(){return new Date().toLocaleString('pt-BR');}
 function getTime(){var d=new Date();return d.getHours().toString().padStart(2,'0')+':'+d.getMinutes().toString().padStart(2,'0');}
-function toast(msg,type){var t=document.getElementById('toast');t.textContent=(type==='ok'?'✅ ':'❌ ')+msg;t.className='toast '+(type==='ok'?'success':'')+' show';setTimeout(function(){t.classList.remove('show')},3000);}
+function toast(msg,type){var t=document.getElementById('toast');t.textContent=(type==='ok'?'✅ ':'❌ ')+msg;t.className='toast '+(type==='ok'?'success':'')+' show';setTimeout(function(){t.classList.remove('show')},3500);}
 function confirmAction(msg,cb){document.getElementById('confirm-msg').textContent=msg;document.getElementById('confirm-modal').classList.add('show');document.getElementById('confirm-yes').onclick=function(){closeModal('confirm-modal');cb();};}
 function closeModal(id){document.getElementById(id).classList.remove('show');}
+function qid(id){return String(id);}
+
+// ═══ FIRESTORE HELPERS ═══
+async function fsGetAll(col){
+  try{var snap=await db.collection(col).orderBy('_order','asc').get();return snap.docs.map(function(d){return Object.assign({_fid:d.id},d.data());});}
+  catch(e){try{var s2=await db.collection(col).get();return s2.docs.map(function(d){return Object.assign({_fid:d.id},d.data());});}catch(e2){return[];}}
+}
+async function fsSet(col,fid,data){
+  var ref=fid?db.collection(col).doc(fid):db.collection(col).doc();
+  var d=Object.assign({},data);delete d._fid;
+  await ref.set(d);return ref.id;
+}
+async function fsUpdate(col,fid,data){
+  var d=Object.assign({},data);delete d._fid;
+  await db.collection(col).doc(fid).update(d);
+}
+async function fsDelete(col,fid){await db.collection(col).doc(fid).delete();}
+async function fsGetDoc(col,docId){
+  try{var s=await db.collection(col).doc(docId).get();return s.exists?Object.assign({_fid:s.id},s.data()):null;}
+  catch(e){return null;}
+}
+
+// ═══ LOADING ═══
+function showLoading(msg){
+  var el=document.getElementById('fs-loading');
+  if(!el){
+    el=document.createElement('div');el.id='fs-loading';
+    el.style.cssText='position:fixed;inset:0;background:rgba(7,7,9,.97);z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.25rem';
+    el.innerHTML='<div id="fs-load-logo" style="font-family:\'Bebas Neue\',sans-serif;font-size:2.2rem;letter-spacing:4px">CRIMSON<span style="color:#C41E3A">CITY</span></div>'
+      +'<div id="fs-load-msg" style="font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;text-align:center;max-width:280px"></div>'
+      +'<div style="width:220px;height:2px;background:rgba(255,255,255,.07);border-radius:2px;overflow:hidden"><div id="fs-load-bar" style="height:100%;background:linear-gradient(90deg,#8B0000,#C41E3A);width:0;transition:width .4s;border-radius:2px"></div></div>';
+    document.body.appendChild(el);
+  }
+  el.style.display='flex';
+  document.getElementById('fs-load-msg').textContent=msg||'Carregando...';
+}
+function setLoadBar(p){var b=document.getElementById('fs-load-bar');if(b)b.style.width=p+'%';}
+function hideLoading(){
+  var el=document.getElementById('fs-loading');
+  if(el){el.style.transition='opacity .5s';el.style.opacity='0';setTimeout(function(){el.style.display='none';el.style.opacity='1';},500);}
+}
+
+// ═══ BOOTSTRAP (cria admin padrão na 1ª vez) ═══
+async function bootstrapIfNeeded(){
+  var meta=await fsGetDoc('_config','bootstrap');
+  if(meta&&meta.done)return;
+  try{
+    var cred=await auth.createUserWithEmailAndPassword('admin@cc.rp','admin123');
+    await fsSet('users',cred.user.uid,{username:'admin',email:'',role:'admin',status:'active',date:new Date().toLocaleDateString('pt-BR'),_order:0});
+    await auth.signOut();
+  }catch(e){/* já existe */}
+  // Perguntas padrão WL
+  if(!S.wlQuestions.length){
+    var dqs=[
+      {text:'Qual é o seu nickname no MTA?',type:'text',required:true,options:[],_order:0},
+      {text:'Qual a sua idade?',type:'text',required:true,options:[],_order:1},
+      {text:'Você já jogou em algum servidor de RP? Qual?',type:'textarea',required:false,options:[],_order:2},
+      {text:'O que você entende por Roleplay?',type:'textarea',required:true,options:[],_order:3},
+      {text:'Por que quer jogar na Crimson City?',type:'textarea',required:true,options:[],_order:4},
+      {text:'Você concorda com as regras do servidor?',type:'choice',required:true,options:['Sim, li e concordo','Preciso ler as regras primeiro'],_order:5}
+    ];
+    for(var i=0;i<dqs.length;i++){var fid=await fsSet('wlQuestions',null,dqs[i]);S.wlQuestions.push(Object.assign({_fid:fid},dqs[i]));}
+  }
+  // Updates padrão
+  if(!S.updates.length){
+    var dus=[
+      {tag:'🔴 NOVIDADE',title:'Crimson City está no AR!',text:'Servidores abertos. Escreva sua história nas ruas.',date:'Maio 2026',_order:0},
+      {tag:'🚔 POLICIAL',title:'Facção LSPD Aberta',text:'Candidaturas para o LSPD abertas. Proteja a cidade.',date:'Maio 2026',_order:1},
+      {tag:'🏙️ MUNDO',title:'Novos Distritos Liberados',text:'Centro, Porto e Zona Leste com novos negócios.',date:'Maio 2026',_order:2}
+    ];
+    for(var j=0;j<dus.length;j++){var ufid=await fsSet('updates',null,dus[j]);S.updates.push(Object.assign({_fid:ufid},dus[j]));}
+  }
+  await fsSet('_config','bootstrap',{done:true,ts:new Date().toISOString()});
+}
+
+// ═══ LOAD PRINCIPAL ═══
+async function loadAll(){
+  showLoading('Conectando ao Firebase...');
+  try{
+    setLoadBar(15);
+    var results=await Promise.all([
+      fsGetAll('posts'),fsGetAll('products'),fsGetAll('updates'),
+      fsGetAll('rules'),fsGetAll('team'),fsGetAll('wlQuestions'),
+      fsGetDoc('_config','settings'),fsGetDoc('_config','appearance'),
+      fsGetDoc('_config','backgrounds')
+    ]);
+    setLoadBar(65);
+    if(results[0].length)S.posts=results[0];
+    if(results[1].length)S.products=results[1];
+    if(results[2].length)S.updates=results[2];
+    if(results[3].length)S.rules=results[3];
+    if(results[4].length)S.team=results[4];
+    if(results[5].length)S.wlQuestions=results[5];
+    if(results[6]){var cfg=Object.assign({},results[6]);delete cfg._fid;S.settings=Object.assign(S.settings,cfg);}
+    if(results[7]){var app=Object.assign({},results[7]);delete app._fid;S.appearance=Object.assign(S.appearance,app);}
+    if(results[8]&&results[8].list)S._customBgs=results[8].list||[];
+    // Merge custom backgrounds
+    if(S._customBgs.length){S.backgrounds=S.backgrounds.filter(function(b){return!b.del;}).concat(S._customBgs);}
+    setLoadBar(85);
+    await bootstrapIfNeeded();
+    setLoadBar(100);
+    setTimeout(function(){
+      hideLoading();
+      if(S.appearance.wave)document.body.classList.add('wave-on');
+      applyBg(S.appearance.activeBg||'default');
+      updatePlayerCount();
+      applySiteTexts();
+      animateLetters();
+      routeHash();
+    },300);
+  }catch(e){
+    console.error(e);
+    document.getElementById('fs-load-msg').textContent='Erro ao conectar. Verifique o Firebase Config no código.';
+    setTimeout(function(){hideLoading();applyBg('default');applySiteTexts();routeHash();animateLetters();},3000);
+  }
+}
+
+async function saveSettings(){
+  var gv=function(id){var el=document.getElementById(id);return el?el.value.trim():'';};
+  var cfg={
+    name:gv('cfg-name')||'Crimson City RP',
+    discord:gv('cfg-discord'),
+    players:parseInt(document.getElementById('cfg-players').value)||0,
+    wlWelcome:gv('cfg-wl-welcome'),
+    wlEnd:gv('cfg-wl-end'),
+    heroEyebrow:gv('cfg-hero-eyebrow'),
+    heroLine1:gv('cfg-hero-line1'),
+    heroLine2:gv('cfg-hero-line2'),
+    heroSub:gv('cfg-hero-sub'),
+    heroBtnWL:gv('cfg-hero-btn-wl'),
+    heroBtnDiscord:gv('cfg-hero-btn-discord'),
+    footerTagline:gv('cfg-footer-tagline'),
+    footerCopy:gv('cfg-footer-copy'),
+    socialDiscord:gv('cfg-social-discord'),
+    socialYoutube:gv('cfg-social-youtube'),
+    socialInstagram:gv('cfg-social-instagram'),
+    socialTiktok:gv('cfg-social-tiktok'),
+    socialTwitter:gv('cfg-social-twitter'),
+    socialLinkedin:gv('cfg-social-linkedin'),
+    discordClientId:gv('cfg-discord-client-id'),
+    discordRedirectUri:gv('cfg-discord-redirect-uri'),
+    discordWebhook:gv('cfg-discord-webhook'),
+    n8nRoleWebhook:gv('cfg-n8n-role-webhook'),
+    discordRoleId:gv('cfg-discord-role-id'),
+    discordGuildId:gv('cfg-discord-guild-id'),
+    features:collectFeatCards()
+  };
+  Object.assign(S.settings,cfg);
+  await fsSet('_config','settings',S.settings);
+  updatePlayerCount();
+  applySiteTexts();
+  toast('Configurações salvas!','ok');
+}
+
+async function saveAppearanceToFs(){
+  await fsSet('_config','appearance',S.appearance);
+}
+async function saveBgsToFs(){
+  var custom=S.backgrounds.filter(function(b){return b.del;});
+  await fsSet('_config','backgrounds',{list:custom});
+}
 
 // ═══ CURSOR ═══
 document.addEventListener('mousemove',function(e){var g=document.getElementById('cursor-glow');if(g){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';}});
@@ -1088,29 +1459,24 @@ function closeMobile(){document.getElementById('hamburger').classList.remove('op
 function animateLetters(){
   ['hero-line1','hero-line2'].forEach(function(id,li){
     var el=document.getElementById(id);if(!el)return;
-    var t=el.textContent;el.innerHTML='';
+    var t=el.getAttribute('data-text')||el.textContent;el.innerHTML='';
     t.split('').forEach(function(ch,i){
       var s=document.createElement('span');s.className='letter';s.textContent=ch;
       s.style.animationDelay=(li*.4+i*.06+.5)+'s';
-      if(S.appearance.wave)s.style.animationDelay=(li*.2+i*.12)+'s';
       el.appendChild(s);
     });
   });
 }
-animateLetters();
 
-// ═══ WAVE TOGGLE ═══
 function toggleWave(on){
   S.appearance.wave=on;
-  var body=document.body;
-  if(on)body.classList.add('wave-on');
-  else body.classList.remove('wave-on');
-  // re-set delays for wave stagger
-  var letters=document.querySelectorAll('.hero-title .letter');
-  letters.forEach(function(el,i){
+  if(on)document.body.classList.add('wave-on');
+  else document.body.classList.remove('wave-on');
+  document.querySelectorAll('.hero-title .letter').forEach(function(el,i){
     el.style.animationDelay=on?(i*.1)+'s':(Math.floor(i/7)*.4+(i%7)*.06+.5)+'s';
   });
-  save();toast(on?'Balançadinha ativada! 🌊':'Balançadinha desativada.','ok');
+  saveAppearanceToFs();
+  toast(on?'Balançadinha ativada! 🌊':'Desativada.','ok');
 }
 
 // ═══ PARTICLES ═══
@@ -1127,7 +1493,7 @@ function toggleWave(on){
 // ═══ REVEAL ═══
 var rvObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.1});
 function initReveal(){document.querySelectorAll('.reveal,.reveal-left').forEach(function(el){rvObs.observe(el);});}
-initReveal();
+setTimeout(initReveal,200);
 
 // ═══ BACKGROUND ═══
 function applyBg(id){
@@ -1137,7 +1503,6 @@ function applyBg(id){
   var layer=document.getElementById('hero-bg-layer');if(!layer)return;
   if(bg.type==='image')layer.style.background='url('+bg.css+') center/cover no-repeat';
   else layer.style.background=bg.css;
-  save();
 }
 function renderBgGrid(){
   var g=document.getElementById('bg-grid');if(!g)return;
@@ -1155,13 +1520,54 @@ function renderBgGrid(){
   var ab=S.backgrounds.find(function(b){return b.id===active;});
   if(lbl&&ab)lbl.textContent='Ativo: '+ab.name;
 }
-window.selectBg=function(id){applyBg(id);renderBgGrid();toast('Fundo aplicado!','ok');};
-window.deleteBg=function(id){confirmAction('Remover fundo?',function(){S.backgrounds=S.backgrounds.filter(function(b){return b.id!==id;});if(S.appearance.activeBg===id)applyBg('default');save();renderBgGrid();toast('Fundo removido.','ok');});};
-function toggleBgInputs(){var t=document.getElementById('new-bg-type').value;document.getElementById('new-bg-css-field').style.display=t!=='image'?'':'none';document.getElementById('new-bg-img-field').style.display=t==='image'?'':'none';if(t==='gradient')document.getElementById('new-bg-css-label').textContent='CSS Gradiente';if(t==='color')document.getElementById('new-bg-css-label').textContent='Cor Hex';updateBgPreview();}
-function updateBgPreview(){var t=document.getElementById('new-bg-type').value;var css=t==='image'?document.getElementById('new-bg-img').value:document.getElementById('new-bg-css').value;var bar=document.getElementById('bg-preview-bar');if(bar&&css){if(t==='image')bar.style.background='url('+css+') center/cover';else bar.style.background=css;}}
-function addCustomBg(){var name=document.getElementById('new-bg-name').value.trim();var type=document.getElementById('new-bg-type').value;var css=type==='image'?document.getElementById('new-bg-img').value.trim():document.getElementById('new-bg-css').value.trim();if(!name||!css){toast('Preencha nome e CSS/URL.','err');return;}var id='c'+(S.nextId.bg++);S.backgrounds.push({id:id,name:name,type:type,css:css,del:true});save();renderBgGrid();document.getElementById('new-bg-name').value='';document.getElementById('new-bg-css').value='';document.getElementById('new-bg-img').value='';document.getElementById('bg-preview-bar').style.background='';toast('Fundo "'+name+'" adicionado!','ok');}
+window.selectBg=function(id){
+  applyBg(id);renderBgGrid();
+  saveAppearanceToFs();
+  toast('Fundo aplicado!','ok');
+};
+window.deleteBg=function(id){
+  confirmAction('Remover fundo?',function(){
+    S.backgrounds=S.backgrounds.filter(function(b){return b.id!==id;});
+    if(S.appearance.activeBg===id)applyBg('default');
+    saveBgsToFs();renderBgGrid();toast('Fundo removido.','ok');
+  });
+};
+function toggleBgInputs(){
+  var t=document.getElementById('new-bg-type').value;
+  document.getElementById('new-bg-css-field').style.display=t!=='image'?'':'none';
+  document.getElementById('new-bg-img-field').style.display=t==='image'?'':'none';
+  if(t==='gradient')document.getElementById('new-bg-css-label').textContent='CSS Gradiente';
+  if(t==='color')document.getElementById('new-bg-css-label').textContent='Cor Hex';
+  updateBgPreview();
+}
+function updateBgPreview(){
+  var t=document.getElementById('new-bg-type').value;
+  var css=t==='image'?document.getElementById('new-bg-img').value:document.getElementById('new-bg-css').value;
+  var bar=document.getElementById('bg-preview-bar');
+  if(bar&&css){if(t==='image')bar.style.background='url('+css+') center/cover';else bar.style.background=css;}
+}
+function addCustomBg(){
+  var name=document.getElementById('new-bg-name').value.trim();
+  var type=document.getElementById('new-bg-type').value;
+  var css=type==='image'?document.getElementById('new-bg-img').value.trim():document.getElementById('new-bg-css').value.trim();
+  if(!name||!css){toast('Preencha nome e CSS/URL.','err');return;}
+  var id='c'+Date.now();
+  var bg={id:id,name:name,type:type,css:css,del:true};
+  S.backgrounds.push(bg);
+  saveBgsToFs();renderBgGrid();
+  document.getElementById('new-bg-name').value='';
+  document.getElementById('new-bg-css').value='';
+  document.getElementById('new-bg-img').value='';
+  document.getElementById('bg-preview-bar').style.background='';
+  toast('Fundo "'+name+'" adicionado!','ok');
+}
 
-// ═══ NAVIGATION ═══
+// ═══ NAVIGATION (Hash Router) ═══
+var PAGE_MAP = {
+  'home':'home','news':'news','store':'store','rules':'rules',
+  'team':'team','howtoplay':'howtoplay','whitelist':'whitelist','newspost':'newspost'
+};
+
 function showPage(p){
   document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
   var pg=document.getElementById('page-'+p);if(pg)pg.classList.add('active');
@@ -1174,10 +1580,121 @@ function showPage(p){
   if(p==='rules')renderPublicRules();
   if(p==='team')renderPublicTeam();
   if(p==='whitelist')initChatWL();
+  // update hash without triggering hashchange again
+  if(location.hash !== '#'+p) history.pushState(null,null,'#'+p);
+  // update page title
+  var titles={home:'Início',news:'Notícias',store:'Loja',rules:'Regras',team:'Equipe',howtoplay:'Como Jogar',whitelist:'Allowlist',newspost:'Post'};
+  var sname = S.settings.name || 'Crimson City RP';
+  document.title = (titles[p]?titles[p]+' — ':'')+sname;
+  // close mobile if open
+  closeMobile();
 }
 
-// ═══ DISCORD ═══
+function routeHash(){
+  var hash = location.hash.replace('#','') || 'home';
+  if(PAGE_MAP[hash]) showPage(hash);
+  else showPage('home');
+}
+
+window.addEventListener('hashchange', function(){
+  var hash = location.hash.replace('#','') || 'home';
+  if(PAGE_MAP[hash]){
+    // Just show the page without pushing new history
+    document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
+    var pg=document.getElementById('page-'+hash);if(pg)pg.classList.add('active');
+    document.querySelectorAll('.nav-links a').forEach(function(a){a.classList.remove('active');});
+    var na=document.getElementById('nav-'+hash);if(na)na.classList.add('active');
+    window.scrollTo(0,0);setTimeout(initReveal,80);
+    if(hash==='home')renderPublicUpdates();
+    if(hash==='news')renderPublicNews();
+    if(hash==='store')renderPublicStore();
+    if(hash==='rules')renderPublicRules();
+    if(hash==='team')renderPublicTeam();
+    if(hash==='whitelist')initChatWL();
+    closeMobile();
+  }
+});
+
 function openDiscord(){window.open(S.settings.discord||'https://discord.gg','_blank');}
+function updatePlayerCount(){
+  var pc=S.settings.players||0;
+  var nEl=document.getElementById('nav-players');if(nEl)nEl.textContent=pc+' Jogador'+(pc!==1?'es':'');
+  var hEl=document.getElementById('htp-players');if(hEl)hEl.textContent=pc+' / 100';
+}
+
+function applySiteTexts(){
+  var s=S.settings;
+  // Title
+  var sn=s.name||'Crimson City RP';
+  document.title=sn;
+  var st=document.getElementById('site-title');if(st)st.textContent=sn;
+  // Nav logo
+  document.querySelectorAll('.nav-logo').forEach(function(el){
+    var parts=sn.split(' ');if(parts.length>1){var last=parts.pop();el.innerHTML=parts.join(' ')+'<span> '+last+'</span>';}
+    else el.innerHTML='<span>'+sn+'</span>';
+  });
+  // Footer logos
+  document.querySelectorAll('.footer-logo').forEach(function(el){
+    var parts=sn.split(' ');if(parts.length>1){var last=parts.pop();el.innerHTML=parts.join(' ')+'<span>'+last+'</span>';}
+    else el.innerHTML='<span>'+sn+'</span>';
+  });
+  // Hero
+  var ey=document.getElementById('hero-eyebrow-text');if(ey)ey.textContent=s.heroEyebrow||'';
+  var hl1=document.getElementById('hero-line1');if(hl1){hl1.setAttribute('data-text',s.heroLine1||'CRIMSON');hl1.textContent=s.heroLine1||'CRIMSON';}
+  var hl2=document.getElementById('hero-line2');if(hl2)hl2.textContent=s.heroLine2||'CITY';
+  var hs=document.getElementById('hero-sub-text');if(hs)hs.textContent=s.heroSub||'';
+  var hwl=document.getElementById('hero-btn-wl');if(hwl)hwl.textContent=s.heroBtnWL||'✦ Fazer Allowlist';
+  var hd=document.getElementById('hero-btn-discord');if(hd)hd.textContent=s.heroBtnDiscord||'💬 Entrar no Discord';
+  // Footer
+  var ft=document.getElementById('footer-tagline');if(ft)ft.textContent=s.footerTagline||'';
+  document.querySelectorAll('.footer-copy-main').forEach(function(el){el.textContent=s.footerCopy||'';});
+  // Social buttons – gera dinamicamente no footer-socials-wrap
+  (function(){
+    var wrap=document.getElementById('footer-socials-wrap');
+    if(!wrap)return;
+    var socials=[
+      {key:'socialDiscord',label:'Discord',color:'#5865F2',svg:'<svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg>',fallback:function(){openDiscord();}},
+      {key:'socialYoutube',label:'YouTube',color:'#FF0000',svg:'<svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>'},
+      {key:'socialInstagram',label:'Instagram',color:'#E1306C',svg:'<svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>'},
+      {key:'socialTiktok',label:'TikTok',color:'#fff',svg:'<svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>'},
+      {key:'socialTwitter',label:'Twitter/X',color:'#1DA1F2',svg:'<svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>'},
+      {key:'socialLinkedin',label:'LinkedIn',color:'#0077B5',svg:'<svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'}
+    ];
+    var html='';
+    socials.forEach(function(soc){
+      var url=s[soc.key]||'';
+      if(!url&&soc.key!=='socialDiscord')return;
+      html+='<a class="social-btn" id="social-'+soc.key.replace('social','')+'" href="'+(url||'#')+'" '+(url?'target="_blank" rel="noopener"':'')+' title="'+soc.label+'" style="--sc:'+soc.color+'" onclick="'+((!url&&soc.fallback)?'openDiscord();return false;':'')+'">'
+        +soc.svg+'</a>';
+    });
+    // Se não há nenhuma rede configurada, mostra pelo menos Discord
+    if(!html){
+      html='<a class="social-btn" href="#" title="Discord" onclick="openDiscord();return false;" style="--sc:#5865F2"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 00-4.885-1.515.074.074 0 00-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 00-5.487 0 12.64 12.64 0 00-.617-1.25.077.077 0 00-.079-.037A19.736 19.736 0 003.677 4.37a.07.07 0 00-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 00.031.057 19.9 19.9 0 005.993 3.03.078.078 0 00.084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 00-.041-.106 13.107 13.107 0 01-1.872-.892.077.077 0 01-.008-.128 10.2 10.2 0 00.372-.292.074.074 0 01.077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 01.078.01c.12.098.246.198.373.292a.077.077 0 01-.006.127 12.299 12.299 0 01-1.873.892.077.077 0 00-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 00.084.028 19.839 19.839 0 006.002-3.03.077.077 0 00.032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 00-.031-.03z"/></svg></a>';
+    }
+    wrap.innerHTML=html;
+    // Aplica cor de hover via CSS var
+    wrap.querySelectorAll('.social-btn').forEach(function(btn){
+      btn.addEventListener('mouseenter',function(){this.style.borderColor=this.style.getPropertyValue('--sc')||'';this.style.color=this.style.getPropertyValue('--sc')||'';});
+      btn.addEventListener('mouseleave',function(){this.style.borderColor='';this.style.color='';});
+    });
+  })();
+  // Features
+  if(s.features&&s.features.length){
+    var fg=document.getElementById('features-grid');
+    if(fg){
+      fg.innerHTML=s.features.map(function(f,i){
+        return '<div class="feature-card reveal" style="transition-delay:'+(i*.08)+'s">'
+          +'<div class="feature-icon">'+esc(f.icon)+'</div>'
+          +'<div class="feature-title">'+esc(f.title)+'</div>'
+          +'<div class="feature-text">'+esc(f.text)+'</div>'
+          +'</div>';
+      }).join('');
+      setTimeout(initReveal,50);
+    }
+  }
+  // Re-animate letters after text change
+  animateLetters();
+}
 
 // ═══ PUBLIC UPDATES ═══
 function renderPublicUpdates(){
@@ -1186,7 +1703,6 @@ function renderPublicUpdates(){
   g.innerHTML=S.updates.map(function(u,i){return '<div class="update-card reveal" style="transition-delay:'+(i*.1)+'s"><div class="update-tag">'+esc(u.tag)+'</div><div class="update-title">'+esc(u.title)+'</div><div class="update-text">'+esc(u.text)+'</div><div class="update-date">'+esc(u.date)+'</div></div>';}).join('');
   setTimeout(initReveal,50);
 }
-renderPublicUpdates();
 
 // ═══ PUBLIC NEWS ═══
 function renderPublicNews(){
@@ -1195,7 +1711,7 @@ function renderPublicNews(){
   if(!pub.length){g.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="icon">📰</div><p>Nenhum post publicado ainda.</p></div>';return;}
   g.innerHTML=pub.map(function(p){
     var imgHTML=p.image?'<img src="'+esc(p.image)+'" onerror="this.style.display=\'none\'">':'📰';
-    return '<div class="news-card reveal" onclick="openPost('+p.id+')">'
+    return '<div class="news-card reveal" onclick="openPost(\''+p._fid+'\')">'
       +'<div class="news-card-img"><div class="news-card-cat">'+esc(p.cat)+'</div>'+imgHTML+'</div>'
       +'<div class="news-card-body"><div class="news-card-title">'+esc(p.title)+'</div>'
       +'<div class="news-card-excerpt">'+esc(p.excerpt)+'</div>'
@@ -1205,7 +1721,7 @@ function renderPublicNews(){
   setTimeout(initReveal,50);
 }
 window.openPost=function(id){
-  var post=S.posts.find(function(p){return p.id===id;});if(!post)return;
+  var post=S.posts.find(function(p){return p._fid===id;});if(!post)return;
   var area=document.getElementById('post-content-area');
   var imgHTML=post.image?'<img src="'+esc(post.image)+'" class="post-cover" onerror="this.style.display=\'none\'">':'';
   area.innerHTML=imgHTML
@@ -1215,12 +1731,13 @@ window.openPost=function(id){
     +'</div>'
     +'<div class="post-content">'+post.content+'</div>';
   showPage('newspost');
+  PAGE_MAP['newspost']='newspost';
 };
 
 // ═══ PUBLIC STORE ═══
 var activeStoreCat='Todos';
 function renderPublicStore(){
-  var cats=['Todos',...new Set(S.products.map(function(p){return p.cat;}))];
+  var cats=['Todos'].concat(Array.from(new Set(S.products.map(function(p){return p.cat;}))));
   var catsEl=document.getElementById('store-cats');
   if(catsEl)catsEl.innerHTML=cats.map(function(c){return '<button class="store-cat-btn'+(c===activeStoreCat?' active':'')+'" onclick="filterStore(\''+esc(c)+'\')">'+esc(c)+'</button>';}).join('');
   renderStoreGrid();
@@ -1280,8 +1797,12 @@ window.filterRules=function(q){q=q.toLowerCase();document.querySelectorAll('.sb-
 // ═══ WHITELIST CHAT ═══
 var CS={step:-1,answers:[],done:false};
 var qOptTags=[];
-function initChatWL(){
+async function initChatWL(){
   CS={step:-1,answers:[],done:false};
+  // Gate check: login + 1-per-account
+  var ok = await checkWLGate();
+  if(!ok) return;
+
   var msgs=document.getElementById('chat-msgs');
   var suc=document.getElementById('wl-success');
   var inp=document.getElementById('chat-input-area');
@@ -1293,6 +1814,8 @@ function initChatWL(){
   var cs=document.getElementById('chat-send');if(cs)cs.disabled=false;
   if(!S.wlQuestions.length){addBotMsg('O questionário ainda não foi configurado. Tente mais tarde.');return;}
   var welcome=S.settings.wlWelcome||'Olá! Bem-vindo à Crimson City!';
+  // Personalize welcome with Discord username
+  if(S.discordUser) welcome = welcome + '\n\n👋 Olá, **' + S.discordUser.global_name + '**!';
   setTimeout(function(){addBotMsg(welcome,true);setTimeout(nextQ,1200);},600);
 }
 function nextQ(){
@@ -1311,175 +1834,100 @@ function addChoiceBtns(opts){var msgs=document.getElementById('chat-msgs');if(!m
 function selectChoice(val){document.querySelectorAll('.chat-choice').forEach(function(b){b.disabled=true;b.style.opacity='.4';});CS.answers.push({q:S.wlQuestions[CS.step].text,a:val});addUserMsg(val);disableChatInp(false);setTimeout(nextQ,600);}
 function sendChatAnswer(){var ci=document.getElementById('chat-input');if(!ci)return;var val=ci.value.trim();var q=S.wlQuestions[CS.step];if(q&&q.required&&!val){ci.style.borderColor='rgba(196,30,58,.6)';setTimeout(function(){ci.style.borderColor='';},1500);return;}if(!val&&q&&!q.required)val='(pulou)';if(!val)return;CS.answers.push({q:q?q.text:'',a:val});addUserMsg(val);ci.value='';ci.style.height='auto';setTimeout(nextQ,600);}
 function showTyping(cb){var msgs=document.getElementById('chat-msgs');if(!msgs){cb&&cb();return;}var d=document.createElement('div');d.className='chat-msg bot';d.id='typing-bbl';d.innerHTML='<div class="chat-msg-av">🤖</div><div><div class="typing-ind"><span></span><span></span><span></span></div></div>';msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;setTimeout(function(){var tb=document.getElementById('typing-bbl');if(tb)tb.remove();cb&&cb();},900);}
-function finishWL(){var endMsg=S.settings.wlEnd||'Perfeito! Suas respostas foram registradas.';showTyping(function(){addBotMsg(endMsg);setTimeout(function(){var app={id:S.nextId.wlA++,date:now(),answers:CS.answers,status:'pending'};S.wlApps.unshift(app);save();var msgs=document.getElementById('chat-msgs');var suc=document.getElementById('wl-success');var inp=document.getElementById('chat-input-area');var prog=document.getElementById('chat-progress');if(msgs)msgs.style.display='none';if(inp)inp.style.display='none';if(prog)prog.style.display='none';if(suc)suc.classList.add('show');CS.done=true;},1800);});}
+function finishWL(){
+  var endMsg=S.settings.wlEnd||'Perfeito! Suas respostas foram registradas.';
+  showTyping(async function(){
+    addBotMsg(endMsg);
+    setTimeout(async function(){
+      var app={
+        date:now(),
+        answers:CS.answers,
+        status:'pending',
+        _order:Date.now()
+      };
+      // Attach Discord user info if logged in
+      if(S.discordUser){
+        app.discordId = S.discordUser.id;
+        app.discordUsername = S.discordUser.username;
+        app.discordGlobalName = S.discordUser.global_name || S.discordUser.username;
+        app.discordAvatar = S.discordUser.avatar || null;
+      }
+      try{await fsSet('wlApps',null,app);}catch(e){}
+      var msgs=document.getElementById('chat-msgs');
+      var suc=document.getElementById('wl-success');
+      var inp=document.getElementById('chat-input-area');
+      var prog=document.getElementById('chat-progress');
+      if(msgs)msgs.style.display='none';
+      if(inp)inp.style.display='none';
+      if(prog)prog.style.display='none';
+      if(suc)suc.classList.add('show');
+      CS.done=true;
+    },1800);
+  });
+}
 function updateProg(){var prog=document.getElementById('chat-progress');var fill=document.getElementById('prog-fill');var text=document.getElementById('prog-text');var total=S.wlQuestions.length;if(!prog||!total)return;prog.style.display='flex';if(fill)fill.style.width=Math.round((CS.step/total)*100)+'%';if(text)text.textContent='Pergunta '+(CS.step+1)+' de '+total;}
 function disableChatInp(d){var ci=document.getElementById('chat-input');var cs=document.getElementById('chat-send');if(ci){ci.disabled=d;ci.placeholder=d?'Selecione uma opção acima...':'Digite sua resposta...';}if(cs)cs.disabled=d;}
 function handleChatKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatAnswer();}}
 function autoResizeTA(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,120)+'px';}
 
-// ═══ ADMIN WL QUESTIONS ═══
-function toggleQOptions(){document.getElementById('q-options-field').style.display=document.getElementById('q-type').value==='choice'?'block':'none';}
-function addQOpt(e){if(e.key!=='Enter')return;e.preventDefault();var i=document.getElementById('q-opts-input');var v=i.value.trim();if(!v)return;qOptTags.push(v);i.value='';renderQOpts();}
-function removeQOpt(i){qOptTags.splice(i,1);renderQOpts();}
-function renderQOpts(){var w=document.getElementById('q-opts-wrap');if(!w)return;var i=document.getElementById('q-opts-input');w.innerHTML='';qOptTags.forEach(function(o,idx){var t=document.createElement('div');t.className='tag';t.innerHTML=esc(o)+'<span class="rm" onclick="removeQOpt('+idx+')">×</span>';w.appendChild(t);});w.appendChild(i);}
-function saveQuestion(){var id=document.getElementById('edit-q-id').value;var text=document.getElementById('q-text').value.trim();var type=document.getElementById('q-type').value;var req=document.getElementById('q-required').value==='1';if(!text){toast('Informe o texto.','err');return;}if(type==='choice'&&!qOptTags.length){toast('Adicione opções.','err');return;}if(id){var q=S.wlQuestions.find(function(x){return x.id==id;});if(q){q.text=text;q.type=type;q.required=req;q.options=qOptTags.slice();}toast('Pergunta atualizada!','ok');}else{S.wlQuestions.push({id:S.nextId.wlQ++,text:text,type:type,required:req,options:qOptTags.slice()});toast('Pergunta adicionada!','ok');}save();clearQForm();renderQList();updateStats();}
-function editQuestion(id){var q=S.wlQuestions.find(function(x){return x.id===id;});if(!q)return;document.getElementById('edit-q-id').value=id;document.getElementById('q-text').value=q.text;document.getElementById('q-type').value=q.type;document.getElementById('q-required').value=q.required?'1':'0';qOptTags=q.options?q.options.slice():[];renderQOpts();toggleQOptions();switchSubTab('wl','perguntas',document.querySelector('#asec-wl .sub-tab'));window.scrollTo(0,0);}
-function deleteQuestion(id){confirmAction('Excluir pergunta?',function(){S.wlQuestions=S.wlQuestions.filter(function(x){return x.id!==id;});save();renderQList();updateStats();toast('Pergunta excluída.','ok');});}
-function clearQForm(){document.getElementById('edit-q-id').value='';document.getElementById('q-text').value='';document.getElementById('q-type').value='text';document.getElementById('q-required').value='1';qOptTags=[];renderQOpts();toggleQOptions();}
-function renderQList(){
-  var list=document.getElementById('questions-list');if(!list)return;
-  var cnt=document.getElementById('q-count');if(cnt)cnt.textContent=S.wlQuestions.length+' pergunta(s)';
-  if(!S.wlQuestions.length){list.innerHTML='<div class="empty-state" style="padding:2rem"><div class="icon">❓</div><p>Nenhuma pergunta.</p></div>';return;}
-  list.innerHTML=S.wlQuestions.map(function(q,i){
-    var tl={text:'Texto',textarea:'Texto longo',choice:'Múltipla escolha'}[q.type]||q.type;
-    return '<div class="wl-q-item"><div style="font-size:.95rem;color:rgba(255,255,255,.18);font-weight:700;min-width:22px">'+(i+1)+'</div>'
-      +'<div class="wl-q-main"><div class="wl-q-text">'+esc(q.text)+'</div>'
-      +'<div class="wl-q-meta"><span class="wl-q-type">'+tl+'</span>'+(q.required?'<span class="wl-q-req">obrigatória</span>':'')+(q.options&&q.options.length?' <span style="color:rgba(255,255,255,.22);font-size:.65rem">'+q.options.length+' opções</span>':'')+'</div></div>'
-      +'<div style="display:flex;gap:.3rem"><button class="action-btn" onclick="editQuestion('+q.id+')">✏</button><button class="action-btn danger" onclick="deleteQuestion('+q.id+')">🗑</button></div>'
-      +'</div>';
-  }).join('');
-}
-
-// ═══ ADMIN WL APPLICATIONS ═══
-function renderWLApps(){
-  var tb=document.getElementById('wl-apps-table');if(!tb)return;
-  var cnt=document.getElementById('wl-apps-count');if(cnt)cnt.textContent=S.wlApps.length+' candidatura(s)';
-  var badge=document.getElementById('wl-pending-badge');
-  var pend=S.wlApps.filter(function(a){return a.status==='pending';}).length;
-  if(badge)badge.textContent=pend>0?pend:'';
-  if(!S.wlApps.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma candidatura.</td></tr>';return;}
-  tb.innerHTML=S.wlApps.map(function(app){
-    var fa=app.answers&&app.answers[0]?app.answers[0].a:'-';if(fa.length>28)fa=fa.slice(0,28)+'…';
-    var sc={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
-    var sl={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
-    return '<tr><td style="color:rgba(255,255,255,.28)">#'+app.id+'</td><td style="color:rgba(255,255,255,.35);font-size:.72rem;white-space:nowrap">'+esc(app.date)+'</td><td>'+esc(fa)+'</td><td><span class="badge '+sc+'">'+sl+'</span></td>'
-      +'<td><button class="action-btn" onclick="viewApp('+app.id+')">👁</button><button class="action-btn ok" onclick="setAppSt('+app.id+',\'approved\')">✓</button><button class="action-btn danger" onclick="setAppSt('+app.id+',\'rejected\')">✗</button></td></tr>';
-  }).join('');
-}
-window.viewApp=function(id){
-  var app=S.wlApps.find(function(x){return x.id===id;});if(!app)return;
-  var sc={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
-  var sl={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
-  document.getElementById('modal-app-content').innerHTML='<div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem"><div style="font-size:.68rem;color:rgba(255,255,255,.28)">#'+app.id+' · '+esc(app.date)+'</div><span class="badge '+sc+'">'+sl+'</span></div>'
-    +(app.answers||[]).map(function(a){return '<div class="app-answer-item"><div class="app-answer-q">'+esc(a.q)+'</div><div class="app-answer-a">'+esc(a.a)+'</div></div>';}).join('');
-  document.getElementById('modal-app-actions').innerHTML='<button class="btn btn-primary btn-sm" style="background:#22c55e;box-shadow:none" onclick="setAppSt('+id+',\'approved\');closeModal(\'modal-app\')">✓ Aprovar</button><button class="btn btn-danger btn-sm" onclick="setAppSt('+id+',\'rejected\');closeModal(\'modal-app\')">✗ Rejeitar</button><button class="btn btn-ghost btn-sm" onclick="setAppSt('+id+',\'pending\');closeModal(\'modal-app\')">↺ Pendente</button>';
-  document.getElementById('modal-app').classList.add('show');
-};
-window.setAppSt=function(id,st){var app=S.wlApps.find(function(x){return x.id===id;});if(app){app.status=st;save();renderWLApps();renderDashWL();updateStats();}var l={approved:'Aprovada! ✅',rejected:'Rejeitada.',pending:'Marcada como pendente.'}[st]||'Atualizado.';toast(l,st==='approved'?'ok':'');};
-
-// ═══ ADMIN NEWS ═══
-function savePost(){
-  var id=document.getElementById('edit-post-id').value;
-  var title=document.getElementById('post-title').value.trim();
-  var cat=document.getElementById('post-cat').value.trim();
-  var img=document.getElementById('post-img').value.trim();
-  var date=document.getElementById('post-date').value.trim();
-  var excerpt=document.getElementById('post-excerpt').value.trim();
-  var content=document.getElementById('post-content').value.trim();
-  var published=document.getElementById('post-published').value==='1';
-  if(!title||!content){toast('Título e conteúdo obrigatórios.','err');return;}
-  if(id){var p=S.posts.find(function(x){return x.id==id;});if(p){p.title=title;p.cat=cat||'Geral';p.image=img;p.date=date||now();p.excerpt=excerpt;p.content=content;p.published=published;}toast('Post atualizado!','ok');}
-  else{S.posts.unshift({id:S.nextId.posts++,title:title,cat:cat||'Geral',image:img,date:date||now(),excerpt:excerpt,content:content,published:published});toast('Post criado!','ok');}
-  save();clearPostForm();renderPostsTable();updateStats();
-}
-function editPost(id){var p=S.posts.find(function(x){return x.id===id;});if(!p)return;document.getElementById('edit-post-id').value=id;document.getElementById('post-title').value=p.title;document.getElementById('post-cat').value=p.cat;document.getElementById('post-img').value=p.image||'';document.getElementById('post-date').value=p.date;document.getElementById('post-excerpt').value=p.excerpt||'';document.getElementById('post-content').value=p.content;document.getElementById('post-published').value=p.published?'1':'0';switchSubTab('news','add',null);adminTab('news');window.scrollTo(0,0);}
-function deletePost(id){confirmAction('Excluir post?',function(){S.posts=S.posts.filter(function(x){return x.id!==id;});save();renderPostsTable();updateStats();toast('Post excluído.','ok');});}
-function clearPostForm(){document.getElementById('edit-post-id').value='';['post-title','post-cat','post-img','post-date','post-excerpt','post-content'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('post-published').value='1';}
-function renderPostsTable(){
-  var tb=document.getElementById('posts-table');if(!tb)return;
-  var cnt=document.getElementById('posts-count');if(cnt)cnt.textContent=S.posts.length+' post(s)';
-  if(!S.posts.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum post.</td></tr>';return;}
-  tb.innerHTML=S.posts.map(function(p){return '<tr><td><strong>'+esc(p.title)+'</strong></td><td><span class="badge badge-blue">'+esc(p.cat)+'</span></td><td style="color:rgba(255,255,255,.35);font-size:.75rem">'+esc(p.date)+'</td><td><span class="badge '+(p.published?'badge-green':'badge-gray')+'">'+(p.published?'Publicado':'Rascunho')+'</span></td><td><button class="action-btn" onclick="editPost('+p.id+')">✏</button><button class="action-btn danger" onclick="deletePost('+p.id+')">🗑</button></td></tr>';}).join('');
-}
-
-// ═══ ADMIN STORE ═══
-function saveProduct(){
-  var id=document.getElementById('edit-prod-id').value;
-  var name=document.getElementById('prod-name').value.trim();
-  var cat=document.getElementById('prod-cat').value.trim();
-  var price=document.getElementById('prod-price').value.trim();
-  var badge=document.getElementById('prod-badge').value;
-  var img=document.getElementById('prod-img').value.trim();
-  var desc=document.getElementById('prod-desc').value.trim();
-  var link=document.getElementById('prod-link').value.trim();
-  var avail=document.getElementById('prod-avail').value==='1';
-  if(!name){toast('Nome obrigatório.','err');return;}
-  if(id){var p=S.products.find(function(x){return x.id==id;});if(p){p.name=name;p.cat=cat||'Geral';p.price=price;p.badge=badge;p.image=img;p.desc=desc;p.buyLink=link;p.available=avail;}toast('Produto atualizado!','ok');}
-  else{S.products.push({id:S.nextId.products++,name:name,cat:cat||'Geral',price:price,badge:badge,image:img,desc:desc,buyLink:link,available:avail});toast('Produto adicionado!','ok');}
-  save();clearProdForm();renderProdsTable();updateStats();
-}
-function editProduct(id){var p=S.products.find(function(x){return x.id===id;});if(!p)return;document.getElementById('edit-prod-id').value=id;document.getElementById('prod-name').value=p.name;document.getElementById('prod-cat').value=p.cat;document.getElementById('prod-price').value=p.price;document.getElementById('prod-badge').value=p.badge||'';document.getElementById('prod-img').value=p.image||'';document.getElementById('prod-desc').value=p.desc||'';document.getElementById('prod-link').value=p.buyLink||'';document.getElementById('prod-avail').value=p.available?'1':'0';switchSubTab('store','addprod',null);adminTab('store');window.scrollTo(0,0);}
-function deleteProduct(id){confirmAction('Excluir produto?',function(){S.products=S.products.filter(function(x){return x.id!==id;});save();renderProdsTable();updateStats();toast('Produto excluído.','ok');});}
-function clearProdForm(){document.getElementById('edit-prod-id').value='';['prod-name','prod-cat','prod-price','prod-img','prod-desc','prod-link'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('prod-badge').value='';document.getElementById('prod-avail').value='1';}
-function renderProdsTable(){
-  var tb=document.getElementById('prods-table');if(!tb)return;
-  var cnt=document.getElementById('prods-count');if(cnt)cnt.textContent=S.products.length+' produto(s)';
-  if(!S.products.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum produto.</td></tr>';return;}
-  tb.innerHTML=S.products.map(function(p){var badgeClass={POPULAR:'badge-gold',NOVO:'badge-blue',PROMOÇÃO:'badge-green'}[p.badge]||'badge-gray';return '<tr><td><strong>'+esc(p.name)+'</strong></td><td style="color:rgba(255,255,255,.4)">'+esc(p.cat)+'</td><td style="color:var(--gold-l);font-weight:600">'+esc(p.price)+'</td><td>'+(p.badge?'<span class="badge '+badgeClass+'">'+esc(p.badge)+'</span>':'-')+'</td><td><span class="badge '+(p.available?'badge-green':'badge-gray')+'">'+(p.available?'Disponível':'Indisponível')+'</span></td><td><button class="action-btn" onclick="editProduct('+p.id+')">✏</button><button class="action-btn danger" onclick="deleteProduct('+p.id+')">🗑</button></td></tr>';}).join('');
-}
-
-// ═══ RULES ═══
-function saveRule(){var id=document.getElementById('edit-rule-id').value;var cat=document.getElementById('r-cat').value.trim();var sub=document.getElementById('r-subcat').value.trim();var text=document.getElementById('r-text').value.trim();if(!cat||!sub||!text){toast('Todos os campos obrigatórios.','err');return;}if(id){var r=S.rules.find(function(x){return x.id==id;});if(r){r.cat=cat;r.subcat=sub;r.text=text;}toast('Regra atualizada!','ok');}else{S.rules.push({id:S.nextId.rules++,cat:cat,subcat:sub,text:text});toast('Regra adicionada!','ok');}save();clearRuleForm();renderRulesTable();renderRulesCatList();renderPublicRules();updateStats();}
-function editRule(id){var r=S.rules.find(function(x){return x.id===id;});if(!r)return;document.getElementById('edit-rule-id').value=id;document.getElementById('r-cat').value=r.cat;document.getElementById('r-subcat').value=r.subcat;document.getElementById('r-text').value=r.text;adminTab('rules');window.scrollTo(0,0);}
-function deleteRule(id){confirmAction('Excluir regra?',function(){S.rules=S.rules.filter(function(x){return x.id!==id;});save();renderRulesTable();renderRulesCatList();renderPublicRules();updateStats();toast('Regra excluída.','ok');});}
-function clearRuleForm(){document.getElementById('edit-rule-id').value='';['r-cat','r-subcat','r-text'].forEach(function(i){document.getElementById(i).value='';});}
-function renderRulesTable(){var tb=document.getElementById('rules-table');document.getElementById('rules-count').textContent=S.rules.length+' regra(s)';if(!S.rules.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma regra.</td></tr>';return;}tb.innerHTML=S.rules.map(function(r){return '<tr><td><span class="badge badge-red">'+esc(r.cat)+'</span></td><td style="color:rgba(255,255,255,.35)">'+esc(r.subcat)+'</td><td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.text)+'</td><td><button class="action-btn" onclick="editRule('+r.id+')">✏</button><button class="action-btn danger" onclick="deleteRule('+r.id+')">🗑</button></td></tr>';}).join('');}
-function renderRulesCatList(){var cats=[...new Set(S.rules.map(function(r){return r.cat;}))];var dl=document.getElementById('r-cats-list');if(dl)dl.innerHTML=cats.map(function(c){return '<option value="'+esc(c)+'">';}).join('');}
-
-// ═══ UPDATES ═══
-function saveUpdate(){var id=document.getElementById('edit-upd-id').value;var tag=document.getElementById('upd-tag').value.trim();var title=document.getElementById('upd-title').value.trim();var text=document.getElementById('upd-text').value.trim();var date=document.getElementById('upd-date').value.trim();if(!title||!text){toast('Título e descrição obrigatórios.','err');return;}if(id){var u=S.updates.find(function(x){return x.id==id;});if(u){u.tag=tag;u.title=title;u.text=text;u.date=date;}toast('Atualizado!','ok');}else{S.updates.unshift({id:S.nextId.updates++,tag:tag||'📢 UPDATE',title:title,text:text,date:date||now()});toast('Adicionado!','ok');}save();clearUpdForm();renderUpdatesTable();renderPublicUpdates();}
-function editUpdate(id){var u=S.updates.find(function(x){return x.id===id;});if(!u)return;document.getElementById('edit-upd-id').value=id;document.getElementById('upd-tag').value=u.tag||'';document.getElementById('upd-title').value=u.title;document.getElementById('upd-text').value=u.text;document.getElementById('upd-date').value=u.date||'';adminTab('updates');window.scrollTo(0,0);}
-function deleteUpdate(id){confirmAction('Excluir?',function(){S.updates=S.updates.filter(function(x){return x.id!==id;});save();renderUpdatesTable();renderPublicUpdates();toast('Excluído.','ok');});}
-function clearUpdForm(){document.getElementById('edit-upd-id').value='';['upd-tag','upd-title','upd-text','upd-date'].forEach(function(i){document.getElementById(i).value='';});}
-function renderUpdatesTable(){var tb=document.getElementById('updates-table');if(!S.updates.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma atualização.</td></tr>';return;}tb.innerHTML=S.updates.map(function(u){return '<tr><td>'+esc(u.tag||'')+'</td><td><strong>'+esc(u.title)+'</strong></td><td style="color:rgba(255,255,255,.3);font-size:.75rem">'+esc(u.date||'-')+'</td><td><button class="action-btn" onclick="editUpdate('+u.id+')">✏</button><button class="action-btn danger" onclick="deleteUpdate('+u.id+')">🗑</button></td></tr>';}).join('');}
-
-// ═══ TEAM ═══
-window.previewAv=function(url){var p=document.getElementById('member-av-prev');if(url)p.innerHTML='<img src="'+esc(url)+'" onerror="this.parentNode.innerHTML=\'👤\'">';else p.innerHTML='👤';};
-function saveMember(){var id=document.getElementById('edit-member-id').value;var name=document.getElementById('m-name').value.trim();var avatar=document.getElementById('m-avatar').value.trim();var role=document.getElementById('m-role').value.trim();var cat=document.getElementById('m-cat').value;var desc=document.getElementById('m-desc').value.trim();if(!name||!role){toast('Nome e cargo obrigatórios.','err');return;}if(id){var m=S.team.find(function(x){return x.id==id;});if(m){m.name=name;m.avatar=avatar;m.role=role;m.cat=cat;m.desc=desc;}toast('Membro atualizado!','ok');}else{S.team.push({id:S.nextId.team++,name:name,avatar:avatar,role:role,cat:cat,desc:desc});toast('Membro adicionado!','ok');}save();clearMemberForm();renderTeamTable();renderPublicTeam();updateStats();}
-function editMember(id){var m=S.team.find(function(x){return x.id===id;});if(!m)return;document.getElementById('edit-member-id').value=id;document.getElementById('m-name').value=m.name;document.getElementById('m-avatar').value=m.avatar||'';document.getElementById('m-role').value=m.role;document.getElementById('m-cat').value=m.cat;document.getElementById('m-desc').value=m.desc||'';previewAv(m.avatar||'');adminTab('team');window.scrollTo(0,0);}
-function deleteMember(id){confirmAction('Remover membro?',function(){S.team=S.team.filter(function(x){return x.id!==id;});save();renderTeamTable();renderPublicTeam();updateStats();toast('Removido.','ok');});}
-function clearMemberForm(){document.getElementById('edit-member-id').value='';['m-name','m-avatar','m-role','m-desc'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('member-av-prev').innerHTML='👤';}
-function renderTeamTable(){var tb=document.getElementById('team-table');if(!S.team.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum membro.</td></tr>';return;}tb.innerHTML=S.team.map(function(m){var av=m.avatar?'<img src="'+esc(m.avatar)+'" style="width:30px;height:30px;border-radius:50%;object-fit:cover" onerror="this.outerHTML=\'👤\'">':'👤';return '<tr><td>'+av+'</td><td><strong>'+esc(m.name)+'</strong></td><td style="color:var(--cr)">'+esc(m.role)+'</td><td><span class="badge badge-gray">'+esc(m.cat)+'</span></td><td><button class="action-btn" onclick="editMember('+m.id+')">✏</button><button class="action-btn danger" onclick="deleteMember('+m.id+')">🗑</button></td></tr>';}).join('');}
-
-// ═══ USERS ═══
-function saveUser(){var id=document.getElementById('edit-user-id').value;var username=document.getElementById('u-username').value.trim();var password=document.getElementById('u-password').value.trim();var email=document.getElementById('u-email').value.trim();var role=document.getElementById('u-role').value;var status=document.getElementById('u-status').value;if(!username){toast('Usuário obrigatório.','err');return;}if(!id&&!password){toast('Senha obrigatória.','err');return;}if(id){var u=S.users.find(function(x){return x.id==id;});if(u){u.username=username;if(password)u.password=password;u.email=email;u.role=role;u.status=status;}toast('Usuário atualizado!','ok');}else{if(S.users.find(function(x){return x.username===username;})){toast('Usuário já existe.','err');return;}S.users.push({id:S.nextId.users++,username:username,password:password,email:email,role:role,status:status,date:new Date().toLocaleDateString('pt-BR')});toast('Usuário criado!','ok');}save();clearUserForm();renderUsersTable();updateStats();}
-function editUser(id){var u=S.users.find(function(x){return x.id===id;});if(!u)return;document.getElementById('edit-user-id').value=id;document.getElementById('u-username').value=u.username;document.getElementById('u-password').value='';document.getElementById('u-email').value=u.email||'';document.getElementById('u-role').value=u.role;document.getElementById('u-status').value=u.status;adminTab('users');window.scrollTo(0,0);}
-function deleteUser(id){confirmAction('Excluir usuário?',function(){S.users=S.users.filter(function(x){return x.id!==id;});save();renderUsersTable();updateStats();toast('Excluído.','ok');});}
-function clearUserForm(){document.getElementById('edit-user-id').value='';['u-username','u-password','u-email'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('u-role').value='admin';document.getElementById('u-status').value='active';}
-function renderUsersTable(){var tb=document.getElementById('users-table');document.getElementById('users-count').textContent=S.users.length+' usuário(s)';if(!S.users.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum usuário.</td></tr>';return;}tb.innerHTML=S.users.map(function(u){return '<tr><td><strong>'+esc(u.username)+'</strong></td><td style="color:rgba(255,255,255,.35)">'+esc(u.email||'-')+'</td><td><span class="badge badge-gold">'+esc(u.role)+'</span></td><td><span class="badge '+(u.status==='active'?'badge-green':u.status==='banned'?'badge-red':'badge-gray')+'">'+esc(u.status)+'</span></td><td><button class="action-btn" onclick="editUser('+u.id+')">✏</button><button class="action-btn danger" onclick="deleteUser('+u.id+')">🗑</button></td></tr>';}).join('');}
-
-// ═══ SETTINGS ═══
-function loadSettings(){document.getElementById('cfg-name').value=S.settings.name||'Crimson City RP';document.getElementById('cfg-discord').value=S.settings.discord||'';document.getElementById('cfg-players').value=S.settings.players||0;document.getElementById('cfg-wl-welcome').value=S.settings.wlWelcome||'';document.getElementById('cfg-wl-end').value=S.settings.wlEnd||'';}
-function saveSettings(){S.settings.name=document.getElementById('cfg-name').value.trim()||'Crimson City RP';S.settings.discord=document.getElementById('cfg-discord').value.trim();S.settings.players=parseInt(document.getElementById('cfg-players').value)||0;S.settings.wlWelcome=document.getElementById('cfg-wl-welcome').value.trim();S.settings.wlEnd=document.getElementById('cfg-wl-end').value.trim();var pc=S.settings.players;var nEl=document.getElementById('nav-players');if(nEl)nEl.textContent=pc+' Jogador'+(pc!==1?'es':'');var hEl=document.getElementById('htp-players');if(hEl)hEl.textContent=pc+' / 100';save();toast('Configurações salvas!','ok');}
-function changePass(){var np=document.getElementById('new-pass').value;var cp=document.getElementById('conf-pass').value;if(np.length<6){toast('Mínimo 6 caracteres.','err');return;}if(np!==cp){toast('Senhas não coincidem.','err');return;}S.adminPass=np;save();document.getElementById('new-pass').value='';document.getElementById('conf-pass').value='';toast('Senha alterada!','ok');}
-function confirmReset(type){var msgs={wlApps:'Limpar TODAS as candidaturas?',users:'Excluir TODOS os usuários?',posts:'Excluir TODOS os posts?',products:'Excluir TODOS os produtos?'};confirmAction(msgs[type]||'Confirmar?',function(){if(type==='wlApps')S.wlApps=[];if(type==='users')S.users=[];if(type==='posts')S.posts=[];if(type==='products')S.products=[];save();if(type==='wlApps'){renderWLApps();renderDashWL();}if(type==='users')renderUsersTable();if(type==='posts')renderPostsTable();if(type==='products')renderProdsTable();updateStats();toast('Dados excluídos.','ok');});}
-
 // ═══ ADMIN AUTH ═══
 function showAdminLogin(){document.getElementById('admin-login').classList.add('show');}
 function hideAdminLogin(){document.getElementById('admin-login').classList.remove('show');}
-function doLogin(){
+
+function toggleCodeLogin(showCode){
+  document.getElementById('login-normal-form').style.display=showCode?'none':'block';
+  document.getElementById('login-code-form').style.display=showCode?'block':'none';
+  document.getElementById('login-err').classList.remove('show');
+}
+
+function doLoginWithUser(username){
+  document.getElementById('login-err').classList.remove('show');
+  document.getElementById('admin-login').classList.remove('show');
+  document.getElementById('main-nav').style.display='none';
+  document.getElementById('mobile-menu').style.display='none';
+  document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
+  document.getElementById('admin-panel').classList.add('show');
+  document.getElementById('admin-welcome-name').textContent=username;
+  S.loggedIn=true;S.currentUser=username;
+  refreshAdmin();
+}
+
+async function doLogin(){
   var u=document.getElementById('login-user').value.trim();
   var p=document.getElementById('login-pass').value.trim();
-  // Verifica admin master OU qualquer usuário cadastrado com credenciais corretas
-  var masterMatch=(u===S.adminUser&&p===S.adminPass);
-  var userMatch=S.users.find(function(x){
-    return x.username===u && x.password===p && x.status!=='banned';
-  });
-  if(masterMatch||userMatch){
-    document.getElementById('login-err').classList.remove('show');
-    document.getElementById('admin-login').classList.remove('show');
-    document.getElementById('main-nav').style.display='none';
-    document.getElementById('mobile-menu').style.display='none';
-    document.querySelectorAll('.page').forEach(function(el){el.classList.remove('active');});
-    document.getElementById('admin-panel').classList.add('show');
-    document.getElementById('admin-welcome-name').textContent=u;
-    S.loggedIn=true;
-    refreshAdmin();
-  }else{
+  var btn=document.querySelector('#login-normal-form .btn-primary');
+  if(btn){btn.disabled=true;btn.textContent='Entrando...';}
+  try{
+    await auth.signInWithEmailAndPassword(u+'@cc.rp',p);
+    doLoginWithUser(u);
+  }catch(e){
     document.getElementById('login-err').classList.add('show');
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent='Entrar';}
   }
 }
-function adminLogout(){document.getElementById('admin-panel').classList.remove('show');document.getElementById('main-nav').style.display='';showPage('home');S.loggedIn=false;}
+
+function doLoginCode(){
+  var raw=document.getElementById('login-code-input').value.trim();
+  if(!raw){document.getElementById('login-err').classList.add('show');return;}
+  try{
+    var decoded=JSON.parse(decodeURIComponent(escape(atob(raw))));
+    if(decoded&&decoded.v==='cc1'&&decoded.u&&decoded.p){
+      auth.signInWithEmailAndPassword(decoded.u+'@cc.rp',decoded.p).then(function(){
+        doLoginWithUser(decoded.u);
+      }).catch(function(){
+        document.getElementById('login-err').classList.add('show');
+      });
+    }else{document.getElementById('login-err').classList.add('show');}
+  }catch(e){document.getElementById('login-err').classList.add('show');}
+}
+
+function adminLogout(){
+  auth.signOut();
+  document.getElementById('admin-panel').classList.remove('show');
+  document.getElementById('main-nav').style.display='';
+  showPage('home');S.loggedIn=false;S.currentUser=null;
+}
 
 // ═══ ADMIN TABS ═══
 var adminTitles={dashboard:'Dashboard',news:'Notícias',store:'Loja',updates:'Atualizações',rules:'Regras',wl:'Allowlist',team:'Equipe',users:'Usuários',appearance:'Aparência',settings:'Configurações'};
@@ -1490,44 +1938,855 @@ function adminTab(t){
   var sec=document.getElementById('asec-'+t);if(sec)sec.classList.add('active');
   document.getElementById('admin-section-title').textContent=adminTitles[t]||t;
   if(t==='dashboard'){renderDashWL();updateStats();}
-  if(t==='news'){renderPostsTable();}
-  if(t==='store'){renderProdsTable();}
+  if(t==='news')renderPostsTable();
+  if(t==='store')renderProdsTable();
   if(t==='updates')renderUpdatesTable();
   if(t==='rules'){renderRulesTable();renderRulesCatList();}
-  if(t==='wl'){renderQList();renderWLApps();}
+  if(t==='wl'){renderQList();loadAndRenderWLApps();}
   if(t==='team')renderTeamTable();
-  if(t==='users')renderUsersTable();
+  if(t==='users')loadAndRenderUsers();
   if(t==='appearance'){renderBgGrid();syncAppearance();}
   if(t==='settings')loadSettings();
 }
-
-// ═══ SUB-TABS ═══
 function switchSubTab(section,panel,clickedBtn){
   var sec=document.getElementById('asec-'+section);if(!sec)return;
   sec.querySelectorAll('.sub-tab').forEach(function(b){b.classList.remove('active');});
   sec.querySelectorAll('.sub-panel').forEach(function(p){p.classList.remove('active');});
   var p=document.getElementById(section+'-'+panel);if(p)p.classList.add('active');
   if(clickedBtn)clickedBtn.classList.add('active');
-  else{var tabs=sec.querySelectorAll('.sub-tab');tabs.forEach(function(b,i){if(i===0&&panel==='perguntas'||i===0&&panel==='lista'||i===0&&panel==='produtos')b.classList.add('active');});}
 }
-
 function syncAppearance(){var tw=document.getElementById('toggle-wave');if(tw)tw.checked=S.appearance.wave||false;}
-function updateStats(){
-  var m={'stat-wl':S.wlApps.length,'stat-wl-p':S.wlApps.filter(function(a){return a.status==='pending';}).length,'stat-posts':S.posts.length,'stat-prods':S.products.length,'stat-rules':S.rules.length,'stat-team':S.team.length};
-  Object.keys(m).forEach(function(k){var el=document.getElementById(k);if(el)el.textContent=m[k];});
-  var b=document.getElementById('wl-pending-badge');var pend=S.wlApps.filter(function(a){return a.status==='pending';}).length;if(b)b.textContent=pend>0?pend:'';
-}
-function renderDashWL(){var tb=document.getElementById('dash-wl-table');if(!tb)return;var r=S.wlApps.slice(0,5);if(!r.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma candidatura.</td></tr>';return;}tb.innerHTML=r.map(function(app){var fa=app.answers&&app.answers[0]?app.answers[0].a:'-';if(fa.length>25)fa=fa.slice(0,25)+'…';var sc={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';var sl={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;return '<tr><td><strong>'+esc(fa)+'</strong></td><td style="color:rgba(255,255,255,.3);font-size:.72rem">'+esc(app.date)+'</td><td><span class="badge '+sc+'">'+sl+'</span></td><td><button class="action-btn" onclick="viewApp('+app.id+')">Ver →</button></td></tr>';}).join('');}
-function refreshAdmin(){updateStats();renderDashWL();}
 
-// ═══ INIT ═══
-(function(){
-  if(S.appearance.wave)document.body.classList.add('wave-on');
-  applyBg(S.appearance.activeBg||'default');
-  var pc=S.settings.players||0;
-  var nEl=document.getElementById('nav-players');if(nEl)nEl.textContent=pc+' Jogador'+(pc!==1?'es':'');
-  var hEl=document.getElementById('htp-players');if(hEl)hEl.textContent=pc+' / 100';
-})();
+// ═══ ADMIN WL QUESTIONS ═══
+function toggleQOptions(){document.getElementById('q-options-field').style.display=document.getElementById('q-type').value==='choice'?'block':'none';}
+function addQOpt(e){if(e.key!=='Enter')return;e.preventDefault();var i=document.getElementById('q-opts-input');var v=i.value.trim();if(!v)return;qOptTags.push(v);i.value='';renderQOpts();}
+function removeQOpt(i){qOptTags.splice(i,1);renderQOpts();}
+function renderQOpts(){var w=document.getElementById('q-opts-wrap');if(!w)return;var inp=document.getElementById('q-opts-input');w.innerHTML='';qOptTags.forEach(function(o,idx){var t=document.createElement('div');t.className='tag';t.innerHTML=esc(o)+'<span class="rm" onclick="removeQOpt('+idx+')">×</span>';w.appendChild(t);});w.appendChild(inp);}
+
+async function saveQuestion(){
+  var fid=document.getElementById('edit-q-id').value;
+  var text=document.getElementById('q-text').value.trim();
+  var type=document.getElementById('q-type').value;
+  var req=document.getElementById('q-required').value==='1';
+  if(!text){toast('Informe o texto.','err');return;}
+  if(type==='choice'&&!qOptTags.length){toast('Adicione opções.','err');return;}
+  var data={text:text,type:type,required:req,options:qOptTags.slice(),_order:Date.now()};
+  if(fid){
+    await fsUpdate('wlQuestions',fid,data);
+    var q=S.wlQuestions.find(function(x){return x._fid===fid;});
+    if(q)Object.assign(q,data);
+    toast('Pergunta atualizada!','ok');
+  }else{
+    var newFid=await fsSet('wlQuestions',null,data);
+    S.wlQuestions.push(Object.assign({_fid:newFid},data));
+    toast('Pergunta adicionada!','ok');
+  }
+  clearQForm();renderQList();updateStats();
+}
+function editQuestion(fid){
+  var q=S.wlQuestions.find(function(x){return x._fid===fid;});if(!q)return;
+  document.getElementById('edit-q-id').value=fid;
+  document.getElementById('q-text').value=q.text;
+  document.getElementById('q-type').value=q.type;
+  document.getElementById('q-required').value=q.required?'1':'0';
+  qOptTags=q.options?q.options.slice():[];
+  renderQOpts();toggleQOptions();
+  switchSubTab('wl','perguntas',document.querySelector('#asec-wl .sub-tab'));
+  window.scrollTo(0,0);
+}
+async function deleteQuestion(fid){
+  confirmAction('Excluir pergunta?',async function(){
+    await fsDelete('wlQuestions',fid);
+    S.wlQuestions=S.wlQuestions.filter(function(x){return x._fid!==fid;});
+    renderQList();updateStats();toast('Pergunta excluída.','ok');
+  });
+}
+function clearQForm(){document.getElementById('edit-q-id').value='';document.getElementById('q-text').value='';document.getElementById('q-type').value='text';document.getElementById('q-required').value='1';qOptTags=[];renderQOpts();toggleQOptions();}
+function renderQList(){
+  var list=document.getElementById('questions-list');if(!list)return;
+  var cnt=document.getElementById('q-count');if(cnt)cnt.textContent=S.wlQuestions.length+' pergunta(s)';
+  if(!S.wlQuestions.length){list.innerHTML='<div class="empty-state" style="padding:2rem"><div class="icon">❓</div><p>Nenhuma pergunta.</p></div>';return;}
+  list.innerHTML=S.wlQuestions.map(function(q,i){
+    var tl={text:'Texto',textarea:'Texto longo',choice:'Múltipla escolha'}[q.type]||q.type;
+    return '<div class="wl-q-item"><div style="font-size:.95rem;color:rgba(255,255,255,.18);font-weight:700;min-width:22px">'+(i+1)+'</div>'
+      +'<div class="wl-q-main"><div class="wl-q-text">'+esc(q.text)+'</div>'
+      +'<div class="wl-q-meta"><span class="wl-q-type">'+tl+'</span>'+(q.required?'<span class="wl-q-req">obrigatória</span>':'')+(q.options&&q.options.length?' <span style="color:rgba(255,255,255,.22);font-size:.65rem">'+q.options.length+' opções</span>':'')+'</div></div>'
+      +'<div style="display:flex;gap:.3rem"><button class="action-btn" onclick="editQuestion(\''+q._fid+'\')">✏</button><button class="action-btn danger" onclick="deleteQuestion(\''+q._fid+'\')">🗑</button></div>'
+      +'</div>';
+  }).join('');
+}
+
+// ═══ ADMIN WL APPLICATIONS ═══
+async function loadAndRenderWLApps(){
+  S.wlApps=await fsGetAll('wlApps');
+  // Sort by _order desc (newest first)
+  S.wlApps.sort(function(a,b){return (b._order||0)-(a._order||0);});
+  renderWLApps();
+  updateStats();
+}
+function renderWLApps(){
+  var tb=document.getElementById('wl-apps-table');if(!tb)return;
+  var cnt=document.getElementById('wl-apps-count');if(cnt)cnt.textContent=S.wlApps.length+' candidatura(s)';
+  var badge=document.getElementById('wl-pending-badge');
+  var pend=S.wlApps.filter(function(a){return a.status==='pending';}).length;
+  if(badge)badge.textContent=pend>0?pend:'';
+  if(!S.wlApps.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma candidatura.</td></tr>';return;}
+  tb.innerHTML=S.wlApps.map(function(app,idx){
+    var fa=app.answers&&app.answers[0]?app.answers[0].a:'-';if(fa.length>28)fa=fa.slice(0,28)+'…';
+    var sc={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
+    var sl={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
+    var dcInfo = app.discordUsername ? '<span style="color:#5865F2;font-size:.68rem">@'+esc(app.discordUsername)+'</span>' : '<span style="color:rgba(255,255,255,.2);font-size:.68rem">—</span>';
+    return '<tr><td style="color:rgba(255,255,255,.28)">#'+(idx+1)+'</td><td style="color:rgba(255,255,255,.35);font-size:.72rem;white-space:nowrap">'+esc(app.date||'-')+'</td><td>'+esc(fa)+'</td><td>'+dcInfo+'</td><td><span class="badge '+sc+'">'+sl+'</span></td>'
+      +'<td><button class="action-btn" onclick="viewApp(\''+app._fid+'\')">👁</button><button class="action-btn ok" onclick="setAppSt(\''+app._fid+'\',\'approved\')">✓</button><button class="action-btn danger" onclick="setAppSt(\''+app._fid+'\',\'rejected\')">✗</button></td></tr>';
+  }).join('');
+}
+window.viewApp=function(fid){
+  var app=S.wlApps.find(function(x){return x._fid===fid;});if(!app)return;
+  var sc={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
+  var sl={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
+  var dcHTML = '';
+  if(app.discordUsername){
+    var avHTML = app.discordAvatar
+      ? '<img src="'+esc(app.discordAvatar)+'" style="width:32px;height:32px;border-radius:50%;object-fit:cover">'
+      : '<div style="width:32px;height:32px;border-radius:50%;background:#5865F2;display:flex;align-items:center;justify-content:center;font-size:.9rem;color:#fff">'+esc(app.discordUsername.charAt(0).toUpperCase())+'</div>';
+    dcHTML = '<div style="display:flex;align-items:center;gap:.7rem;background:rgba(88,101,242,.1);border:1px solid rgba(88,101,242,.2);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem">'
+      + avHTML
+      + '<div><div style="font-size:.82rem;font-weight:700;color:#7289da">@'+esc(app.discordUsername)+'</div>'
+      + '<div style="font-size:.65rem;color:rgba(255,255,255,.28)">ID: '+esc(app.discordId||'-')+'</div></div>'
+      + '</div>';
+  }
+  document.getElementById('modal-app-content').innerHTML='<div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem"><div style="font-size:.68rem;color:rgba(255,255,255,.28)">'+esc(app.date||'-')+'</div><span class="badge '+sc+'">'+sl+'</span></div>'
+    + dcHTML
+    +(app.answers||[]).map(function(a){return '<div class="app-answer-item"><div class="app-answer-q">'+esc(a.q)+'</div><div class="app-answer-a">'+esc(a.a)+'</div></div>';}).join('');
+  document.getElementById('modal-app-actions').innerHTML='<button class="btn btn-primary btn-sm" style="background:#22c55e;box-shadow:none" onclick="setAppSt(\''+fid+'\',\'approved\');closeModal(\'modal-app\')">✓ Aprovar</button><button class="btn btn-danger btn-sm" onclick="setAppSt(\''+fid+'\',\'rejected\');closeModal(\'modal-app\')">✗ Rejeitar</button><button class="btn btn-ghost btn-sm" onclick="setAppSt(\''+fid+'\',\'pending\');closeModal(\'modal-app\')">↺ Pendente</button>';
+  document.getElementById('modal-app').classList.add('show');
+};
+window.setAppSt=async function(fid,st){
+  await fsUpdate('wlApps',fid,{status:st});
+  var app=S.wlApps.find(function(x){return x._fid===fid;});if(app)app.status=st;
+  renderWLApps();renderDashWL();updateStats();
+  var l={approved:'Aprovada! ✅',rejected:'Rejeitada.',pending:'Marcada como pendente.'}[st]||'Atualizado.';
+  toast(l,st==='approved'?'ok':'');
+};
+
+// ═══ ADMIN NEWS ═══
+async function savePost(){
+  var fid=document.getElementById('edit-post-id').value;
+  var title=document.getElementById('post-title').value.trim();
+  var cat=document.getElementById('post-cat').value.trim();
+  var img=document.getElementById('post-img').value.trim();
+  var date=document.getElementById('post-date').value.trim();
+  var excerpt=document.getElementById('post-excerpt').value.trim();
+  var content=document.getElementById('post-content').value.trim();
+  var published=document.getElementById('post-published').value==='1';
+  if(!title||!content){toast('Título e conteúdo obrigatórios.','err');return;}
+  var data={title:title,cat:cat||'Geral',image:img,date:date||now(),excerpt:excerpt,content:content,published:published,_order:fid?undefined:Date.now()};
+  if(fid){
+    if(data._order===undefined)delete data._order;
+    await fsUpdate('posts',fid,data);
+    var p=S.posts.find(function(x){return x._fid===fid;});if(p)Object.assign(p,data);
+    toast('Post atualizado!','ok');
+  }else{
+    data._order=Date.now();
+    var newFid=await fsSet('posts',null,data);
+    S.posts.unshift(Object.assign({_fid:newFid},data));
+    toast('Post criado!','ok');
+  }
+  clearPostForm();renderPostsTable();updateStats();
+}
+function editPost(fid){
+  var p=S.posts.find(function(x){return x._fid===fid;});if(!p)return;
+  document.getElementById('edit-post-id').value=fid;
+  document.getElementById('post-title').value=p.title;
+  document.getElementById('post-cat').value=p.cat;
+  document.getElementById('post-img').value=p.image||'';
+  document.getElementById('post-date').value=p.date;
+  document.getElementById('post-excerpt').value=p.excerpt||'';
+  document.getElementById('post-content').value=p.content;
+  document.getElementById('post-published').value=p.published?'1':'0';
+  switchSubTab('news','add',null);adminTab('news');window.scrollTo(0,0);
+}
+async function deletePost(fid){
+  confirmAction('Excluir post?',async function(){
+    await fsDelete('posts',fid);
+    S.posts=S.posts.filter(function(x){return x._fid!==fid;});
+    renderPostsTable();updateStats();toast('Post excluído.','ok');
+  });
+}
+function clearPostForm(){document.getElementById('edit-post-id').value='';['post-title','post-cat','post-img','post-date','post-excerpt','post-content'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('post-published').value='1';}
+function renderPostsTable(){
+  var tb=document.getElementById('posts-table');if(!tb)return;
+  var cnt=document.getElementById('posts-count');if(cnt)cnt.textContent=S.posts.length+' post(s)';
+  if(!S.posts.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum post.</td></tr>';return;}
+  tb.innerHTML=S.posts.map(function(p){return '<tr><td><strong>'+esc(p.title)+'</strong></td><td><span class="badge badge-blue">'+esc(p.cat)+'</span></td><td style="color:rgba(255,255,255,.35);font-size:.75rem">'+esc(p.date)+'</td><td><span class="badge '+(p.published?'badge-green':'badge-gray')+'">'+(p.published?'Publicado':'Rascunho')+'</span></td><td><button class="action-btn" onclick="editPost(\''+p._fid+'\')">✏</button><button class="action-btn danger" onclick="deletePost(\''+p._fid+'\')">🗑</button></td></tr>';}).join('');
+}
+
+// ═══ ADMIN STORE ═══
+async function saveProduct(){
+  var fid=document.getElementById('edit-prod-id').value;
+  var name=document.getElementById('prod-name').value.trim();
+  var cat=document.getElementById('prod-cat').value.trim();
+  var price=document.getElementById('prod-price').value.trim();
+  var badge=document.getElementById('prod-badge').value;
+  var img=document.getElementById('prod-img').value.trim();
+  var desc=document.getElementById('prod-desc').value.trim();
+  var link=document.getElementById('prod-link').value.trim();
+  var avail=document.getElementById('prod-avail').value==='1';
+  if(!name){toast('Nome obrigatório.','err');return;}
+  var data={name:name,cat:cat||'Geral',price:price,badge:badge,image:img,desc:desc,buyLink:link,available:avail};
+  if(fid){
+    await fsUpdate('products',fid,data);
+    var p=S.products.find(function(x){return x._fid===fid;});if(p)Object.assign(p,data);
+    toast('Produto atualizado!','ok');
+  }else{
+    data._order=Date.now();
+    var newFid=await fsSet('products',null,data);
+    S.products.push(Object.assign({_fid:newFid},data));
+    toast('Produto adicionado!','ok');
+  }
+  clearProdForm();renderProdsTable();updateStats();
+}
+function editProduct(fid){
+  var p=S.products.find(function(x){return x._fid===fid;});if(!p)return;
+  document.getElementById('edit-prod-id').value=fid;
+  document.getElementById('prod-name').value=p.name;
+  document.getElementById('prod-cat').value=p.cat;
+  document.getElementById('prod-price').value=p.price;
+  document.getElementById('prod-badge').value=p.badge||'';
+  document.getElementById('prod-img').value=p.image||'';
+  document.getElementById('prod-desc').value=p.desc||'';
+  document.getElementById('prod-link').value=p.buyLink||'';
+  document.getElementById('prod-avail').value=p.available?'1':'0';
+  switchSubTab('store','addprod',null);adminTab('store');window.scrollTo(0,0);
+}
+async function deleteProduct(fid){
+  confirmAction('Excluir produto?',async function(){
+    await fsDelete('products',fid);
+    S.products=S.products.filter(function(x){return x._fid!==fid;});
+    renderProdsTable();updateStats();toast('Produto excluído.','ok');
+  });
+}
+function clearProdForm(){document.getElementById('edit-prod-id').value='';['prod-name','prod-cat','prod-price','prod-img','prod-desc','prod-link'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('prod-badge').value='';document.getElementById('prod-avail').value='1';}
+function renderProdsTable(){
+  var tb=document.getElementById('prods-table');if(!tb)return;
+  var cnt=document.getElementById('prods-count');if(cnt)cnt.textContent=S.products.length+' produto(s)';
+  if(!S.products.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum produto.</td></tr>';return;}
+  tb.innerHTML=S.products.map(function(p){var badgeClass={POPULAR:'badge-gold',NOVO:'badge-blue','PROMOÇÃO':'badge-green'}[p.badge]||'badge-gray';return '<tr><td><strong>'+esc(p.name)+'</strong></td><td style="color:rgba(255,255,255,.4)">'+esc(p.cat)+'</td><td style="color:var(--gold-l);font-weight:600">'+esc(p.price)+'</td><td>'+(p.badge?'<span class="badge '+badgeClass+'">'+esc(p.badge)+'</span>':'-')+'</td><td><span class="badge '+(p.available?'badge-green':'badge-gray')+'">'+(p.available?'Disponível':'Indisponível')+'</span></td><td><button class="action-btn" onclick="editProduct(\''+p._fid+'\')">✏</button><button class="action-btn danger" onclick="deleteProduct(\''+p._fid+'\')">🗑</button></td></tr>';}).join('');
+}
+
+// ═══ RULES ═══
+async function saveRule(){
+  var fid=document.getElementById('edit-rule-id').value;
+  var cat=document.getElementById('r-cat').value.trim();
+  var sub=document.getElementById('r-subcat').value.trim();
+  var text=document.getElementById('r-text').value.trim();
+  if(!cat||!sub||!text){toast('Todos os campos obrigatórios.','err');return;}
+  var data={cat:cat,subcat:sub,text:text,_order:Date.now()};
+  if(fid){
+    await fsUpdate('rules',fid,data);
+    var r=S.rules.find(function(x){return x._fid===fid;});if(r)Object.assign(r,data);
+    toast('Regra atualizada!','ok');
+  }else{
+    var newFid=await fsSet('rules',null,data);
+    S.rules.push(Object.assign({_fid:newFid},data));
+    toast('Regra adicionada!','ok');
+  }
+  clearRuleForm();renderRulesTable();renderRulesCatList();renderPublicRules();updateStats();
+}
+function editRule(fid){var r=S.rules.find(function(x){return x._fid===fid;});if(!r)return;document.getElementById('edit-rule-id').value=fid;document.getElementById('r-cat').value=r.cat;document.getElementById('r-subcat').value=r.subcat;document.getElementById('r-text').value=r.text;adminTab('rules');window.scrollTo(0,0);}
+async function deleteRule(fid){
+  confirmAction('Excluir regra?',async function(){
+    await fsDelete('rules',fid);
+    S.rules=S.rules.filter(function(x){return x._fid!==fid;});
+    renderRulesTable();renderRulesCatList();renderPublicRules();updateStats();toast('Regra excluída.','ok');
+  });
+}
+function clearRuleForm(){document.getElementById('edit-rule-id').value='';['r-cat','r-subcat','r-text'].forEach(function(i){document.getElementById(i).value='';});}
+function renderRulesTable(){var tb=document.getElementById('rules-table');document.getElementById('rules-count').textContent=S.rules.length+' regra(s)';if(!S.rules.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma regra.</td></tr>';return;}tb.innerHTML=S.rules.map(function(r){return '<tr><td><span class="badge badge-red">'+esc(r.cat)+'</span></td><td style="color:rgba(255,255,255,.35)">'+esc(r.subcat)+'</td><td style="max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+esc(r.text)+'</td><td><button class="action-btn" onclick="editRule(\''+r._fid+'\')">✏</button><button class="action-btn danger" onclick="deleteRule(\''+r._fid+'\')">🗑</button></td></tr>';}).join('');}
+function renderRulesCatList(){var cats=Array.from(new Set(S.rules.map(function(r){return r.cat;})));var dl=document.getElementById('r-cats-list');if(dl)dl.innerHTML=cats.map(function(c){return '<option value="'+esc(c)+'">';}).join('');}
+
+// ═══ UPDATES ═══
+async function saveUpdate(){
+  var fid=document.getElementById('edit-upd-id').value;
+  var tag=document.getElementById('upd-tag').value.trim();
+  var title=document.getElementById('upd-title').value.trim();
+  var text=document.getElementById('upd-text').value.trim();
+  var date=document.getElementById('upd-date').value.trim();
+  if(!title||!text){toast('Título e descrição obrigatórios.','err');return;}
+  var data={tag:tag||'📢 UPDATE',title:title,text:text,date:date||now(),_order:Date.now()};
+  if(fid){
+    await fsUpdate('updates',fid,data);
+    var u=S.updates.find(function(x){return x._fid===fid;});if(u)Object.assign(u,data);
+    toast('Atualizado!','ok');
+  }else{
+    var newFid=await fsSet('updates',null,data);
+    S.updates.unshift(Object.assign({_fid:newFid},data));
+    toast('Adicionado!','ok');
+  }
+  clearUpdForm();renderUpdatesTable();renderPublicUpdates();
+}
+function editUpdate(fid){var u=S.updates.find(function(x){return x._fid===fid;});if(!u)return;document.getElementById('edit-upd-id').value=fid;document.getElementById('upd-tag').value=u.tag||'';document.getElementById('upd-title').value=u.title;document.getElementById('upd-text').value=u.text;document.getElementById('upd-date').value=u.date||'';adminTab('updates');window.scrollTo(0,0);}
+async function deleteUpdate(fid){
+  confirmAction('Excluir?',async function(){
+    await fsDelete('updates',fid);
+    S.updates=S.updates.filter(function(x){return x._fid!==fid;});
+    renderUpdatesTable();renderPublicUpdates();toast('Excluído.','ok');
+  });
+}
+function clearUpdForm(){document.getElementById('edit-upd-id').value='';['upd-tag','upd-title','upd-text','upd-date'].forEach(function(i){document.getElementById(i).value='';});}
+function renderUpdatesTable(){var tb=document.getElementById('updates-table');if(!S.updates.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma atualização.</td></tr>';return;}tb.innerHTML=S.updates.map(function(u){return '<tr><td>'+esc(u.tag||'')+'</td><td><strong>'+esc(u.title)+'</strong></td><td style="color:rgba(255,255,255,.3);font-size:.75rem">'+esc(u.date||'-')+'</td><td><button class="action-btn" onclick="editUpdate(\''+u._fid+'\')">✏</button><button class="action-btn danger" onclick="deleteUpdate(\''+u._fid+'\')">🗑</button></td></tr>';}).join('');}
+
+// ═══ TEAM ═══
+window.previewAv=function(url){var p=document.getElementById('member-av-prev');if(url)p.innerHTML='<img src="'+esc(url)+'" onerror="this.parentNode.innerHTML=\'👤\'">';else p.innerHTML='👤';};
+async function saveMember(){
+  var fid=document.getElementById('edit-member-id').value;
+  var name=document.getElementById('m-name').value.trim();
+  var avatar=document.getElementById('m-avatar').value.trim();
+  var role=document.getElementById('m-role').value.trim();
+  var cat=document.getElementById('m-cat').value;
+  var desc=document.getElementById('m-desc').value.trim();
+  if(!name||!role){toast('Nome e cargo obrigatórios.','err');return;}
+  var data={name:name,avatar:avatar,role:role,cat:cat,desc:desc,_order:Date.now()};
+  if(fid){
+    await fsUpdate('team',fid,data);
+    var m=S.team.find(function(x){return x._fid===fid;});if(m)Object.assign(m,data);
+    toast('Membro atualizado!','ok');
+  }else{
+    var newFid=await fsSet('team',null,data);
+    S.team.push(Object.assign({_fid:newFid},data));
+    toast('Membro adicionado!','ok');
+  }
+  clearMemberForm();renderTeamTable();renderPublicTeam();updateStats();
+}
+function editMember(fid){var m=S.team.find(function(x){return x._fid===fid;});if(!m)return;document.getElementById('edit-member-id').value=fid;document.getElementById('m-name').value=m.name;document.getElementById('m-avatar').value=m.avatar||'';document.getElementById('m-role').value=m.role;document.getElementById('m-cat').value=m.cat;document.getElementById('m-desc').value=m.desc||'';previewAv(m.avatar||'');adminTab('team');window.scrollTo(0,0);}
+async function deleteMember(fid){
+  confirmAction('Remover membro?',async function(){
+    await fsDelete('team',fid);
+    S.team=S.team.filter(function(x){return x._fid!==fid;});
+    renderTeamTable();renderPublicTeam();updateStats();toast('Removido.','ok');
+  });
+}
+function clearMemberForm(){document.getElementById('edit-member-id').value='';['m-name','m-avatar','m-role','m-desc'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('member-av-prev').innerHTML='👤';}
+function renderTeamTable(){var tb=document.getElementById('team-table');if(!S.team.length){tb.innerHTML='<tr><td colspan="5" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum membro.</td></tr>';return;}tb.innerHTML=S.team.map(function(m){var av=m.avatar?'<img src="'+esc(m.avatar)+'" style="width:30px;height:30px;border-radius:50%;object-fit:cover" onerror="this.outerHTML=\'👤\'">':'👤';return '<tr><td>'+av+'</td><td><strong>'+esc(m.name)+'</strong></td><td style="color:var(--cr)">'+esc(m.role)+'</td><td><span class="badge badge-gray">'+esc(m.cat)+'</span></td><td><button class="action-btn" onclick="editMember(\''+m._fid+'\')">✏</button><button class="action-btn danger" onclick="deleteMember(\''+m._fid+'\')">🗑</button></td></tr>';}).join('');}
+
+// ═══ USERS (Firebase Auth + Firestore) ═══
+async function loadAndRenderUsers(){
+  showLoading('Carregando usuários...');
+  try{
+    var snap=await db.collection('users').get();
+    S.users=snap.docs.map(function(d){return Object.assign({_fid:d.id},d.data());});
+    S.users.sort(function(a,b){return (a._order||0)-(b._order||0);});
+  }catch(e){S.users=[];}
+  hideLoading();
+  renderUsersTable();
+  updateStats();
+}
+async function saveUser(){
+  var fid=document.getElementById('edit-user-id').value;
+  var username=document.getElementById('u-username').value.trim();
+  var password=document.getElementById('u-password').value.trim();
+  var email=document.getElementById('u-email').value.trim();
+  var role=document.getElementById('u-role').value;
+  var status=document.getElementById('u-status').value;
+  if(!username){toast('Usuário obrigatório.','err');return;}
+  var btn=document.querySelector('#asec-users .btn-primary');
+  if(btn){btn.disabled=true;btn.textContent='Salvando...';}
+  try{
+    if(fid){
+      // Editar usuário existente
+      var data={username:username,email:email,role:role,status:status};
+      await fsUpdate('users',fid,data);
+      // Trocar senha se informada
+      if(password){
+        // Não é possível trocar senha de outro usuário pelo SDK client-side sem Admin SDK.
+        // O próprio usuário pode trocar via changePass().
+        toast('Dados atualizados! Para trocar senha, o usuário deve usar "Alterar Senha" no painel.','ok');
+      }else{
+        toast('Usuário atualizado!','ok');
+      }
+      var u=S.users.find(function(x){return x._fid===fid;});
+      if(u){u.username=username;u.email=email;u.role=role;u.status=status;}
+    }else{
+      // Criar novo usuário
+      if(!password){toast('Senha obrigatória.','err');return;}
+      if(S.users.find(function(x){return x.username===username;})){toast('Usuário já existe.','err');return;}
+      // Guarda o current user para restaurar depois
+      var currentUser=auth.currentUser;
+      var cred=await auth.createUserWithEmailAndPassword(username+'@cc.rp',password);
+      var uid=cred.user.uid;
+      var userData={username:username,email:email,role:role,status:status,date:new Date().toLocaleDateString('pt-BR'),_order:Date.now()};
+      await fsSet('users',uid,userData);
+      S.users.push(Object.assign({_fid:uid},userData));
+      // Voltar a logar com o admin atual
+      if(currentUser){
+        // O admin criou um novo usuário e Firebase Auth trocou para o novo usuário.
+        // Precisamos fazer o admin logar de novo. Guardamos as credenciais do admin.
+        await auth.signOut();
+        // Redireciona para login novamente
+        document.getElementById('admin-panel').classList.remove('show');
+        document.getElementById('main-nav').style.display='';
+        S.loggedIn=false;
+        showAdminLogin();
+        toast('Usuário "'+username+'" criado! Faça login novamente para continuar.','ok');
+        clearUserForm();renderUsersTable();updateStats();
+        if(btn){btn.disabled=false;btn.textContent='💾 Salvar';}
+        return;
+      }
+      toast('Usuário "'+username+'" criado com sucesso! 🎉','ok');
+    }
+    clearUserForm();renderUsersTable();updateStats();
+  }catch(e){
+    toast('Erro: '+e.message,'err');
+  }
+  if(btn){btn.disabled=false;btn.textContent='💾 Salvar';}
+}
+
+function genAccessCode(u){try{return btoa(unescape(encodeURIComponent(JSON.stringify({u:u.username,p:'use-firebase',v:'cc1'}))));}catch(e){return '';}}
+function showAccessCode(fid){
+  var u=S.users.find(function(x){return x._fid===fid;});if(!u)return;
+  toast('Com Firebase, o usuário usa o próprio username e senha para entrar. Não é necessário código!','ok');
+  var box=document.createElement('div');
+  box.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;display:flex;align-items:center;justify-content:center';
+  box.innerHTML='<div style="background:var(--d3);border:1px solid rgba(196,30,58,.3);border-radius:10px;padding:2rem;width:440px;max-width:95vw">'
+    +'<div style="font-family:var(--fh);font-size:1rem;font-weight:600;text-transform:uppercase;margin-bottom:.5rem">🔑 Acesso — '+esc(u.username)+'</div>'
+    +'<p style="font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem;line-height:1.6">Com o Firebase ativo, o jogador entra com o <strong style="color:var(--w)">usuário e senha</strong> que você cadastrou. Compartilhe as informações abaixo:</p>'
+    +'<div style="background:var(--d4);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:1rem;font-family:monospace;font-size:.82rem;line-height:2">'
+    +'<div>👤 Usuário: <strong style="color:#4ade80">'+esc(u.username)+'</strong></div>'
+    +'<div>🔐 Senha: <strong style="color:#fbbf24">(a que você cadastrou)</strong></div>'
+    +'</div>'
+    +'<p style="font-size:.72rem;color:rgba(255,255,255,.3);margin-top:.85rem">O jogador clica em <strong style="color:var(--w)">Admin</strong> no site e entra com essas credenciais.</p>'
+    +'<div style="margin-top:1.25rem"><button class="btn btn-outline btn-sm" onclick="this.closest(\'div[style]\').remove()">Fechar</button></div>'
+    +'</div>';
+  document.body.appendChild(box);
+}
+
+function editUser(fid){
+  var u=S.users.find(function(x){return x._fid===fid;});if(!u)return;
+  document.getElementById('edit-user-id').value=fid;
+  document.getElementById('u-username').value=u.username;
+  document.getElementById('u-password').value='';
+  document.getElementById('u-email').value=u.email||'';
+  document.getElementById('u-role').value=u.role;
+  document.getElementById('u-status').value=u.status;
+  adminTab('users');window.scrollTo(0,0);
+}
+async function deleteUser(fid){
+  confirmAction('Excluir usuário?',async function(){
+    await fsDelete('users',fid);
+    S.users=S.users.filter(function(x){return x._fid!==fid;});
+    renderUsersTable();updateStats();toast('Excluído.','ok');
+  });
+}
+function clearUserForm(){document.getElementById('edit-user-id').value='';['u-username','u-password','u-email'].forEach(function(i){document.getElementById(i).value='';});document.getElementById('u-role').value='admin';document.getElementById('u-status').value='active';}
+function renderUsersTable(){
+  var tb=document.getElementById('users-table');
+  var cnt=document.getElementById('users-count');if(cnt)cnt.textContent=S.users.length+' usuário(s)';
+  if(!S.users.length){tb.innerHTML='<tr><td colspan="6" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhum usuário cadastrado.</td></tr>';return;}
+  tb.innerHTML=S.users.map(function(u){
+    return '<tr>'
+      +'<td><strong>'+esc(u.username)+'</strong></td>'
+      +'<td style="color:rgba(255,255,255,.35)">'+esc(u.email||'-')+'</td>'
+      +'<td><span class="badge badge-gold">'+esc(u.role)+'</span></td>'
+      +'<td><span class="badge '+(u.status==='active'?'badge-green':u.status==='banned'?'badge-red':'badge-gray')+'">'+esc(u.status)+'</span></td>'
+      +'<td><button class="btn btn-primary btn-sm" style="background:rgba(34,197,94,.15);color:#4ade80;border:1px solid rgba(34,197,94,.3);font-size:.6rem" onclick="showAccessCode(\''+u._fid+'\')">🔑 Ver Acesso</button></td>'
+      +'<td><button class="action-btn" onclick="editUser(\''+u._fid+'\')">✏</button><button class="action-btn danger" onclick="deleteUser(\''+u._fid+'\')">🗑</button></td>'
+      +'</tr>';
+  }).join('');
+}
+
+// ═══ SETTINGS ═══
+// ═══ FEATURE CARDS EDITOR ═══
+function renderFeatEditor(){
+  var c=document.getElementById('feat-rows-container');if(!c)return;
+  var feats=S.settings.features||[];
+  c.innerHTML=feats.map(function(f,i){
+    return '<div class="feat-card-editor" id="feat-card-'+i+'">'
+      +'<div class="feat-card-editor-header">'
+      +'<span class="feat-card-num">CARD '+(i+1)+'</span>'
+      +'<button class="action-btn danger" onclick="removeFeatureCard('+i+')">🗑 Remover</button>'
+      +'</div>'
+      +'<div class="feat-icon-preview" id="feat-icon-prev-'+i+'">'+esc(f.icon||'✦')+'</div>'
+      +'<div class="form-row">'
+      +'<div class="field"><label>Ícone (emoji)</label><input type="text" id="cfg-feat-icon-'+i+'" value="'+esc(f.icon||'')+'" placeholder="🌆" oninput="updateFeatIconPrev('+i+',this.value)"></div>'
+      +'<div class="field"><label>Título</label><input type="text" id="cfg-feat-title-'+i+'" value="'+esc(f.title||'')+'" placeholder="Título do card"></div>'
+      +'</div>'
+      +'<div class="field"><label>Descrição</label><input type="text" id="cfg-feat-text-'+i+'" value="'+esc(f.text||'')+'" placeholder="Breve descrição..."></div>'
+      +'</div>';
+  }).join('');
+}
+function updateFeatIconPrev(i,val){var p=document.getElementById('feat-icon-prev-'+i);if(p)p.textContent=val||'✦';}
+function addFeatureCard(){
+  var feats=S.settings.features||[];
+  feats.push({icon:'⭐',title:'Novo Card',text:'Descrição do card.'});
+  S.settings.features=feats;
+  renderFeatEditor();
+  var c=document.getElementById('feat-rows-container');if(c&&c.lastElementChild)c.lastElementChild.scrollIntoView({behavior:'smooth'});
+}
+function removeFeatureCard(i){
+  var feats=S.settings.features||[];
+  if(feats.length<=1){toast('Mínimo 1 card.','err');return;}
+  confirmAction('Remover card '+(i+1)+'?',function(){
+    feats.splice(i,1);S.settings.features=feats;renderFeatEditor();toast('Card removido. Clique em Salvar.','ok');
+  });
+}
+function collectFeatCards(){
+  var feats=S.settings.features||[];
+  var result=[];
+  for(var i=0;i<feats.length;i++){
+    var icon=document.getElementById('cfg-feat-icon-'+i);
+    var title=document.getElementById('cfg-feat-title-'+i);
+    var text=document.getElementById('cfg-feat-text-'+i);
+    result.push({
+      icon:icon?icon.value.trim():feats[i].icon,
+      title:title?title.value.trim():feats[i].title,
+      text:text?text.value.trim():feats[i].text
+    });
+  }
+  return result;
+}
+
+function loadSettings(){
+  var s=S.settings;
+  var f=function(id,val){var el=document.getElementById(id);if(el)el.value=val||'';};
+  f('cfg-name',s.name);
+  f('cfg-discord',s.discord);
+  var cp=document.getElementById('cfg-players');if(cp)cp.value=s.players||0;
+  f('cfg-wl-welcome',s.wlWelcome);
+  f('cfg-wl-end',s.wlEnd);
+  f('cfg-hero-eyebrow',s.heroEyebrow);
+  f('cfg-hero-line1',s.heroLine1);
+  f('cfg-hero-line2',s.heroLine2);
+  f('cfg-hero-sub',s.heroSub);
+  f('cfg-hero-btn-wl',s.heroBtnWL);
+  f('cfg-hero-btn-discord',s.heroBtnDiscord);
+  f('cfg-footer-tagline',s.footerTagline);
+  f('cfg-footer-copy',s.footerCopy);
+  f('cfg-social-discord',s.socialDiscord);
+  f('cfg-social-youtube',s.socialYoutube);
+  f('cfg-social-instagram',s.socialInstagram);
+  f('cfg-social-tiktok',s.socialTiktok);
+  f('cfg-social-twitter',s.socialTwitter);
+  f('cfg-social-linkedin',s.socialLinkedin);
+  f('cfg-discord-client-id',s.discordClientId);
+  f('cfg-discord-redirect-uri',s.discordRedirectUri);
+  f('cfg-discord-webhook',s.discordWebhook);
+  f('cfg-n8n-role-webhook',s.n8nRoleWebhook);
+  f('cfg-discord-role-id',s.discordRoleId);
+  f('cfg-discord-guild-id',s.discordGuildId);
+  renderFeatEditor();
+}
+async function changePass(){
+  var np=document.getElementById('new-pass').value;
+  var cp=document.getElementById('conf-pass').value;
+  if(np.length<6){toast('Mínimo 6 caracteres.','err');return;}
+  if(np!==cp){toast('Senhas não coincidem.','err');return;}
+  try{
+    var user=auth.currentUser;
+    if(user)await user.updatePassword(np);
+    document.getElementById('new-pass').value='';
+    document.getElementById('conf-pass').value='';
+    toast('Senha alterada!','ok');
+  }catch(e){toast('Erro: '+e.message,'err');}
+}
+async function confirmReset(type){
+  var msgs={wlApps:'Limpar TODAS as candidaturas?',users:'Excluir TODOS os usuários?',posts:'Excluir TODOS os posts?',products:'Excluir TODOS os produtos?'};
+  confirmAction(msgs[type]||'Confirmar?',async function(){
+    var col={wlApps:'wlApps',users:'users',posts:'posts',products:'products'}[type];
+    if(col){
+      var snap=await db.collection(col).get();
+      var batch=db.batch();
+      snap.docs.forEach(function(d){batch.delete(d.ref);});
+      await batch.commit();
+    }
+    if(type==='wlApps'){S.wlApps=[];renderWLApps();renderDashWL();}
+    if(type==='users'){S.users=[];renderUsersTable();}
+    if(type==='posts'){S.posts=[];renderPostsTable();}
+    if(type==='products'){S.products=[];renderProdsTable();}
+    updateStats();toast('Dados excluídos.','ok');
+  });
+}
+
+// ═══ DASHBOARD ═══
+function updateStats(){
+  var wlPend=S.wlApps.filter(function(a){return a.status==='pending';}).length;
+  var m={'stat-wl':S.wlApps.length,'stat-wl-p':wlPend,'stat-posts':S.posts.length,'stat-prods':S.products.length,'stat-rules':S.rules.length,'stat-team':S.team.length};
+  Object.keys(m).forEach(function(k){var el=document.getElementById(k);if(el)el.textContent=m[k];});
+  var b=document.getElementById('wl-pending-badge');if(b)b.textContent=wlPend>0?wlPend:'';
+}
+function renderDashWL(){
+  var tb=document.getElementById('dash-wl-table');if(!tb)return;
+  var r=S.wlApps.slice(0,5);
+  if(!r.length){tb.innerHTML='<tr><td colspan="4" style="text-align:center;color:rgba(255,255,255,.2);padding:1.5rem">Nenhuma candidatura.</td></tr>';return;}
+  tb.innerHTML=r.map(function(app){
+    var fa=app.answers&&app.answers[0]?app.answers[0].a:'-';if(fa.length>25)fa=fa.slice(0,25)+'…';
+    var sc={pending:'badge-gold',approved:'badge-green',rejected:'badge-red'}[app.status]||'badge-gray';
+    var sl={pending:'Pendente',approved:'Aprovado',rejected:'Rejeitado'}[app.status]||app.status;
+    return '<tr><td><strong>'+esc(fa)+'</strong></td><td style="color:rgba(255,255,255,.3);font-size:.72rem">'+esc(app.date||'-')+'</td><td><span class="badge '+sc+'">'+sl+'</span></td><td><button class="action-btn" onclick="viewApp(\''+app._fid+'\')">Ver →</button></td></tr>';
+  }).join('');
+}
+function refreshAdmin(){
+  loadAndRenderWLApps().then(function(){updateStats();renderDashWL();});
+}
+
+// ═══ DISCORD OAUTH ═══
+// Discord OAuth uses implicit grant (token in URL hash) — no server needed
+var DISCORD_SCOPES = 'identify';
+
+function doDiscordLogin(){
+  var clientId = S.settings.discordClientId;
+  var redirectUri = S.settings.discordRedirectUri || location.origin + location.pathname;
+  if(!clientId){
+    // Fallback: open Discord invite if Client ID not configured yet
+    toast('Configure o Client ID do Discord no painel Admin → Configurações.','err');
+    return;
+  }
+  var state = Math.random().toString(36).substr(2,12);
+  sessionStorage.setItem('dc_oauth_state', state);
+  var params = new URLSearchParams({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    response_type: 'token',
+    scope: DISCORD_SCOPES,
+    state: state
+  });
+  location.href = 'https://discord.com/api/oauth2/authorize?' + params.toString();
+}
+
+function doDiscordLogout(){
+  S.discordUser = null;
+  localStorage.removeItem('dc_user');
+  updateDiscordUI();
+  // If on WL page refresh gate
+  initChatWL();
+  toast('Desconectado do Discord.','ok');
+}
+
+async function handleDiscordCallback(){
+  // Parse fragment from URL (implicit flow)
+  var hash = location.hash;
+  if(!hash || !hash.includes('access_token')) return;
+  var params = new URLSearchParams(hash.replace(/^#/,''));
+  var token = params.get('access_token');
+  var state = params.get('state');
+  // Remove fragment from URL
+  history.replaceState(null,'',location.pathname + location.search);
+  if(!token) return;
+  // Fetch user info
+  try{
+    var res = await fetch('https://discord.com/api/users/@me', {
+      headers: { Authorization: 'Bearer ' + token }
+    });
+    if(!res.ok) throw new Error('Falha ao buscar perfil Discord');
+    var user = await res.json();
+    S.discordUser = {
+      id: user.id,
+      username: user.username,
+      discriminator: user.discriminator || '0',
+      avatar: user.avatar ? 'https://cdn.discordapp.com/avatars/'+user.id+'/'+user.avatar+'.png' : null,
+      global_name: user.global_name || user.username
+    };
+    localStorage.setItem('dc_user', JSON.stringify(S.discordUser));
+    updateDiscordUI();
+    toast('Conectado como @' + S.discordUser.username + '!','ok');
+    // If currently on WL page, refresh
+    if(document.getElementById('page-whitelist').classList.contains('active')) initChatWL();
+  }catch(e){
+    console.error('Discord OAuth error:',e);
+    toast('Erro ao conectar com Discord.','err');
+  }
+}
+
+function loadDiscordUserFromStorage(){
+  var raw = localStorage.getItem('dc_user');
+  if(raw){
+    try{ S.discordUser = JSON.parse(raw); } catch(e){}
+  }
+}
+
+function updateDiscordUI(){
+  var user = S.discordUser;
+  var btnLogin = document.getElementById('btn-discord-nav');
+  var userMenu = document.getElementById('nav-discord-user');
+  if(!btnLogin || !userMenu) return;
+  if(user){
+    btnLogin.style.display = 'none';
+    userMenu.style.display = 'inline-block';
+    // Avatar
+    var av = document.getElementById('nav-discord-av');
+    if(av){
+      if(user.avatar){
+        av.innerHTML = '<img src="'+user.avatar+'" style="width:26px;height:26px;border-radius:50%;object-fit:cover">';
+        av.style.background = 'none';
+      } else {
+        av.textContent = user.username.charAt(0).toUpperCase();
+      }
+    }
+    var nameEl = document.getElementById('nav-discord-name');
+    if(nameEl) nameEl.textContent = user.global_name || user.username;
+    var ddName = document.getElementById('dd-discord-uname');
+    if(ddName) ddName.textContent = '@' + user.username;
+    var ddDisc = document.getElementById('dd-discord-disc');
+    if(ddDisc) ddDisc.textContent = user.id;
+  } else {
+    btnLogin.style.display = '';
+    userMenu.style.display = 'none';
+  }
+}
+
+// ═══ WL GATE — check Discord login + 1-per-account ═══
+async function checkWLGate(){
+  var gate = document.getElementById('wl-login-gate');
+  var notice = document.getElementById('wl-already-notice');
+  var chatWin = document.getElementById('chat-window');
+
+  gate.classList.remove('show');
+  notice.classList.remove('show');
+  if(chatWin) chatWin.style.display = '';
+
+  // 1. Must be logged in with Discord
+  if(!S.discordUser){
+    gate.classList.add('show');
+    if(chatWin) chatWin.style.display = 'none';
+    return false;
+  }
+
+  // 2. Check if already has an active WL (pending or approved)
+  try{
+    var snap = await db.collection('wlApps').where('discordId','==',S.discordUser.id).get();
+    var active = snap.docs.map(function(d){return d.data();}).filter(function(a){
+      return a.status === 'pending' || a.status === 'approved';
+    });
+    if(active.length > 0){
+      var st = active[0].status;
+      var noticeTitle = document.getElementById('wl-notice-title');
+      var noticeMsg = document.getElementById('wl-notice-msg');
+      if(st === 'approved'){
+        if(noticeTitle) noticeTitle.textContent = '✅ Candidatura Aprovada!';
+        if(noticeMsg) noticeMsg.textContent = 'Parabéns! Sua candidatura foi aprovada. Acesse o Discord para mais informações sobre como entrar no servidor.';
+      } else {
+        if(noticeTitle) noticeTitle.textContent = '⏳ Candidatura em Análise';
+        if(noticeMsg) noticeMsg.textContent = 'Você já possui uma candidatura pendente. Aguarde o resultado antes de enviar uma nova. Fique atento ao Discord!';
+      }
+      notice.classList.add('show');
+      if(chatWin) chatWin.style.display = 'none';
+      return false;
+    }
+  }catch(e){ console.warn('WL gate check error:',e); }
+
+  return true; // OK to proceed
+}
+
+// ═══ DISCORD WEBHOOK NOTIFICATION ═══
+async function sendDiscordWebhookNotification(app, status){
+  var webhook = S.settings.discordWebhook;
+  if(!webhook) return;
+  var discordUsername = app.discordUsername || 'desconhecido';
+  var discordId = app.discordId || null;
+  var mention = discordId ? '<@' + discordId + '>' : '@' + discordUsername;
+  var isApproved = status === 'approved';
+  var content, color, title;
+  if(isApproved){
+    content = 'Parabéns, você foi **APROVADO** em nossa Allowlist! ' + mention;
+    title = '✅ APROVADO na Allowlist';
+    color = 0x22c55e;
+  } else {
+    content = 'Poxa, você foi **REPROVADO** em nossa Allowlist! ' + mention;
+    title = '❌ REPROVADO na Allowlist';
+    color = 0xC41E3A;
+  }
+  var payload = {
+    content: content,
+    embeds: [{
+      title: title,
+      color: color,
+      fields: [
+        { name: 'Usuário Discord', value: '@' + discordUsername, inline: true },
+        { name: 'Data', value: app.date || '-', inline: true }
+      ],
+      footer: { text: 'Crimson City RP — Sistema de Allowlist' },
+      timestamp: new Date().toISOString()
+    }]
+  };
+  try{
+    await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  }catch(e){ console.warn('Webhook error:',e); }
+}
+
+// ═══ N8N / MAKE — ROLE WEBHOOK ═══
+async function sendN8NRoleWebhook(app){
+  var webhookUrl = S.settings.n8nRoleWebhook;
+  var roleId     = S.settings.discordRoleId;
+  var guildId    = S.settings.discordGuildId;
+
+  if(!webhookUrl){
+    console.info('N8N role webhook não configurado — pulando atribuição de cargo.');
+    return;
+  }
+  if(!app.discordId){
+    console.warn('Candidatura sem Discord ID — não é possível dar cargo automaticamente.');
+    toast('Cargo não atribuído: candidato não tem Discord vinculado.','');
+    return;
+  }
+
+  var payload = {
+    discordId:   app.discordId,
+    username:    app.discordUsername || app.discordGlobalName || 'desconhecido',
+    guildId:     guildId  || '',
+    roleId:      roleId   || '',
+    date:        app.date || '',
+    action:      'add_role'
+  };
+
+  try{
+    var res = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    if(res.ok){
+      toast('Cargo enviado para N8N! 🎖️','ok');
+    } else {
+      console.warn('N8N role webhook retornou status:', res.status);
+      toast('Aprovado! Mas o N8N retornou erro '+res.status+' ao dar cargo.','');
+    }
+  }catch(e){
+    console.error('Erro ao chamar N8N role webhook:',e);
+    toast('Aprovado! Mas houve erro de rede ao dar cargo via N8N.','');
+  }
+}
+var _origSetAppSt = window.setAppSt;
+window.setAppSt = async function(fid, st){
+  var app = S.wlApps.find(function(x){return x._fid===fid;});
+  await fsUpdate('wlApps',fid,{status:st});
+  if(app) app.status = st;
+  renderWLApps(); renderDashWL(); updateStats();
+  var l = {approved:'Aprovada! ✅', rejected:'Rejeitada.', pending:'Marcada como pendente.'}[st]||'Atualizado.';
+  toast(l, st==='approved'?'ok':'');
+  // Fire Discord webhook notification (approved or rejected)
+  if((st === 'approved' || st === 'rejected') && app){
+    await sendDiscordWebhookNotification(app, st);
+  }
+  // Fire N8N/Make role webhook on approval only
+  if(st === 'approved' && app){
+    await sendN8NRoleWebhook(app);
+  }
+};
+
+// ═══ LOAD ALL — init Discord OAuth handling ═══
+// (called after loadAll completes)
+function initDiscord(){
+  loadDiscordUserFromStorage();
+  updateDiscordUI();
+  handleDiscordCallback(); // handle OAuth redirect token if present
+}
+
+// ═══ LOAD ALL — main init ═══
+loadAll();
+initDiscord();
 </script>
 </body>
 </html>
